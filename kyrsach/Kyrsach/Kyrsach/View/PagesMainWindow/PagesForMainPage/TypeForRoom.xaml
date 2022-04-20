@@ -1,0 +1,33 @@
+﻿<Page x:Class="Kyrsach.View.PagesMainWindow.PagesForMainPage.TypeForRoom"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Kyrsach.View.PagesMainWindow.PagesForMainPage"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="TypeForRoom" Background="white">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Button Grid.Row="0" Style="{StaticResource MainButtonsPage}" Content="Спальни"/>
+        <Button Grid.Row="1" Style="{StaticResource MainButtonsPage}" Content="Мебель для гостиной и столовой"/>
+        <Button Grid.Row="2" Style="{StaticResource MainButtonsPage}" Content="Мягкая мебель"/>
+        <Button Grid.Row="3" Style="{StaticResource MainButtonsPage}" Content="Мебель для детской"/>
+        <Button Grid.Row="4" Style="{StaticResource MainButtonsPage}" Content="Библиотека"/>
+        <Button Grid.Row="5" Style="{StaticResource MainButtonsPage}" Content="Прихожие"/>
+        <Button Grid.Row="6" Style="{StaticResource MainButtonsPage}" Content="Кухни"/>
+        <Button Grid.Row="7" Style="{StaticResource MainButtonsPage}" Content="Кухонные Фасады"/>
+        <Button Grid.Row="8" Style="{StaticResource MainButtonsPage}" Content="Столы, Стулья, Банкетки"/>
+    </Grid>
+</Page>

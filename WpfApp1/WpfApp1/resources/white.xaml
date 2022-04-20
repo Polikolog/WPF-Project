@@ -1,0 +1,26 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style TargetType="TextBlock">
+        <Setter Property="Background" Value="White" />
+        <Setter Property="Foreground" Value="Gray" />
+    </Style>
+    <Style TargetType="TextBox">
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="BorderBrush" Value="black"/>
+        <Setter Property="Foreground" Value="black"/>
+    </Style>
+    <Style x:Key="WindowStyle" TargetType="Window">
+        <Setter Property="Background" Value="White" />
+    </Style>
+    <Style TargetType="Button">
+        <Style.Setters>
+            <Setter Property="Padding" Value="5 3 5 3"/>
+            <Setter Property="Background" Value="DarkSlateBlue"/>
+        </Style.Setters>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Foreground" Value="Black"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+</ResourceDictionary>
