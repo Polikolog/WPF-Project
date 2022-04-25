@@ -68,3 +68,5 @@ C:\Users\mi\Desktop\1\OOP\WpfApp1\WpfApp1\obj\Debug\net5.0-windows\resources\whi
 C:\Users\mi\Desktop\1\OOP\WpfApp1\WpfApp1\obj\Debug\net5.0-windows\UserControl1.g.cs
 C:\Users\mi\Desktop\1\OOP\WpfApp1\WpfApp1\obj\Debug\net5.0-windows\GeneratedInternalTypeHelper.g.cs
 C:\Users\mi\Desktop\1\OOP\WpfApp1\WpfApp1\obj\Debug\net5.0-windows\UserControl1.baml
+C:\Users\mi\Desktop\1\OOP\WpfApp1\WpfApp1\obj\Debug\net5.0-windows\UserControl2.g.cs
+C:\Users\mi\Desktop\1\OOP\WpfApp1\WpfApp1\obj\Debug\net5.0-windows\UserControl2.baml

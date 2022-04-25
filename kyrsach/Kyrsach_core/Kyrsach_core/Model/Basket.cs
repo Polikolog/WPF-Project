@@ -8,10 +8,11 @@ namespace Kyrsach_core.Model
 {
     internal class Basket
     {
-        public Guid ID { get; set; }
+        public int ID { get; set; }
         public decimal Price { get; set; }
-        public Guid UserID { get; set; }
+        public int UserID { get; set; }
         public User User { get; set; }
         public List<BasketProduct> BasketProduct { get; set; }
+        public bool OrderCompleted { get; set; }
     }
 }

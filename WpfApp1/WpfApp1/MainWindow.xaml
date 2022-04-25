@@ -18,8 +18,14 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
+    <Window.CommandBindings>
+        <CommandBinding Command="local:MyCommand.Exit" Executed="Exit_Executed"/>
+    </Window.CommandBindings>
     <Grid>
-        <ScrollViewer>
+        <Menu>
+            <MenuItem Header="Выход" Command="local:MyCommand.Exit"/>
+        </Menu>
+        <ScrollViewer Margin="0, 20,0,0">
             <StackPanel Margin="10">
                 <StackPanel>
                     <StackPanel Orientation="Horizontal">

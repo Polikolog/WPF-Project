@@ -5,12 +5,30 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WpfApp1"
              mc:Ignorable="d" 
-             d:DesignHeight="120" d:DesignWidth="240">
+             d:DesignHeight="230" d:DesignWidth="240">
     <Grid>
-        <TextBox Height = "23" HorizontalAlignment = "Left" 
-                 Margin = "20,49,0,0" Name = "txtBox" VerticalAlignment = "Top" Width = "200" />
-        <Button Content = "Click Me" Height = "23" 
-                HorizontalAlignment = "Center" Margin = "96,88,0,0" Name = "button" 
-                VerticalAlignment = "Top" Width = "75" Click = "button_Click" />
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0.5*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <!--<local:Property Text="{Binding ElementName=txtBox, Path=Text}"/>-->
+        <TextBox Text="Hello man" x:Name="txtBox1" BorderThickness="3" BorderBrush="Red"/>
+        <TextBox BorderThickness="3" BorderBrush="Red" x:Name="txtBox2" Grid.Row="3" Background="Aqua" Foreground="Red"/>
+        <Button Content="Get" Grid.Column="1" Name = "button"  Click = "button_Click" />
+        <Button Content="Set" Grid.Row="1" Grid.Column="1" Name="button2" Click="button2_Click"/>
+        <Button Content="Default"  Grid.Row="2" Grid.Column="2" x:Name="button3" Click="button3_Click"/>
+
+        <local:RoutedEv Grid.Row="1" x:Name="OuterButton" MyButtonClick="InsertButton_MyButtonClick" Background="Black">
+            <StackPanel>
+                <local:RoutedEv Width="50" Height="30" Background="white" MyButtonClick="InsertButton_MyButtonClick" x:Name="InsertButton"/>
+            </StackPanel>
+        </local:RoutedEv>
+
+
     </Grid>
 </UserControl>

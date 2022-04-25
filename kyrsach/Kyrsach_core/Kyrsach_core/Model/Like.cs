@@ -8,8 +8,8 @@ namespace Kyrsach_core.Model
 {
     internal class Like
     {
-        public Guid ID { get; set; }
-        public Guid UserID { get; set; }
-        public Guid ProductID { get; set; }
+        public int ID { get; set; }
+        public int UserID { get; set; }
+        public int ProductID { get; set; }
     }
 }

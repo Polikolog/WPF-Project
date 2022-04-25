@@ -14,6 +14,7 @@ namespace Kyrsach_core.Model.Base
         public DbSet<Material> Materials { get; set; }
         public DbSet<Like> Likes { get; set; }
         public DbSet<Servise> Servises { get; set; }
+        public DbSet<Role> Roles { get; set; }
 
         public ApplicationContext()
         {
@@ -43,7 +44,13 @@ namespace Kyrsach_core.Model.Base
             //Product with Furniture
             modelBuilder.Entity<Product>().HasOne<Furniture>(p => p.Furniture).WithMany(f => f.Products).HasForeignKey(p => p.FurnitureID);
 
+            //Product with Servise
+            modelBuilder.Entity<ProductServise>().HasKey(ps => new { ps.ProductID, ps.ServiseID });
+            modelBuilder.Entity<ProductServise>().HasOne<Product>(ps => ps.Product).WithMany(p => p.ProductServises).HasForeignKey(ps => ps.ProductID);
+            modelBuilder.Entity<ProductServise>().HasOne<Servise>(ps => ps.Servise).WithMany(s => s.ProductServises).HasForeignKey(ps => ps.ServiseID);
 
+            //User with Role
+            modelBuilder.Entity<User>().HasOne<Role>(u => u.Role).WithMany(r => r.Users).HasForeignKey(u => u.RoleID);
         }
     }
 }

@@ -16,6 +16,10 @@
         </ResourceDictionary>
     </Window.Resources>
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
             <Label Target="{Binding ElementName=ImageFiled}" Content="Изображение"/>
             <TextBox x:Name="ImageFiled"/>
@@ -43,6 +47,9 @@
                     <CommandBinding Command="Replace" Executed="ChangeElementCommand_Executed"/>
                 </Button.CommandBindings>
             </Button>
+        </StackPanel>
+        <StackPanel Grid.Column="1">
+            <local:UserControl2/>
         </StackPanel>
     </Grid>
 </Window>

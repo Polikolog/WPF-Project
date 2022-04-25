@@ -1,0 +1,41 @@
+﻿<Page x:Class="Kyrsach_core.View.Pages.RegisterPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:ViewModel="clr-namespace:Kyrsach_core.ViewModel"
+      xmlns:local="clr-namespace:Kyrsach_core.View.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="600" Background="white"
+      Title="RegisterPage">
+    <Page.DataContext>
+        <ViewModel:RegisterViewModel/>
+    </Page.DataContext>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="100"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="0.6*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="0.8*"/>
+            <RowDefinition Height="0.2*"/>
+        </Grid.RowDefinitions>
+        <Label Content="Введите почту и придумайте пароль" Grid.ColumnSpan="3" FontFamily="GOST type A" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="35"/>
+        <Label x:Name="Logo" Grid.Column="1" FontFamily="GOST type A" Grid.Row="0" Content="Мебель" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="100" FontStyle="Italic"/>
+        <StackPanel Grid.Column="1" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical" Width="298">
+            <Label Content="Email" FontFamily="GOST type A" Foreground="DimGray" FontSize="20" Margin="0,0,0,5"/>
+            <TextBox Text="{Binding Name}" Height="30" BorderThickness="0, 0, 0, 2"/>
+        </StackPanel>
+        <StackPanel Grid.Column="1" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical" Width="298">
+            <Label Content="Пароль" FontFamily="GOST type A" Foreground="DimGray" FontSize="20" Margin="0,0,0,5"/>
+            <PasswordBox Height="30" BorderThickness="0, 0, 0, 2"/>
+            <Button x:Name="reePass" FontFamily="GOST type A" FontSize="16" Width="100" Height="20" Background="white" BorderThickness="0" HorizontalAlignment="Left" Content="Забыли пароль?" Foreground="Gray" Cursor="Hand"/>
+        </StackPanel>
+        <Button Grid.Row="4" Grid.Column="1" x:Name="Login" FontFamily="GOST type A" Width="200" Height="50" Content="Зарегистрироваться" FontSize="30" BorderThickness="0" Command="{Binding RegisterUserCommand}" Cursor="Hand"/>
+    </Grid>
+</Page>

@@ -15,6 +15,18 @@ namespace WpfApp1
 {
     public partial class MainWindow : Window
     {
+        private void Exit_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            using (System.IO.StreamWriter writer = new System.IO.StreamWriter("log.txt", true))
+            {
+                writer.WriteLine("Выход из приложения: " + DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToLongTimeString());
+                writer.Flush();
+            }
+            this.Close();
+        }
+
+
+
         private string SavePath = @"C:\Users\mi\Desktop\1\OOP\WpfApp1\WpfApp1\db.txt";
         public static PhoneRepository PhonesDB { get; set; } = new PhoneRepository();
         public List<string> Langs = new List<string>() { "ru-RU", "en-US" };
@@ -24,7 +36,6 @@ namespace WpfApp1
             InitializeComponent();
             phonesList.ItemsSource = PhonesDB.GetPhones();
             InitLangsBox();
-            InitializeThems();
         }
 
         private void InitializeThems()

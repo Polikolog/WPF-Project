@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_core\Kyrsach_core\App.xaml
-1-1846224495
+4-2008327596
 
-21-74746618
+26159090753
 214255358077
-View\Register.xaml;
+Components\Passwords.xaml;View\MainWindow.xaml;View\Pages\RegisterPage.xaml;View\Register.xaml;
 
-False
+True
 

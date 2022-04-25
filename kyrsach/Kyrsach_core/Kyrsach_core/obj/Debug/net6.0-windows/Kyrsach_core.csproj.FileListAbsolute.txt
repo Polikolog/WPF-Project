@@ -52,3 +52,10 @@ C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_core\Kyrsach_core\bin\Debug\net6.0-win
 C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_core\Kyrsach_core\obj\Debug\net6.0-windows\Kyrsach_core.csproj.CopyComplete
 C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_core\Kyrsach_core\bin\Debug\net6.0-windows\Humanizer.dll
 C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_core\Kyrsach_core\bin\Debug\net6.0-windows\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_core\Kyrsach_core\obj\Debug\net6.0-windows\View\MainWindow.g.cs
+C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_core\Kyrsach_core\obj\Debug\net6.0-windows\View\Pages\RegisterPage.g.cs
+C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_core\Kyrsach_core\obj\Debug\net6.0-windows\Components\Passwords.g.cs
+C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_core\Kyrsach_core\obj\Debug\net6.0-windows\View\MainWindow.baml
+C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_core\Kyrsach_core\obj\Debug\net6.0-windows\View\Pages\RegisterPage.baml
+C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_core\Kyrsach_core\obj\Debug\net6.0-windows\Components\Passwords.baml
+C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_core\Kyrsach_core\obj\Debug\net6.0-windows\App.baml

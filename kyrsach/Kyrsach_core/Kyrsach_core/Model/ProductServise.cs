@@ -8,9 +8,9 @@ namespace Kyrsach_core.Model
 {
     internal class ProductServise
     {
-        public Guid ProductID { get; set; }
+        public int ProductID { get; set; }
         public Product Product { get; set; }
-        public Guid ServiseID { get; set; }
+        public int ServiseID { get; set; }
         public Servise Servise { get; set; }
     }
 }
