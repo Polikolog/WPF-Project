@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Kyrsach_core.Model
 {
-    internal class Like
+    public class Like
     {
         public int ID { get; set; }
         public int UserID { get; set; }

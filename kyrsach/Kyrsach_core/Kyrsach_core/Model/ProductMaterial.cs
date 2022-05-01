@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Kyrsach_core.Model
 {
-    internal class ProductMaterial
+    public class ProductMaterial
     {
         public int ProductID { get; set; }
         public Product Product { get; set; }

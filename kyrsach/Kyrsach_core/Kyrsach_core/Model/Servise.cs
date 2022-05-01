@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace Kyrsach_core.Model
 {
-    internal class Servise
+    public class Servise
     {
         public int ID { get; set; }
         public string? Name { get; set; }
+        public decimal? Price { get; set; }
         public List<ProductServise> ProductServises { get; set; }
 
     }

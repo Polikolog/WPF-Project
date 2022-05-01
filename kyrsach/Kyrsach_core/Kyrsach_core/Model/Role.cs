@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Kyrsach_core.Model
 {
-    internal class Role
+    public class Role
     {
         public int ID { get; set; }
         public string UserRole { get; set; }

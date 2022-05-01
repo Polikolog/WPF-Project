@@ -6,11 +6,19 @@ using Kyrsach_core.Model;
 using Kyrsach_core.View;
 using System.Windows;
 using System.Windows.Media;
+using System.Windows.Controls;
 
 namespace Kyrsach_core.ViewModel
 {
-    internal class RegisterViewModel : ViewModelBase
+    public class RegisterViewModel : ViewModelBase
     {
+        #region Свойства
+        private string _nameTextBox;
+        public string NameTextBox
+        {
+            get => _nameTextBox;
+            set => Set(ref _nameTextBox, value);
+        }
         private string _nameUser;
         public string NameUser
         {
@@ -22,9 +30,25 @@ namespace Kyrsach_core.ViewModel
         public string PasswordUser
         {
             get => _passwordUser;
-            set => Set(ref _passwordUser, Passwords.);
+            set => Set(ref _passwordUser, value);
         }
 
+        private string _userAdress;
+        public string UserAdress
+        {
+            get => _userAdress;
+            set => Set(ref _userAdress, value);
+        }
+
+        private int? _userNum;
+        public int? UserNum
+        {
+            get => _userNum;
+            set => Set(ref _userNum, value);
+        }
+        #endregion
+
+        #region Команды
         private ICommand _EntryUserCommand;
         public ICommand EntryUserCommand
         {
@@ -33,17 +57,16 @@ namespace Kyrsach_core.ViewModel
 
         private void OnEntryUserCommand(object p)
         {
-            Register rg = p as Register;
+            var rg = p as TextBox;
             if(DataWorker.GetUser(_nameUser, _passwordUser))
             {
                 MainWindow mw = new MainWindow();
                 mw.Show();
                 Application.Current.MainWindow.Hide();
-
             }
             else
             {
-                RedBorder(rg); 
+                RedBorder(ref rg); 
             }
         }
 
@@ -55,14 +78,20 @@ namespace Kyrsach_core.ViewModel
 
         private void OnRegisterUserCommand(object p)
         {
-            DataWorker.AddUser();
+            if(!DataWorker.AddUser(NameUser, PasswordUser, _userAdress, _userNum))
+            {
+                var label = p as Label;
+                if (label != null)
+                    label.Content = "Такой пользователь уже существует";
+            }
         }
 
+        #endregion
 
         //Vis
-        private void RedBorder(Register rg)
+        private void RedBorder(ref TextBox rg)
         {
-            rg.Login.BorderBrush = Brushes.Red; 
+            rg.BorderBrush = Brushes.Red;
         }
     }
 }

@@ -1,0 +1,150 @@
+﻿<Page x:Class="Kyrsach_core.View.Pages.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Kyrsach_core.View.Pages"
+      xmlns:Components="clr-namespace:Kyrsach_core.Components"
+      xmlns:ViewModel="clr-namespace:Kyrsach_core.ViewModel.PagesModel"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="MainPage" Background="White">
+    <Page.DataContext>
+        <ViewModel:MainPageViewModel/>
+    </Page.DataContext>
+    <Page.Resources>
+        <DataTemplate x:Key="ListTemplate">
+            <Border Margin="10" Padding="5" Background="white" BorderBrush="WhiteSmoke" BorderThickness="2">
+                <StackPanel>
+                    <Image MaxHeight="200" MaxWidth="200" Source="{Binding Image}"/>
+                    <TextBlock Margin="5" Text="{Binding Name}"/>
+                    <TextBlock Margin="5" Text="Цена"/>
+                    <TextBlock Margin="5" Text="{Binding Price}"/>
+                </StackPanel>
+            </Border>
+        </DataTemplate>
+    </Page.Resources>
+    <Grid>
+        <ScrollViewer VerticalScrollBarVisibility="Hidden">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid Margin="0,50,0,10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="0" Margin="5,0,5,0" Background="White" BorderThickness="0">
+                        <Button.Content>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Image Source="C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_core\Kyrsach_core\Images\Gost.jpg"/>
+                                <Label HorizontalAlignment="Center" Grid.Row="1" Content="Гостиная"/>
+                            </Grid>
+                        </Button.Content>
+                    </Button>
+                    <Button Grid.Column="0" Margin="5,0,5,0" Background="White" BorderThickness="0">
+                        <Button.Content>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Image Source="C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_core\Kyrsach_core\Images\Gost.jpg"/>
+                                <Label HorizontalAlignment="Center" Grid.Row="1" Content="Гостиная"/>
+                            </Grid>
+                        </Button.Content>
+                    </Button>
+                    <Button Grid.Column="1" Margin="5,0,5,0" Background="White" BorderThickness="0">
+                        <Button.Content>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Image Source="C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_core\Kyrsach_core\Images\BedRoom.jpg"/>
+                                <Label HorizontalAlignment="Center" Grid.Row="1" Content="Спалня"/>
+                            </Grid>
+                        </Button.Content>
+                    </Button>
+                    <Button Grid.Column="2" Margin="5,0,5,0" Background="White" BorderThickness="0">
+                        <Button.Content>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Image Source="C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_core\Kyrsach_core\Images\ChildRoom.jpg"/>
+                                <Label HorizontalAlignment="Center" Grid.Row="1" Content="Детская"/>
+                            </Grid>
+                        </Button.Content>
+                    </Button>
+                    <Button Grid.Column="3" Margin="5,0,5,0" Background="White" BorderThickness="0">
+                        <Button.Content>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Image Source="C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_core\Kyrsach_core\Images\Kitchen.jpg"/>
+                                <Label HorizontalAlignment="Center" Grid.Row="1" Content="Кузня"/>
+                            </Grid>
+                        </Button.Content>
+                    </Button>
+                    <Button Grid.Column="4" Margin="5,0,5,0" Background="White" BorderThickness="0">
+                        <Button.Content>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Image Source="C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_core\Kyrsach_core\Images\Cabinet.jpg"/>
+                                <Label HorizontalAlignment="Center" Grid.Row="1" Content="Домашний кабинет"/>
+                            </Grid>
+                        </Button.Content>
+                    </Button>
+                    <Button Grid.Column="5" Margin="5,0,5,0" Background="White" BorderThickness="0">
+                        <Button.Content>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Image Source="C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_core\Kyrsach_core\Images\HallWay.jpg"/>
+                                <Label HorizontalAlignment="Center" Grid.Row="1" Content="Прихожая"/>
+                            </Grid>
+                        </Button.Content>
+                    </Button>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Label HorizontalAlignment="Center" Content="Популярные товары в интернет-магазине"/>
+                    <Grid Grid.Row="1">
+                        <ListBox x:Name="ListBox" BorderThickness="0" ItemsSource="{Binding FurnitureList}" SelectedItem="{Binding SelectedFurniture}" ItemTemplate="{StaticResource ResourceKey=ListTemplate}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                            <ListBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel HorizontalAlignment="Center"/>
+                                </ItemsPanelTemplate>
+                            </ListBox.ItemsPanel>
+                        </ListBox>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </ScrollViewer>
+    </Grid>
+</Page>

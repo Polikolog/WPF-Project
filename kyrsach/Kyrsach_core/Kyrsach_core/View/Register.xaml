@@ -11,34 +11,125 @@
     <Window.DataContext>
         <ViewModel:RegisterViewModel/>
     </Window.DataContext>
+    <Window.Resources>
+        
+        <Storyboard x:Key="Storyboard1">
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="Regist">
+                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Hidden}"/>
+            </ObjectAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="Log">
+                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.4" Value="{x:Static Visibility.Hidden}"/>
+            </ObjectAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="Regis">
+                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Hidden}"/>
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.5" Value="{x:Static Visibility.Visible}"/>
+            </ObjectAnimationUsingKeyFrames>
+        </Storyboard>
+        
+        <Storyboard x:Key="Storyboard2">
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="Log">
+                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Hidden}"/>
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.5" Value="{x:Static Visibility.Visible}"/>
+            </ObjectAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="Regist">
+                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Hidden}"/>
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.5" Value="{x:Static Visibility.Visible}"/>
+            </ObjectAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="Regis">
+                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.5" Value="{x:Static Visibility.Hidden}"/>
+            </ObjectAnimationUsingKeyFrames>
+        </Storyboard>
+        
+    </Window.Resources>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="Regist">
+            <BeginStoryboard Storyboard="{StaticResource Storyboard1}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="Reg">
+            <BeginStoryboard Storyboard="{StaticResource Storyboard2}"/>
+        </EventTrigger>
+    </Window.Triggers>
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="100"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="100"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="0.6*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="0.8*"/>
-            <RowDefinition Height="0.2*"/>
-        </Grid.RowDefinitions>
-        <Label Content="Войдите в свой акаунт" FontFamily="GOST type A" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="35"/>
-        <Label x:Name="Logo" Grid.Column="1" FontFamily="GOST type A" Grid.Row="0" Content="Мебель" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="100" FontStyle="Italic"/>
-        <StackPanel Grid.Column="1" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical" Width="298">
-            <Label Content="Email или номер телефона" FontFamily="GOST type A" Foreground="DimGray" FontSize="20" Margin="0,0,0,5"/>
-            <TextBox Text="{Binding NameUser, Mode=TwoWay}" Height="30" BorderThickness="0, 0, 0, 2"/>
-        </StackPanel>
-        <StackPanel Grid.Column="1" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical" Width="298">
-            <Label Content="Пароль" FontFamily="GOST type A" Foreground="DimGray" FontSize="20" Margin="0,0,0,5"/>
-            <Components:Passwords Height="30"/>
-            <Button x:Name="reePass" FontFamily="GOST type A" FontSize="16" Width="100" Height="20" Background="white" BorderThickness="0" HorizontalAlignment="Left" Content="Забыли пароль?" Foreground="Gray" Cursor="Hand"/>
-        </StackPanel>
-        <StackPanel Grid.Row="4" Grid.Column="1" HorizontalAlignment="Center" Margin="0,10,0,5" Orientation="Vertical" Width="380">
-            <Button x:Name="Login" FontFamily="GOST type A" Width="200" Height="50" Content="Войти" FontSize="30" BorderThickness="0" Command="{Binding EntryUserCommand}" CommandParameter="{Binding RegisterWindow}" Cursor="Hand"/>
-            <Button x:Name="Regist" Content="Регистрация" FontFamily="GOST type A" FontSize="16" BorderThickness="0" Background="White" FontStyle="Italic" Foreground="Green" Cursor="Hand" Command="{Binding RegisterNewUser}"/>
-        </StackPanel>
+        <Grid x:Name="Log">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="100"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="0.6*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="0.8*"/>
+                <RowDefinition Height="0.2*"/>
+            </Grid.RowDefinitions>
+            <Label Content="Войдите в свой акаунт" FontFamily="GOST type A" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="35"/>
+            <!--<Label x:Name="Logo" Grid.Column="1" FontFamily="GOST type A" Grid.Row="0" Content="Мебель" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="100" FontStyle="Italic"/>-->
+            <Image Margin="20,20,20,20" Grid.Column="1" Source="C:/Users/mi/Desktop/1/OOP/kyrsach/Kyrsach_Core/Kyrsach_Core/Images/logo.webp"/>
+            <StackPanel Grid.Column="1" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical" Width="298">
+                <Label Content="Email или номер телефона" FontFamily="GOST type A" Foreground="DimGray" FontSize="20" Margin="0,0,0,5"/>
+                <TextBox x:Name="TextBox" Text="{Binding NameUser, Mode=TwoWay}" Height="30" BorderThickness="0, 0, 0, 2"/>
+            </StackPanel>
+            <StackPanel Grid.Column="1" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical" Width="298">
+                <Label Content="Пароль" FontFamily="GOST type A" Foreground="DimGray" FontSize="20" Margin="0,0,0,5"/>
+                <Components:Passwords x:Name="PasswordUser" Height="30" Password="{Binding PasswordUser}"/>
+            </StackPanel>
+            <Grid Grid.Column="1" Grid.Row="4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="0.6*"/>
+                </Grid.RowDefinitions>
+                <Button Grid.Column="1" Grid.ColumnSpan="3" x:Name="Login" FontFamily="GOST type A" Width="200" Height="50" Content="Войти" FontSize="30" BorderThickness="0" Command="{Binding EntryUserCommand}" CommandParameter="{Binding ElementName=TextBox}" Cursor="Hand"/>
+                <Button Grid.Row="1" Grid.Column="2" x:Name="Regist" Content="Регистрация" FontFamily="GOST type A" FontSize="16" BorderThickness="0" Background="White" FontStyle="Italic" Foreground="Green" Cursor="Hand" Command="{Binding RegisterNewUser}"/>
+            </Grid>
+        </Grid>
+        <Grid x:Name="Regis" Visibility="Hidden">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="100"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="0.6*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="0.8*"/>
+                <RowDefinition Height="0.2*"/>
+            </Grid.RowDefinitions>
+            <Label x:Name="Label2" Content="Введите почту и придумайте пароль" FontFamily="GOST type A" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="35"/>
+            <Label Grid.Column="1" FontFamily="GOST type A" Grid.Row="0" Content="Мебель" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="100" FontStyle="Italic"/>
+            <StackPanel Grid.Column="1" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical" Width="298">
+                <Label Content="Email или номер телефона" FontFamily="GOST type A" Foreground="DimGray" FontSize="20" Margin="0,0,0,5"/>
+                <TextBox x:Name="RegText" Text="{Binding NameUser, Mode=TwoWay}" Height="30" BorderThickness="0, 0, 0, 2"/>
+            </StackPanel>
+            <StackPanel Grid.Column="1" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical" Width="298">
+                <Label Content="Пароль" FontFamily="GOST type A" Foreground="DimGray" FontSize="20" Margin="0,0,0,5"/>
+                <Components:Passwords x:Name="RegPassword" Height="30" Password="{Binding PasswordUser}"/>
+            </StackPanel>
+            <StackPanel Grid.Row="4" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical" Width="298">
+                <Label Content="Адресс"  FontFamily="GOST type A" Foreground="DimGray" FontSize="20" Margin="0,0,0,5"/>
+                <TextBox x:Name="Adress" Text="{Binding UserAdress, Mode=TwoWay}" Height="30" BorderThickness="0,0,0,2" />
+            </StackPanel>
+            <StackPanel Grid.Row="5" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical" Width="298">
+                <Label Content="Номер телефона"  FontFamily="GOST type A" Foreground="DimGray" FontSize="20" Margin="0,0,0,5"/>
+                <TextBox x:Name="Num" Text="{Binding UserNum, Mode=TwoWay}" Height="30" BorderThickness="0,0,0,2" />
+            </StackPanel>
+            <StackPanel Grid.Row="6" Grid.Column="1" HorizontalAlignment="Center" Margin="0,10,0,5" Orientation="Vertical" Width="380">
+                <Button x:Name="Reg" FontFamily="GOST type A" Width="200" Height="50" Content="Зарегистрироваться" FontSize="30" BorderThickness="0" Command="{Binding RegisterUserCommand}" CommandParameter="{Binding ElementName=Label2}" Cursor="Hand"/>
+            </StackPanel>
+        </Grid>
     </Grid>
 </Window>

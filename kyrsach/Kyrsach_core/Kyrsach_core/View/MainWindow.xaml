@@ -5,8 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Kyrsach_core.View"
         xmlns:main="clr-namespace:Kyrsach_core"
+        xmlns:ViewModel="clr-namespace:Kyrsach_core.ViewModel"
         mc:Ignorable="d"
         Title="MainWindow" Height="768" Width="1366">
+    <Window.DataContext>
+        <ViewModel:MainViewModel/>
+    </Window.DataContext>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -37,6 +41,7 @@
                     <ColumnDefinition Width="5*"/>
                     <ColumnDefinition Width="1.4*"/>
                 </Grid.ColumnDefinitions>
+                <Image Grid.Column="0" Source="C:/Users/mi/Desktop/1/OOP/kyrsach/Kyrsach_Core/Kyrsach_Core/Images/logo.webp"/>
                 <Grid Grid.Column="1">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
@@ -53,7 +58,7 @@
                     </Grid.ColumnDefinitions>
                 </Grid>
             </Grid>
-            <Grid Grid.Row="2" Margin="5, 10, 5, 10">
+            <Grid Grid.Row="2" Margin="5, 10, 30, 10">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1.3*"/>
                     <ColumnDefinition/>
@@ -69,15 +74,18 @@
                                 <ColumnDefinition/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
-                            <Image/>
+                            <Image Margin="10,0" Source="C:/Users/mi/Desktop/1/OOP/kyrsach/Kyrsach_core/Kyrsach_core/Images/LogMenu.png"/>
                             <TextBlock Grid.Column="1" Text="Каталог мебели"/>
                         </Grid>
                     </Button.Content>
                 </Button>
-                <Button Grid.Column="1" Content="Шкафы" Background="White" Margin="40,2" BorderThickness="0"/>
+                <Button Grid.Column="1" Content="Шкафы" Margin="40,2" Style="{StaticResource HeaderButton}"/>
                 <Button Grid.Column="2" Margin="40,2"  Content="Кровати" Style="{StaticResource HeaderButton}"/>
+                <Button Grid.Column="3" Margin="40,2"  Content="Кровати" Style="{StaticResource HeaderButton}"/>
+                <Button Grid.Column="4" Margin="40,2"  Content="Кровати" Style="{StaticResource HeaderButton}"/>
+                <Button Grid.Column="5" Margin="40,2"  Content="Кровати" Style="{StaticResource HeaderButton}"/>
             </Grid>
         </Grid>
-        <Frame Grid.Row="1" Grid.Column="1"/>
+        <Frame Content="{Binding CurrentPage}" Grid.Row="1" Grid.Column="1"/>
     </Grid>
 </Window>

@@ -1,5 +1,4 @@
-﻿using Kyrsach_core.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Kyrsach_core.View
+namespace Kyrsach_core.View.Pages
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Логика взаимодействия для MainPage.xaml
     /// </summary>
-    public partial class Register: Window
+    public partial class MainPage : Page
     {
-        public Register()
+        public MainPage()
         {
             InitializeComponent();
         }

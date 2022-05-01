@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Kyrsach_core.Model
 {
-    internal class Basket
+    public class Basket
     {
         public int ID { get; set; }
         public decimal Price { get; set; }

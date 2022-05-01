@@ -3,7 +3,7 @@ using Kyrsach_core.Model;
 
 namespace Kyrsach_core.Model.Base
 {
-    internal class ApplicationContext : DbContext
+    public class ApplicationContext : DbContext
     {
         public DbSet<User> Users { get; set; }
         public DbSet<Basket> Baskets { get; set; }

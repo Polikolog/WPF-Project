@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Kyrsach_core.Model
 {
-    internal class BasketProduct
+    public class BasketProduct
     {
         public int BasketID { get; set; }
         public Basket Basket { get; set; }

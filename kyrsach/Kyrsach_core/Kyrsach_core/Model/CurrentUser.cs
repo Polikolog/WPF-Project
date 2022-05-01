@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Kyrsach_core.Model
 {
-    internal static class CurrentUser
+    public static class CurrentUser
     {
         private static User instance;
         private static object syncRoot = new Object();
