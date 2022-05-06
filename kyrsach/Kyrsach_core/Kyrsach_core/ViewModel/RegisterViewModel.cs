@@ -12,6 +12,11 @@ namespace Kyrsach_core.ViewModel
 {
     public class RegisterViewModel : ViewModelBase
     {
+        public RegisterViewModel()
+        {
+            DataWorker.CreateRole();
+        }
+
         #region Свойства
         private string _nameTextBox;
         public string NameTextBox
@@ -85,6 +90,15 @@ namespace Kyrsach_core.ViewModel
                     label.Content = "Такой пользователь уже существует";
             }
         }
+
+        //private ICommand _registerNewUser;
+        //public ICommand RegisterNewUser
+        //{
+        //    get => _registerNewUser ?? new ActionCommand((p) =>
+        //    {
+        //        DataWorker.CreateRole();
+        //    });
+        //}
 
         #endregion
 

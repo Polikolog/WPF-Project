@@ -9,17 +9,14 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="MainPage" Background="White">
-    <Page.DataContext>
-        <ViewModel:MainPageViewModel/>
-    </Page.DataContext>
     <Page.Resources>
         <DataTemplate x:Key="ListTemplate">
             <Border Margin="10" Padding="5" Background="white" BorderBrush="WhiteSmoke" BorderThickness="2">
                 <StackPanel>
                     <Image MaxHeight="200" MaxWidth="200" Source="{Binding Image}"/>
-                    <TextBlock Margin="5" Text="{Binding Name}"/>
-                    <TextBlock Margin="5" Text="Цена"/>
-                    <TextBlock Margin="5" Text="{Binding Price}"/>
+                    <TextBlock FontFamily="Geometria" Margin="5" Text="{Binding Name}"/>
+                    <TextBlock FontFamily="Geometria" Margin="5" Text="Цена"/>
+                    <TextBlock FontFamily="Geometria" Margin="5" Text="{Binding Price}"/>
                 </StackPanel>
             </Border>
         </DataTemplate>
@@ -51,19 +48,7 @@
                                     <RowDefinition/>
                                 </Grid.RowDefinitions>
                                 <Image Source="C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_core\Kyrsach_core\Images\Gost.jpg"/>
-                                <Label HorizontalAlignment="Center" Grid.Row="1" Content="Гостиная"/>
-                            </Grid>
-                        </Button.Content>
-                    </Button>
-                    <Button Grid.Column="0" Margin="5,0,5,0" Background="White" BorderThickness="0">
-                        <Button.Content>
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                </Grid.RowDefinitions>
-                                <Image Source="C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_core\Kyrsach_core\Images\Gost.jpg"/>
-                                <Label HorizontalAlignment="Center" Grid.Row="1" Content="Гостиная"/>
+                                <Label FontFamily="Geometria" HorizontalAlignment="Center" Grid.Row="1" Content="Гостиная"/>
                             </Grid>
                         </Button.Content>
                     </Button>
@@ -75,7 +60,7 @@
                                     <RowDefinition/>
                                 </Grid.RowDefinitions>
                                 <Image Source="C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_core\Kyrsach_core\Images\BedRoom.jpg"/>
-                                <Label HorizontalAlignment="Center" Grid.Row="1" Content="Спалня"/>
+                                <Label FontFamily="Geometria" HorizontalAlignment="Center" Grid.Row="1" Content="Спалня"/>
                             </Grid>
                         </Button.Content>
                     </Button>
@@ -87,7 +72,7 @@
                                     <RowDefinition/>
                                 </Grid.RowDefinitions>
                                 <Image Source="C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_core\Kyrsach_core\Images\ChildRoom.jpg"/>
-                                <Label HorizontalAlignment="Center" Grid.Row="1" Content="Детская"/>
+                                <Label FontFamily="Geometria" HorizontalAlignment="Center" Grid.Row="1" Content="Детская"/>
                             </Grid>
                         </Button.Content>
                     </Button>
@@ -99,7 +84,7 @@
                                     <RowDefinition/>
                                 </Grid.RowDefinitions>
                                 <Image Source="C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_core\Kyrsach_core\Images\Kitchen.jpg"/>
-                                <Label HorizontalAlignment="Center" Grid.Row="1" Content="Кузня"/>
+                                <Label FontFamily="Geometria" HorizontalAlignment="Center" Grid.Row="1" Content="Кухня"/>
                             </Grid>
                         </Button.Content>
                     </Button>
@@ -111,7 +96,7 @@
                                     <RowDefinition/>
                                 </Grid.RowDefinitions>
                                 <Image Source="C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_core\Kyrsach_core\Images\Cabinet.jpg"/>
-                                <Label HorizontalAlignment="Center" Grid.Row="1" Content="Домашний кабинет"/>
+                                <Label FontFamily="Geometria" HorizontalAlignment="Center" Grid.Row="1" Content="Домашний кабинет"/>
                             </Grid>
                         </Button.Content>
                     </Button>
@@ -123,7 +108,7 @@
                                     <RowDefinition/>
                                 </Grid.RowDefinitions>
                                 <Image Source="C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_core\Kyrsach_core\Images\HallWay.jpg"/>
-                                <Label HorizontalAlignment="Center" Grid.Row="1" Content="Прихожая"/>
+                                <Label FontFamily="Geometria" HorizontalAlignment="Center" Grid.Row="1" Content="Прихожая"/>
                             </Grid>
                         </Button.Content>
                     </Button>
@@ -133,7 +118,7 @@
                         <RowDefinition/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
-                    <Label HorizontalAlignment="Center" Content="Популярные товары в интернет-магазине"/>
+                    <Label FontFamily="Geometria" FontSize="20" HorizontalAlignment="Center" Content="Популярные товары в интернет-магазине"/>
                     <Grid Grid.Row="1">
                         <ListBox x:Name="ListBox" BorderThickness="0" ItemsSource="{Binding FurnitureList}" SelectedItem="{Binding SelectedFurniture}" ItemTemplate="{StaticResource ResourceKey=ListTemplate}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                             <ListBox.ItemsPanel>

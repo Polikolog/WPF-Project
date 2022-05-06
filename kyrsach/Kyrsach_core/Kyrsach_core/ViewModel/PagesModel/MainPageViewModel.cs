@@ -2,7 +2,7 @@
 using Kyrsach_core.Model;
 using System.Collections.ObjectModel;
 using Kyrsach_core.Model;
-
+using Kyrsach_core.View.Pages;
 
 namespace Kyrsach_core.ViewModel.PagesModel
 {
@@ -24,7 +24,12 @@ namespace Kyrsach_core.ViewModel.PagesModel
         public Furniture SelectedFurniture
         {
             get => _selectedFurniture;
-            set => Set(ref _selectedFurniture, value);
+            set
+            {
+                Set(ref _selectedFurniture, value);
+                CurrentFurniture.Furniture = value;
+                CurrentPageWindow._CurrentPage = new FurniturePage();
+            }
         }
 
     }

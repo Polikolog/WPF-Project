@@ -89,8 +89,8 @@
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="0.6*"/>
                 </Grid.RowDefinitions>
-                <Button Grid.Column="1" Grid.ColumnSpan="3" x:Name="Login" FontFamily="GOST type A" Width="200" Height="50" Content="Войти" FontSize="30" BorderThickness="0" Command="{Binding EntryUserCommand}" CommandParameter="{Binding ElementName=TextBox}" Cursor="Hand"/>
-                <Button Grid.Row="1" Grid.Column="2" x:Name="Regist" Content="Регистрация" FontFamily="GOST type A" FontSize="16" BorderThickness="0" Background="White" FontStyle="Italic" Foreground="Green" Cursor="Hand" Command="{Binding RegisterNewUser}"/>
+                <Button Grid.Column="1" Grid.ColumnSpan="3" x:Name="Login" Width="200" Height="50" Content="Войти" Command="{Binding EntryUserCommand}" CommandParameter="{Binding ElementName=TextBox}" Style="{StaticResource RegBut}"/>
+                <Button Grid.Row="1" Grid.Column="2" x:Name="Regist" Content="Регистрация" FontFamily="GOST type A" FontSize="16" BorderThickness="0" Background="White" FontStyle="Italic" Foreground="Green" Cursor="Hand"/>
             </Grid>
         </Grid>
         <Grid x:Name="Regis" Visibility="Hidden">
