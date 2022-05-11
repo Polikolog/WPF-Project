@@ -4,7 +4,7 @@ using System.Runtime.CompilerServices;
 
 namespace Kyrsach_core.Infrastructur.Base
 {
-    internal class ViewModelBase : INotifyPropertyChanged, IDisposable
+    public class ViewModelBase : INotifyPropertyChanged, IDisposable
     {
         public event PropertyChangedEventHandler PropertyChanged;
 

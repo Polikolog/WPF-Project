@@ -7,11 +7,13 @@ using Kyrsach_core.View;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Controls;
+using System;
 
 namespace Kyrsach_core.ViewModel
 {
     public class RegisterViewModel : ViewModelBase
     {
+
         public RegisterViewModel()
         {
             DataWorker.CreateRole();
@@ -63,22 +65,29 @@ namespace Kyrsach_core.ViewModel
         private void OnEntryUserCommand(object p)
         {
             var rg = p as TextBox;
-            if(DataWorker.GetUser(_nameUser, _passwordUser))
+            try
             {
-                MainWindow mw = new MainWindow();
-                mw.Show();
-                Application.Current.MainWindow.Hide();
+                if (DataWorker.GetUser(_nameUser, _passwordUser))
+                {
+                    MainWindow mw = new MainWindow();
+                    mw.Show();
+                    Application.Current.MainWindow.Hide();
+                }
+                else
+                {
+                    RedBorder(ref rg);
+                }
             }
-            else
+            catch(Exception ex)
             {
-                RedBorder(ref rg); 
+                RedBorder(ref rg);
             }
         }
 
-        private ICommand _RegisterUserCommand;
+        private ICommand _registerUserCommand;
         public ICommand RegisterUserCommand
         {
-            get => _RegisterUserCommand ?? new ActionCommand(OnRegisterUserCommand);
+            get => _registerUserCommand ?? new ActionCommand(OnRegisterUserCommand);
         }
 
         private void OnRegisterUserCommand(object p)

@@ -28,8 +28,8 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="10,0" VerticalAlignment="Center">
-                    <TextBlock Text="{Binding SelectedFurniturCatalog}" Style="{StaticResource tb}"/>
-                    <TextBlock Margin="5,0" Text="{Binding CountFurnitur}" Style="{StaticResource tb}" Foreground="LightGray"/>
+                    <TextBlock Text="{Binding SelectedFurnitureCatalog}" Style="{StaticResource tb}"/>
+                    <TextBlock Margin="5,0" Text="{Binding CountFurniture}" Style="{StaticResource tb}" Foreground="LightGray"/>
                 </StackPanel>
                 <StackPanel Grid.Row="1">
                     

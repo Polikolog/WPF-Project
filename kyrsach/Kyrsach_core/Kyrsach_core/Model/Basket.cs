@@ -12,7 +12,7 @@ namespace Kyrsach_core.Model
         public decimal? Price { get; set; }
         public int UserID { get; set; }
         public User User { get; set; }
-        public List<BasketProduct> BasketProduct { get; set; }
+        public List<BasketFurniture> BasketFurnitures { get; set; }
         public bool? OrderCompleted { get; set; }
     }
 }

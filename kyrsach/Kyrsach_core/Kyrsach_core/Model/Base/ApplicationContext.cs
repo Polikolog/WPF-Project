@@ -7,14 +7,12 @@ namespace Kyrsach_core.Model.Base
     {
         public DbSet<User> Users { get; set; }
         public DbSet<Basket> Baskets { get; set; }
-        public DbSet<BasketProduct> BasketsProduct { get; set;}
-        public DbSet<Product> Products { get; set; }
         public DbSet<Furniture> Furnitures { get; set; }
-        public DbSet<ProductMaterial> ProductMaterials { get; set; }
-        public DbSet<Material> Materials { get; set; }
         public DbSet<Like> Likes { get; set; }
         public DbSet<Servise> Servises { get; set; }
         public DbSet<Role> Roles { get; set; }
+        public DbSet<BasketFurniture> BasketFurnitures { get; set; }
+        public DbSet<LikeFurniture> LikeFurnitures { get; set; }
 
         public ApplicationContext()
         {
@@ -31,23 +29,23 @@ namespace Kyrsach_core.Model.Base
             //User with Basket
             modelBuilder.Entity<User>().HasOne<Basket>(u => u.Basket).WithOne(b => b.User).HasForeignKey<Basket>(b => b.UserID);
 
-            //Basket with Product
-            modelBuilder.Entity<BasketProduct>().HasKey(bp => new { bp.BasketID, bp.ProductID });
-            modelBuilder.Entity<BasketProduct>().HasOne<Product>(bp => bp.Product).WithMany(p => p.BasketProducts).HasForeignKey(bp => bp.ProductID);
-            modelBuilder.Entity<BasketProduct>().HasOne<Basket>(sc => sc.Basket).WithMany(b => b.BasketProduct).HasForeignKey(bp => bp.BasketID);
+            //User with Like
+            modelBuilder.Entity<User>().HasOne<Like>(u => u.Like).WithOne(l => l.User).HasForeignKey<Like>(l => l.UserID);
 
-            //Product with Material
-            modelBuilder.Entity<ProductMaterial>().HasKey(pm => new { pm.ProductID, pm.MaterialID });
-            modelBuilder.Entity<ProductMaterial>().HasOne<Product>(pm => pm.Product).WithMany(p => p.ProductMaterials).HasForeignKey(pm => pm.ProductID);
-            modelBuilder.Entity<ProductMaterial>().HasOne<Material>(pm => pm.Material).WithMany(m => m.ProductMaterials).HasForeignKey(pm => pm.MaterialID);
+            //Basket with Furniture
+            modelBuilder.Entity<BasketFurniture>().HasKey(bf => new { bf.BasketID, bf.FurnitureID });
+            modelBuilder.Entity<BasketFurniture>().HasOne<Furniture>(bf => bf.Furniture).WithMany(f => f.BasketFurnitures).HasForeignKey(bf => bf.FurnitureID);
+            modelBuilder.Entity<BasketFurniture>().HasOne<Basket>(bf => bf.Basket).WithMany(b => b.BasketFurnitures).HasForeignKey(bf => bf.BasketID);
 
-            //Product with Furniture
-            modelBuilder.Entity<Product>().HasOne<Furniture>(p => p.Furniture).WithMany(f => f.Products).HasForeignKey(p => p.FurnitureID);
+            //Like with Furniture
+            modelBuilder.Entity<LikeFurniture>().HasKey(lf => new { lf.FurnitureID, lf.LikeID });
+            modelBuilder.Entity<LikeFurniture>().HasOne<Furniture>(lf => lf.Furniture).WithMany(f => f.LikeFurnitures).HasForeignKey(lf => lf.FurnitureID);
+            modelBuilder.Entity<LikeFurniture>().HasOne<Like>(lf => lf.Like).WithMany(l => l.LikeFurnitures).HasForeignKey(lf => lf.LikeID);
 
-            //Product with Servise
-            modelBuilder.Entity<ProductServise>().HasKey(ps => new { ps.ProductID, ps.ServiseID });
-            modelBuilder.Entity<ProductServise>().HasOne<Product>(ps => ps.Product).WithMany(p => p.ProductServises).HasForeignKey(ps => ps.ProductID);
-            modelBuilder.Entity<ProductServise>().HasOne<Servise>(ps => ps.Servise).WithMany(s => s.ProductServises).HasForeignKey(ps => ps.ServiseID);
+            ////Product with Servise
+            //modelBuilder.Entity<ProductServise>().HasKey(ps => new { ps.ProductID, ps.ServiseID });
+            //modelBuilder.Entity<ProductServise>().HasOne<Product>(ps => ps.Product).WithMany(p => p.ProductServises).HasForeignKey(ps => ps.ProductID);
+            //modelBuilder.Entity<ProductServise>().HasOne<Servise>(ps => ps.Servise).WithMany(s => s.ProductServises).HasForeignKey(ps => ps.ServiseID);
 
             //User with Role
             modelBuilder.Entity<User>().HasOne<Role>(u => u.Role).WithMany(r => r.Users).HasForeignKey(u => u.RoleID);

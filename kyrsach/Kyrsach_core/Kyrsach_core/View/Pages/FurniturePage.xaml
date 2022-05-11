@@ -7,7 +7,8 @@
       xmlns:ViewModal="clr-namespace:Kyrsach_core.ViewModel.PagesModel"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="FurniturePage" Background="white">
+      Title="FurniturePage" Background="white"
+      x:Name="FurPage">
     <!--d:DataContext="{d:DesignInstance Type=Kyrsach_Core:MainViewModel}">-->
     <Page.Resources>
         <ControlTemplate TargetType="Button" x:Key="btTemplate">
@@ -31,14 +32,14 @@
             </Border>
         </DataTemplate>
     </Page.Resources>
-    <Grid DataContext="{Binding SelectedFurniture}">
+    <Grid>
         <ScrollViewer VerticalScrollBarVisibility="Hidden">
             <Grid Margin="0,10,0,0">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="1.2*"/>
+                    <RowDefinition Height="50"/>
                     <RowDefinition Height="6*"/>
                 </Grid.RowDefinitions>
-                <TextBlock FontFamily="Geometria" Margin="0,0,0,10" Grid.Row="0" Text="{Binding Name}" FontSize="25"/>
+                <TextBlock FontFamily="Geometria" Margin="0,10,0,10" Grid.Row="0" Text="{Binding SelectedFurniture.Name}" FontSize="30"/>
                 <Grid Grid.Row="1">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="2*"/>
@@ -50,8 +51,8 @@
                             <RowDefinition/>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
-                        <Image Grid.Row="0" Source="{Binding Image}"/>
-                        <TextBlock Grid.Row="1" Text="{Binding Rating}"/>
+                        <Image Grid.Row="0" Source="{Binding SelectedFurniture.Image}"/>
+                        <TextBlock Grid.Row="1" Text="{Binding SelectedFurniture.Rating}" Style="{StaticResource tb}"/>
                         <Grid Grid.Row="2">
                             <ListView x:Name="listcop" ItemsSource="{Binding SimilarFurniture}" SelectedItem="{Binding SelectedItem}" ItemTemplate="{StaticResource ResourceKey=ListTemplate}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                                 <ListBox.ItemsPanel>
@@ -78,8 +79,8 @@
                                 <ColumnDefinition Width="2*"/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
-                            <Button Template="{StaticResource btTemplate}" Grid.Column="1" Height="35" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="0,0,35,0" HorizontalAlignment="Right" Width="35">
-                                <Image Width="20" Height="20" Source="C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_core\Kyrsach_core\Images\favorite.svg"/>
+                            <Button Background="White" BorderThickness="0" Grid.Column="1" Height="35" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="0,0,35,0" HorizontalAlignment="Right" Width="35" Command="{Binding AddFurnitureInLike}">
+                                <Image Width="20" Height="20" Source="C:\Users\mi\Desktop\1\imageDataContext\heart.png"/>
                             </Button>
                             <Button Template="{StaticResource btTemplate}" Height="35" Width="35" Grid.Column="5" HorizontalAlignment="Center" VerticalAlignment="Top"/>
                         </Grid>
@@ -95,10 +96,10 @@
                                         <ColumnDefinition/>
                                     </Grid.ColumnDefinitions>
                                     <StackPanel Grid.Column="0" Orientation="Horizontal">
-                                        <TextBlock FontFamily="Geometria" Margin="40,20, 5,20" FontSize="20" Text="{Binding Price}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        <TextBlock FontFamily="Geometria" Margin="40,20, 5,20" FontSize="20" Text="{Binding SelectedFurniture.Price}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                         <TextBlock Text="руб." HorizontalAlignment="Center" FontSize="20" VerticalAlignment="Center"/>
                                     </StackPanel>
-                                    <Button MaxHeight="40" MaxWidth="100" FontFamily="Geometria" Grid.Column="1" Margin="20,20" Command="{Binding AddFurnitureInBasketCommand}" Template="{StaticResource temp2}"/>
+                                    <Button x:Name="AddFurniture" MaxHeight="40" MaxWidth="100" FontFamily="Geometria" Grid.Column="1" Margin="20,20" Command="{Binding AddFunritureInBasketCommand}" Template="{StaticResource temp2}"/>
                                 </Grid>
                                 <Grid Grid.Row="1">
                                     <Grid.ColumnDefinitions>
@@ -110,7 +111,7 @@
                                         <RowDefinition/>
                                     </Grid.RowDefinitions>
                                     <TextBlock FontFamily="Geometria" FontSize="15" Text="Производитель" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,10"/>
-                                    <Image Source="{Binding ImageIcon}" Grid.Row="1"/>
+                                    <Image Source="{Binding SelectedFurniture.ImageIcon}" Grid.Row="1"/>
                                 </Grid>
                             </Grid>
                         </Border>
@@ -130,12 +131,15 @@
                                 </Grid.RowDefinitions>
                                 <TextBlock Text="Характеристики" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,10" FontFamily="Geometria" Grid.ColumnSpan="2"/>
                                 <TextBlock Text="Категория"  FontFamily="Geometria" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,5" Grid.Row="1"/>
-                                <TextBlock Grid.Column="1" Text="{Binding Type}" FontFamily="Geometria" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,5" Grid.Row="1"/>
+                                <TextBlock Grid.Column="1" Text="{Binding SelectedFurniture.Type}" FontFamily="Geometria" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,5" Grid.Row="1"/>
                                 <TextBlock Text="Высота" FontFamily="Geometria" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,5" Grid.Row="2"/>
-                                <TextBlock Text="{Binding Height}" FontFamily="Geometria" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,5" Grid.Row="2" Grid.Column="1"/>
+                                <TextBlock Text="{Binding SelectedFurniture.Height}" FontFamily="Geometria" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,5" Grid.Row="2" Grid.Column="1"/>
                                 <TextBlock Text="Ширина" FontFamily="Geometria" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,5" Grid.Row="3"/>
+                                <TextBlock Text="{Binding SelectedFurniture.Width}" FontFamily="Geometria" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,5" Grid.Row="3" Grid.Column="1"/>
                                 <TextBlock Text="Длина" FontFamily="Geometria" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,5" Grid.Row="4"/>
+                                <TextBlock Text="{Binding SelectedFurniture.Length}" FontFamily="Geometria" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,5" Grid.Row="4" Grid.Column="1"/>
                                 <TextBlock Text="Цвет" FontFamily="Geometria" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,5" Grid.Row="5"/>
+                                <TextBlock Text="{Binding SelectedFurniture.Color}" FontFamily="Geometria" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,5" Grid.Row="5" Grid.Column="1"/>
                             </Grid>
                         </Border>
                     </Grid>

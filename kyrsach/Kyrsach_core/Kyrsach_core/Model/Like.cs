@@ -10,6 +10,7 @@ namespace Kyrsach_core.Model
     {
         public int ID { get; set; }
         public int UserID { get; set; }
-        public int ProductID { get; set; }
+        public User User { get; set; }
+        public List<LikeFurniture> LikeFurnitures { get; set; }
     }
 }

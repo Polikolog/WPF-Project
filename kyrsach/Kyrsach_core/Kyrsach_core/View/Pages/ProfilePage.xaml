@@ -1,0 +1,40 @@
+﻿<Page x:Class="Kyrsach_core.View.Pages.ProfilePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Kyrsach_core.View.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ProfilePage" Background="White">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Button x:Name="ImageBut" Template="{StaticResource cur}" Command="{Binding ChangeImageCommand}" CommandParameter="{Binding ElementName=ImageBut}">
+            <Image Source="{Binding Image}"/>
+        </Button>
+        <Grid Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.3*"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Label Content="Имя" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Geometria" FontSize="20" BorderThickness="0,0,0,1" BorderBrush="Black"/>
+            <TextBox Margin="0,20" Grid.Column="1" Text="{Binding Name}" HorizontalAlignment="Center" FontFamily="Geometria" FontSize="20" BorderThickness="0,0,0,1" BorderBrush="Black"/>
+            <Label Grid.Row="1" Content="Адресс" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Geometria" FontSize="20" BorderThickness="0,0,0,1" BorderBrush="Black"/>
+            <TextBox Margin="0,20"  Grid.Column="1" HorizontalAlignment="Center" FontFamily="Geometria" FontSize="20" Grid.Row="1" Text="{Binding Adress}" BorderThickness="0,0,0,1" BorderBrush="Black"/>
+            <Label Grid.Row="2" Content="Номер" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Geometria" FontSize="20" BorderThickness="0,0,0,1" BorderBrush="Black"/>
+            <TextBox Margin="0,20" Grid.Column="1" HorizontalAlignment="Center" FontFamily="Geometria" FontSize="20" Grid.Row="2" Text="{Binding Phone}"  BorderThickness="0,0,0,1" BorderBrush="Black"/>
+        </Grid>
+    </Grid>
+</Page>

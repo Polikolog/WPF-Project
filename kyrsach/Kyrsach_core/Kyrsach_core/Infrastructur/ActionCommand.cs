@@ -3,7 +3,7 @@ using System;
 
 namespace Kyrsach_core.Infrastructur
 {
-    internal class ActionCommand : Command
+    public class ActionCommand : Command
     {
         private readonly Action<object> _Execute;
         private readonly Func<object, bool> _CanExecute;

@@ -18,7 +18,6 @@ C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_core\Kyrsach_core\obj\Debug\net6.0-win
 C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_core\Kyrsach_core\obj\Debug\net6.0-windows\Kyrsach_core.genruntimeconfig.cache
 C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_core\Kyrsach_core\obj\Debug\net6.0-windows\View\Register.g.cs
 C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_core\Kyrsach_core\obj\Debug\net6.0-windows\View\Register.baml
-C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_core\Kyrsach_core\obj\Debug\net6.0-windows\Kyrsach_core.csproj.AssemblyReference.cache
 C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_core\Kyrsach_core\obj\Debug\net6.0-windows\GeneratedInternalTypeHelper.g.cs
 C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_core\Kyrsach_core\bin\Debug\net6.0-windows\Microsoft.Data.SqlClient.dll
 C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_core\Kyrsach_core\bin\Debug\net6.0-windows\Microsoft.EntityFrameworkCore.dll
@@ -59,3 +58,8 @@ C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_core\Kyrsach_core\obj\Debug\net6.0-win
 C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_core\Kyrsach_core\obj\Debug\net6.0-windows\View\Pages\RegisterPage.baml
 C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_core\Kyrsach_core\obj\Debug\net6.0-windows\Components\Passwords.baml
 C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_core\Kyrsach_core\obj\Debug\net6.0-windows\App.baml
+C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_core\Kyrsach_core\obj\Debug\net6.0-windows\Kyrsach_core.csproj.AssemblyReference.cache
+C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_core\Kyrsach_core\obj\Debug\net6.0-windows\View\Pages\MainPage.g.cs
+C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_core\Kyrsach_core\obj\Debug\net6.0-windows\View\Pages\MainPage.baml
+C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_core\Kyrsach_core\obj\Debug\net6.0-windows\Components\ButtonMainPage.g.cs
+C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_core\Kyrsach_core\obj\Debug\net6.0-windows\Components\ButtonMainPage.baml

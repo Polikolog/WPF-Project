@@ -12,10 +12,18 @@ namespace Kyrsach_core.ViewModel
 {
     public class MainViewModel : ViewModelBase
     {
+
+        #region Поля
+        FurniturCatalog FurnitureCatalog = new FurniturCatalog();
         private Page MainPage = new MainPage();
-        private Page FurniturePage = new FurniturePage();
+        private Page BasketPage = new BasketPage();
+        private Page LikePage = new LikePage();
+        private Page ProfilePage = new ProfilePage();
+        #endregion
 
         #region Свойства
+
+        //Текущая страница
         private Page currentPage;
         public Page CurrentPage
         {
@@ -30,25 +38,7 @@ namespace Kyrsach_core.ViewModel
             set => Set(ref frame, value);
         }
 
-        private ObservableCollection<Furniture> _furnitureList;
-        public ObservableCollection<Furniture> FurnitureList
-        {
-            get => _furnitureList;
-            set => Set(ref _furnitureList, value);
-        }
-
-        private Furniture _selectedFurniture;
-        public Furniture SelectedFurniture
-        {
-            get => _selectedFurniture;
-            set
-            {
-                Set(ref _selectedFurniture, value);
-                CurrentFurniture.Furniture = value;
-                CurrentPage = FurniturePage;
-            }
-        }
-
+        //Похожие товары
         private ObservableCollection<Furniture> _similarFurniture;
         public ObservableCollection<Furniture> SimilarFurniture
         {
@@ -63,59 +53,51 @@ namespace Kyrsach_core.ViewModel
             get => _searchText;
             set => Set(ref _searchText, value);
         }
+
+        //Количество элементов в корзине
+        private int _countFurnitureInBasket;
+        public int CountFurnitureInBasket
+        {
+            get => _countFurnitureInBasket;
+            set => Set(ref _countFurnitureInBasket, value);
+        }
+
+        private int _countLikeFurniture;
+        public int CountLikeFurniture
+        {
+            get => _countLikeFurniture;
+            set => Set(ref _countLikeFurniture, value);
+        }
         #endregion
 
         public MainViewModel()
         {
-            MainPage.DataContext = this;
-            FurniturePage.DataContext = this;
+            
+            MainPage.DataContext = new MainPageViewModel(this);
+            
             CurrentPage = MainPage;
-            CurrentPageWindow._CurrentPage = MainPage;
-            FurnitureList = DataWorker.GetFurniturе("Диван");
-        }
 
-        
+            LikeList.list = DataWorker.GetFurnituresInLike();
+            BasketList.FurnituresInBasket = DataWorker.GetFurnituresInBasket();
+
+            CountLikeFurniture = DataWorker.GetFurnituresInLike().Count;
+            CountFurnitureInBasket = DataWorker.GetFurnituresInBasket().Count;
+        }
 
         #region Команды
 
+        //Откритие главной страницы
         private ICommand _OpenMainPageCommand;
         public ICommand OpenMainPageCommand
         {
-            get => _OpenMainPageCommand ?? new ActionCommand(OnOpenMainPageCommand);
-        }
-
-        private void OnOpenMainPageCommand(object p)
-        {
-            if (CurrentPage != MainPage)
+            get => _OpenMainPageCommand ?? new ActionCommand(p =>
             {
-                SelectedFurniture = null;
-                CurrentPage = MainPage;
-            }
-        }
-
-        //Добавление товара в корзину
-        private ICommand _AddFurnitureInBasketCommand;
-        public ICommand AddFurnitureInBasketCommand
-        {
-            get => _AddFurnitureInBasketCommand ?? new ActionCommand(OnAddFurnitureInBasketCommand);
-        }
-
-        private void OnAddFurnitureInBasketCommand(object p)
-        {
-
-        }
-
-        //Открытие
-        private ICommand _openListCatalogCommand;
-        public ICommand OpenListCatalogCommand
-        {
-            get => _openListCatalogCommand ?? new ActionCommand(OnOpenListCatalogCommand);
-        }
-
-        private void OnOpenListCatalogCommand(object p)
-        {
-            var mainwin = p as Window;
-
+                if (CurrentPage != MainPage)
+                {
+                    MainPage.DataContext = new MainPageViewModel(this);
+                    CurrentPage = MainPage;
+                }
+            });
         }
 
         //Поиск
@@ -129,8 +111,11 @@ namespace Kyrsach_core.ViewModel
                     var list = DataWorker.SearchFurniture(SearchText);
                     if (list.Count != 0)
                     {
-
+                        FurnitureCatalog.DataContext = new CatalogViewModel(SearchText, list, this);
+                        CurrentPage = FurnitureCatalog;
                     }
+                    else
+                        SearchText = "Ничего не найдено";
                 }
                 else
                     SearchText = "Введите текст";
@@ -144,10 +129,41 @@ namespace Kyrsach_core.ViewModel
             get => _catalogСabinetsCommand ?? new ActionCommand((p) =>
             {
                 var o = p as Button;
-                FurniturCatalog fr = new FurniturCatalog();
-                fr.DataContext = new FurniturePageViewModal(o.Content.ToString(), this);
-                CurrentPage = fr;
+                FurnitureCatalog.DataContext = new CatalogViewModel(o.Content.ToString(), this);
+                CurrentPage = FurnitureCatalog;
             });
+        }
+
+        //Открытие корзины
+        private ICommand _openBasketCommand;
+        public ICommand OpenBasketCommand
+        {
+            get => _openBasketCommand ?? new ActionCommand((p) =>
+            {
+                BasketPage.DataContext = new BasketPageViewModel(this);
+                CurrentPage = BasketPage;
+            });
+        }
+
+        private ICommand _openLikeCommand;
+        public ICommand OpenLikeCommand
+        {
+            get => _openLikeCommand ?? new ActionCommand((p) =>
+            {
+                LikePage.DataContext = new LikePageViewModel(this);
+                CurrentPage = LikePage;
+            });
+        }
+
+        private ICommand _openProfileCommand;
+        public ICommand OpenProfileCommand
+        {
+            get => _openProfileCommand ?? new ActionCommand((p) =>
+            {
+                ProfilePage.DataContext = new ProfileViewModel(this);
+                CurrentPage = ProfilePage;
+            });
+
         }
 
         #endregion
