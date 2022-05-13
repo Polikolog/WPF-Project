@@ -16,7 +16,6 @@ namespace Kyrsach_core.ViewModel
 
         public RegisterViewModel()
         {
-            DataWorker.CreateRole();
         }
 
         #region Свойства

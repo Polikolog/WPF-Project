@@ -3,8 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:Kyrsach_core.View.Other"
-        mc:Ignorable="d" Height="150" Width="300" x:Name="QuestionWindow">
+        mc:Ignorable="d" MaxHeight="200" MinHeight="200" MaxWidth="300" MinWidth="300" x:Name="QWindow" WindowStyle="None">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -12,14 +13,14 @@
             <RowDefinition Height="0.7*"/>
         </Grid.RowDefinitions>
         <Label Content="Вы хотите изменить фото?" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontFamily="Geometria" FontSize="20" Margin="0,0,0,10"/>
-        <TextBox Text="{Binding SourceImage}" Grid.Row="1" Margin="15" FontFamily="Geometria" FontSize="15" BorderThickness="0,0,0,1"/>
+        <TextBox x:Name="TextBox" Text="{Binding SourceImage}" Grid.Row="1" Margin="15" FontFamily="Geometria" FontSize="15" BorderThickness="0,0,0,1"/>
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Button Style="{StaticResource btCatalog}" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,5" Content="Да" FontSize="20" MinWidth="100" MinHeight="30" BorderThickness="0,0,0,1" Command="{Binding ChangedImageCommand}"/>
-            <Button Grid.Column="1" Style="{StaticResource btCatalog}" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,5" Content="Нет" FontSize="20" MinWidth="100" BorderThickness="0,0,0,1" Command="{Binding CloseQuestionCommand}" CommandParameter="{Binding ElementName=QuestionWindow}"/>
+            <Button Style="{StaticResource btCatalog}" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,5" Content="Да" FontSize="20" MinWidth="100" MinHeight="30" BorderThickness="0,0,0,1" Command="{Binding ChangedImageCommand}" CommandParameter="{Binding ElementName=QWindow}"/>
+            <Button Grid.Column="1" Style="{StaticResource btCatalog}" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,5" Content="Нет" FontSize="20" MinWidth="100" BorderThickness="0,0,0,1" Command="{Binding CloseQuestionCommand}" CommandParameter="{Binding ElementName=QWindow}"/>
         </Grid>
     </Grid>
 </Window>

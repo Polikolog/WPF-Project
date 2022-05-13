@@ -36,9 +36,12 @@ namespace Kyrsach_core.ViewModel.PagesModel.Base
             {
                 Set(ref _selectedFurniture, value);
                 //CurrentFurniture.Furniture = value;
-                var furnitureViewModel = new FurnitureViewModel(this);
-                FurniturePage.DataContext = this;
-                MainViewModel.CurrentPage = FurniturePage;
+                if (value != null)
+                {
+                    var furnitureViewModel = new FurnitureViewModel(this);
+                    FurniturePage.DataContext = furnitureViewModel;
+                    MainViewModel.CurrentPage = FurniturePage;
+                }
             }
         }
 

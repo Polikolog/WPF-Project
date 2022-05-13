@@ -7,7 +7,7 @@
         xmlns:main="clr-namespace:Kyrsach_core"
         xmlns:ViewModel="clr-namespace:Kyrsach_core.ViewModel"
         mc:Ignorable="d"
-        Title="MainWindow" Height="768" Width="1366"
+        Title="MainWindow" MinHeight="768" Width="1366"
         x:Name="MainWin">
     <Window.DataContext>
         <ViewModel:MainViewModel/>
@@ -50,6 +50,7 @@
                 <DiscreteObjectKeyFrame KeyTime="0:0:0.1" Value="{x:Static Visibility.Hidden}"/>
             </ObjectAnimationUsingKeyFrames>
         </Storyboard>
+
     </Window.Resources>
     <Window.Triggers>
         <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="Catalogs1">
@@ -89,7 +90,7 @@
                     <ColumnDefinition Width="5*"/>
                     <ColumnDefinition Width="1.4*"/>
                 </Grid.ColumnDefinitions>
-                <Button Background="White" BorderThickness="0" Command="{Binding OpenMainPageCommand}" Template="{StaticResource regstr}">
+                <Button Background="White" BorderThickness="0" Command="{Binding OpenMainPageCommand}" Style="{StaticResource HeaderButton}">
                     <Image Grid.Column="0" Source="C:/Users/mi/Desktop/1/OOP/kyrsach/Kyrsach_Core/Kyrsach_Core/Images/logo.webp"/>
                 </Button>
                 <Grid Grid.Column="1">
@@ -102,7 +103,7 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="0.3*"/>
                     </Grid.ColumnDefinitions>
-                    <TextBox MaxHeight="31.5" Grid.Row="1" Text="{Binding SearchText}" FontFamily="Geometria" FontSize="20"/>
+                    <TextBox BorderBrush="Black" BorderThickness="1" MaxHeight="31.5" Grid.Row="1" Text="{Binding SearchText}" FontFamily="Geometria" FontSize="20"/>
                     <Button Grid.Row="1" MaxHeight="35" Width="180" Grid.Column="1" FontFamily="Geometria" Background="Red" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Найти" FontSize="25" BorderThickness="0" Command="{Binding SearchCommand}" CommandParameter="{Binding ElementName=MainFrame}" Template="{StaticResource regstr}"/>
                 </Grid>
                 <Grid Grid.Column="2" Margin="10">
@@ -111,21 +112,21 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <Button Background="white" BorderThickness="0" Command="{Binding OpenLikeCommand}" Template="{StaticResource regstr}">
+                    <Button HorizontalAlignment="Center" VerticalAlignment="Center" Background="white" BorderThickness="0" Command="{Binding OpenLikeCommand}" Style="{StaticResource HeaderButton}">
                         <Grid>
-                            <Image Source="C:\Users\mi\Desktop\1\imageDataContext\heart.png" Height="50"/>
+                            <Image Source="C:\Users\mi\Desktop\1\imageDataContext\heart.png" Height="50" HorizontalAlignment="Center" Margin="0,0,0,7" Width="65" VerticalAlignment="Bottom"/>
                             <TextBlock Text="{Binding CountLikeFurniture}" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource tb}" FontSize="15"/>
                         </Grid>
                     </Button>
-                    <Button Grid.Column="1" Background="white" BorderThickness="0" Command="{Binding OpenProfilePage}" Template="{StaticResource regstr}">
+                    <Button VerticalAlignment="Center" Grid.Column="1" Background="white" BorderThickness="0" Command="{Binding OpenProfileCommand}" Style="{StaticResource HeaderButton}">
                         <Grid>
-                            <Image Source="C:\Users\mi\Desktop\1\imageDataContext\profile.png" Height="45"/>
+                            <Image Source="C:\Users\mi\Desktop\1\imageDataContext\profile.png" Height="45" HorizontalAlignment="Center" Margin="0,0,0,10" Width="65" VerticalAlignment="Bottom"/>
                         </Grid>
                     </Button>
-                    <Button Grid.Column="2" Background="white" BorderThickness="0" Command="{Binding OpenBasketCommand}" Template="{StaticResource regstr}">
+                    <Button VerticalAlignment="Center" Grid.Column="2" Background="white" BorderThickness="0" Command="{Binding OpenBasketCommand}" Style="{StaticResource HeaderButton}">
                         <Grid>
-                            <Image Source="C:\Users\mi\Desktop\1\imageDataContext\Basket.png" Margin="0,6,0,9"/>
-                            <TextBlock Grid.Row="0" Text="{Binding CountFurnitureInBasket}" FontSize="15" Style="{StaticResource tb}" Margin="0,27,0,0" VerticalAlignment="Top"/>
+                            <Image Source="C:\Users\mi\Desktop\1\imageDataContext\Basket.png" Margin="0,0,0,9" HorizontalAlignment="Center" Width="65" Height="49" VerticalAlignment="Bottom"/>
+                            <TextBlock Grid.Row="0" Text="{Binding CountFurnitureInBasket}" FontSize="15" Style="{StaticResource tb}" Margin="0,0,0,12" VerticalAlignment="Bottom" Height="19"/>
                         </Grid>
                     </Button>
                 </Grid>
@@ -147,7 +148,7 @@
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
                             <Image HorizontalAlignment="Center" MaxHeight="15" Margin="0,0,10,0" Source="C:/Users/mi/Desktop/1/OOP/kyrsach/Kyrsach_core/Kyrsach_core/Images/LogMenu.png"/>
-                            <TextBlock Grid.Column="1" FontSize="20" Text="Каталоги" HorizontalAlignment="Center" Width="130" Height="27" VerticalAlignment="Top" FontFamily="Geometria"/>
+                            <TextBlock  Grid.Column="1" FontSize="20" Text="Каталоги" HorizontalAlignment="Center" Width="130" Height="27" VerticalAlignment="Center" FontFamily="Geometria"/>
                         </Grid>
                     </Button.Content>
                 </Button>
@@ -163,11 +164,11 @@
                         </Grid>
                     </Button.Content>
                 </Button>
-                <Button x:Name="mb1" Grid.Column="1" Content="Шкафы" Margin="40,2,40,2" Style="{StaticResource HeaderButton}" Command="{Binding CatalogСabinetsCommand}" CommandParameter="{Binding ElementName=mb1}"/>
-                <Button x:Name="mb2" Grid.Column="2" Margin="40,2,40,2"  Content="Кровати" Style="{StaticResource HeaderButton}" Command="{Binding CatalogСabinetsCommand}" CommandParameter="{Binding ElementName=mb2}"/>
-                <Button x:Name="mb3" Grid.Column="3" Margin="40,2,40,2"  Content="Кресла" Style="{StaticResource HeaderButton}" Command="{Binding CatalogСabinetsCommand}" CommandParameter="{Binding ElementName=mb3}"/>
-                <Button x:Name="mb4" Grid.Column="4" Margin="40,2,40,2"  Content="Столы" Style="{StaticResource HeaderButton}" Command="{Binding CatalogСabinetsCommand}" CommandParameter="{Binding ElementName=mb4}"/>
-                <Button x:Name="mb5" Grid.Column="5" Margin="40,2,40,2"  Content="Стулья" Style="{StaticResource HeaderButton}" Command="{Binding CatalogСabinetsCommand}" CommandParameter="{Binding ElementName=mb5}"/>
+                <Button x:Name="mb1" Grid.Column="1" Content="Шкафы" Margin="40,2,40,2" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource HeaderButton}" Command="{Binding CatalogСabinetsCommand}" CommandParameter="{Binding ElementName=mb1}"/>
+                <Button x:Name="mb2" Grid.Column="2" Margin="40,2,40,2"  Content="Кровати" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource HeaderButton}" Command="{Binding CatalogСabinetsCommand}" CommandParameter="{Binding ElementName=mb2}"/>
+                <Button x:Name="mb3" Grid.Column="3" Margin="40,2,40,2"  Content="Кресла" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource HeaderButton}" Command="{Binding CatalogСabinetsCommand}" CommandParameter="{Binding ElementName=mb3}"/>
+                <Button x:Name="mb4" Grid.Column="4" Margin="40,2,40,2"  Content="Столы" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource HeaderButton}" Command="{Binding CatalogСabinetsCommand}" CommandParameter="{Binding ElementName=mb4}"/>
+                <Button x:Name="mb5" Grid.Column="5" Margin="40,2,40,2"  Content="Стулья" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource HeaderButton}" Command="{Binding CatalogСabinetsCommand}" CommandParameter="{Binding ElementName=mb5}"/>
             </Grid>
         </Grid>
         <Grid x:Name="MainFrame" Grid.Row="1" Grid.Column="1" Visibility="Visible">
@@ -225,7 +226,7 @@
                 <Button Grid.Row="5" Style="{StaticResource btCatalog}">
                     <StackPanel Orientation="Horizontal">
                         <Image MaxHeight="30" Source="C:/Users/mi/Desktop/1/OOP/kyrsach/Kyrsach_core/Kyrsach_core/Images/Catalogs/menu-06.png"/>
-                        <TextBlock Margin="20,0" Text="Детсакая мебель"  Style="{StaticResource tb}"/>
+                        <TextBlock Margin="20,0" Text="Детская мебель"  Style="{StaticResource tb}"/>
                     </StackPanel>
                 </Button>
                 <Button Grid.Row="6" Style="{StaticResource btCatalog}">
@@ -255,7 +256,7 @@
                 <Button Grid.Row="10" Style="{StaticResource btCatalog}">
                     <StackPanel Orientation="Horizontal">
                         <Image MaxHeight="30" Source="C:/Users/mi/Desktop/1/OOP/kyrsach/Kyrsach_core/Kyrsach_core/Images/Catalogs/menu-11.png"/>
-                        <TextBlock Margin="20,0" Text="Камоды и тумбы"  Style="{StaticResource tb}"/>
+                        <TextBlock Margin="20,0" Text="Комоды и тумбы"  Style="{StaticResource tb}"/>
                     </StackPanel>
                 </Button>
             </Grid>

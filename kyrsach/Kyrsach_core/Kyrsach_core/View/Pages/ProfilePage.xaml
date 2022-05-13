@@ -7,6 +7,18 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ProfilePage" Background="White">
+    <Page.Resources>
+        <DataTemplate x:Key="ListTemplate">
+            <Border Margin="10" Padding="5" Background="white" BorderBrush="WhiteSmoke" BorderThickness="2">
+                <StackPanel>
+                    <Image MaxHeight="200" MaxWidth="200" Source="{Binding Image}"/>
+                    <TextBlock FontFamily="Geometria" Margin="5" Text="{Binding Name}"/>
+                    <TextBlock FontFamily="Geometria" Margin="5" Text="Цена"/>
+                    <TextBlock FontFamily="Geometria" Margin="5" Text="{Binding Price}"/>
+                </StackPanel>
+            </Border>
+        </DataTemplate>
+    </Page.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -16,7 +28,7 @@
             <RowDefinition Height="*"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Button x:Name="ImageBut" Template="{StaticResource cur}" Command="{Binding ChangeImageCommand}" CommandParameter="{Binding ElementName=ImageBut}">
+        <Button x:Name="ImageBut" Template="{StaticResource cur}" Command="{Binding ChangeImageCommand}" CommandParameter="{Binding ElementName=ImageBut}" Height="225" VerticalAlignment="Center" HorizontalAlignment="Left" Width="400">
             <Image Source="{Binding Image}"/>
         </Button>
         <Grid Grid.Column="1">
@@ -30,11 +42,25 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <Label Content="Имя" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Geometria" FontSize="20" BorderThickness="0,0,0,1" BorderBrush="Black"/>
-            <TextBox Margin="0,20" Grid.Column="1" Text="{Binding Name}" HorizontalAlignment="Center" FontFamily="Geometria" FontSize="20" BorderThickness="0,0,0,1" BorderBrush="Black"/>
+            <TextBox Width="300" Margin="0,20" Grid.Column="1" Text="{Binding Name}" HorizontalAlignment="Center" FontFamily="Geometria" FontSize="20" BorderThickness="0,0,0,1" BorderBrush="Black"/>
             <Label Grid.Row="1" Content="Адресс" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Geometria" FontSize="20" BorderThickness="0,0,0,1" BorderBrush="Black"/>
-            <TextBox Margin="0,20"  Grid.Column="1" HorizontalAlignment="Center" FontFamily="Geometria" FontSize="20" Grid.Row="1" Text="{Binding Adress}" BorderThickness="0,0,0,1" BorderBrush="Black"/>
+            <TextBox Width="300" Margin="0,20"  Grid.Column="1" HorizontalAlignment="Center" FontFamily="Geometria" FontSize="20" Grid.Row="1" Text="{Binding Adress}" BorderThickness="0,0,0,1" BorderBrush="Black"/>
             <Label Grid.Row="2" Content="Номер" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Geometria" FontSize="20" BorderThickness="0,0,0,1" BorderBrush="Black"/>
-            <TextBox Margin="0,20" Grid.Column="1" HorizontalAlignment="Center" FontFamily="Geometria" FontSize="20" Grid.Row="2" Text="{Binding Phone}"  BorderThickness="0,0,0,1" BorderBrush="Black"/>
+            <TextBox Width="300" Margin="0,20" Grid.Column="1" HorizontalAlignment="Center" FontFamily="Geometria" FontSize="20" Grid.Row="2" Text="{Binding Phone}"  BorderThickness="0,0,0,1" BorderBrush="Black"/>
+        </Grid>
+        <Grid Margin="0, 20,0,10" Grid.Row="1" Grid.ColumnSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Label Content="Просмотренные товары" FontFamily="Geometria" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <ListBox Grid.Row="1" x:Name="ListBox" BorderThickness="0" ItemsSource="{Binding ViewedFurnitureList}" SelectedItem="{Binding ViewedFurniture}" ItemTemplate="{StaticResource ResourceKey=ListTemplate}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel HorizontalAlignment="Center"/>
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+            </ListBox>
         </Grid>
     </Grid>
 </Page>

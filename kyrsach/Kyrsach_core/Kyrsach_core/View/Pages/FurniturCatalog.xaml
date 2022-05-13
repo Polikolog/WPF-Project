@@ -32,7 +32,8 @@
                     <TextBlock Margin="5,0" Text="{Binding CountFurniture}" Style="{StaticResource tb}" Foreground="LightGray"/>
                 </StackPanel>
                 <StackPanel Grid.Row="1">
-                    
+                    <Button Content="{Binding}" Style="{StaticResource HeaderButton}" Command="{Binding }"/>
+                    <Button Style="{StaticResource HeaderButton}" Command="{Binding}"/>
                 </StackPanel>
                 <ListBox Grid.Row="2" x:Name="ListBox" BorderThickness="0" ItemsSource="{Binding FurnitureList}" SelectedItem="{Binding SelectedFurniture}" ItemTemplate="{StaticResource ResourceKey=ListTemplate}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                     <ListBox.ItemsPanel>

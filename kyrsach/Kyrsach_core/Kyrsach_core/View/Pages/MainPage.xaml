@@ -40,7 +40,7 @@
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <Button Grid.Column="0" Margin="5,0,5,0" Background="White" BorderThickness="0">
+                    <Button Grid.Column="0" Margin="5,0,5,0" Background="White" BorderThickness="0" FontSize="15" Style="{StaticResource HeaderButton}">
                         <Button.Content>
                             <Grid>
                                 <Grid.RowDefinitions>
@@ -48,11 +48,11 @@
                                     <RowDefinition/>
                                 </Grid.RowDefinitions>
                                 <Image Source="C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_core\Kyrsach_core\Images\Gost.jpg"/>
-                                <Label FontFamily="Geometria" HorizontalAlignment="Center" Grid.Row="1" Content="Гостиная"/>
+                                <TextBlock FontFamily="Geometria" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="1" Text="Гостиная"/>
                             </Grid>
                         </Button.Content>
                     </Button>
-                    <Button Grid.Column="1" Margin="5,0,5,0" Background="White" BorderThickness="0">
+                    <Button Grid.Column="1" Margin="5,0,5,0" Background="White" BorderThickness="0" FontSize="15" Style="{StaticResource HeaderButton}">
                         <Button.Content>
                             <Grid>
                                 <Grid.RowDefinitions>
@@ -60,11 +60,11 @@
                                     <RowDefinition/>
                                 </Grid.RowDefinitions>
                                 <Image Source="C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_core\Kyrsach_core\Images\BedRoom.jpg"/>
-                                <Label FontFamily="Geometria" HorizontalAlignment="Center" Grid.Row="1" Content="Спалня"/>
+                                <TextBlock FontFamily="Geometria" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="1" Text="Спалня"/>
                             </Grid>
                         </Button.Content>
                     </Button>
-                    <Button Grid.Column="2" Margin="5,0,5,0" Background="White" BorderThickness="0">
+                    <Button Grid.Column="2" Margin="5,0,5,0" Background="White" BorderThickness="0" FontSize="15" Style="{StaticResource HeaderButton}">
                         <Button.Content>
                             <Grid>
                                 <Grid.RowDefinitions>
@@ -72,11 +72,11 @@
                                     <RowDefinition/>
                                 </Grid.RowDefinitions>
                                 <Image Source="C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_core\Kyrsach_core\Images\ChildRoom.jpg"/>
-                                <Label FontFamily="Geometria" HorizontalAlignment="Center" Grid.Row="1" Content="Детская"/>
+                                <Label FontFamily="Geometria" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="1" Content="Детская"/>
                             </Grid>
                         </Button.Content>
                     </Button>
-                    <Button Grid.Column="3" Margin="5,0,5,0" Background="White" BorderThickness="0">
+                    <Button Grid.Column="3" Margin="5,0,5,0" Background="White" BorderThickness="0" FontSize="15" Style="{StaticResource HeaderButton}">
                         <Button.Content>
                             <Grid>
                                 <Grid.RowDefinitions>
@@ -84,11 +84,11 @@
                                     <RowDefinition/>
                                 </Grid.RowDefinitions>
                                 <Image Source="C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_core\Kyrsach_core\Images\Kitchen.jpg"/>
-                                <Label FontFamily="Geometria" HorizontalAlignment="Center" Grid.Row="1" Content="Кухня"/>
+                                <TextBlock FontFamily="Geometria" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="1" Text="Кухня"/>
                             </Grid>
                         </Button.Content>
                     </Button>
-                    <Button Grid.Column="4" Margin="5,0,5,0" Background="White" BorderThickness="0">
+                    <Button Grid.Column="4" Margin="5,0,5,0" Background="White"  BorderThickness="0" FontSize="15" Style="{StaticResource HeaderButton}">
                         <Button.Content>
                             <Grid>
                                 <Grid.RowDefinitions>
@@ -96,11 +96,11 @@
                                     <RowDefinition/>
                                 </Grid.RowDefinitions>
                                 <Image Source="C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_core\Kyrsach_core\Images\Cabinet.jpg"/>
-                                <Label FontFamily="Geometria" HorizontalAlignment="Center" Grid.Row="1" Content="Домашний кабинет"/>
+                                <TextBlock FontFamily="Geometria" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="1" Text="Домашний кабинет" TextWrapping="Wrap"/>
                             </Grid>
                         </Button.Content>
                     </Button>
-                    <Button Grid.Column="5" Margin="5,0,5,0" Background="White" BorderThickness="0">
+                    <Button Grid.Column="5" Margin="5,0,5,0" Background="White" BorderThickness="0" FontSize="15" Style="{StaticResource HeaderButton}">
                         <Button.Content>
                             <Grid>
                                 <Grid.RowDefinitions>
@@ -108,7 +108,7 @@
                                     <RowDefinition/>
                                 </Grid.RowDefinitions>
                                 <Image Source="C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_core\Kyrsach_core\Images\HallWay.jpg"/>
-                                <Label FontFamily="Geometria" HorizontalAlignment="Center" Grid.Row="1" Content="Прихожая"/>
+                                <TextBlock FontFamily="Geometria" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="1" Text="Прихожая"/>
                             </Grid>
                         </Button.Content>
                     </Button>

@@ -31,6 +31,7 @@ namespace Kyrsach_core.ViewModel
             set => Set(ref currentPage, value);
         }
 
+        //Имя фрейма
         private string frame;
         public string Frame
         {
@@ -62,6 +63,7 @@ namespace Kyrsach_core.ViewModel
             set => Set(ref _countFurnitureInBasket, value);
         }
 
+        //Количество понравившихся товаров
         private int _countLikeFurniture;
         public int CountLikeFurniture
         {
@@ -76,6 +78,7 @@ namespace Kyrsach_core.ViewModel
             MainPage.DataContext = new MainPageViewModel(this);
             
             CurrentPage = MainPage;
+            PreviousPage.LastPage = MainPage;
 
             LikeList.list = DataWorker.GetFurnituresInLike();
             BasketList.FurnituresInBasket = DataWorker.GetFurnituresInBasket();
@@ -86,7 +89,7 @@ namespace Kyrsach_core.ViewModel
 
         #region Команды
 
-        //Откритие главной страницы
+        //Открытие главной страницы
         private ICommand _OpenMainPageCommand;
         public ICommand OpenMainPageCommand
         {
@@ -96,6 +99,7 @@ namespace Kyrsach_core.ViewModel
                 {
                     MainPage.DataContext = new MainPageViewModel(this);
                     CurrentPage = MainPage;
+                    PreviousPage.LastPage = MainPage;
                 }
             });
         }
@@ -131,6 +135,7 @@ namespace Kyrsach_core.ViewModel
                 var o = p as Button;
                 FurnitureCatalog.DataContext = new CatalogViewModel(o.Content.ToString(), this);
                 CurrentPage = FurnitureCatalog;
+                PreviousPage.LastPage = FurnitureCatalog;
             });
         }
 
@@ -144,7 +149,8 @@ namespace Kyrsach_core.ViewModel
                 CurrentPage = BasketPage;
             });
         }
-
+        
+        //Открытие понравившихся товаров
         private ICommand _openLikeCommand;
         public ICommand OpenLikeCommand
         {
@@ -152,9 +158,11 @@ namespace Kyrsach_core.ViewModel
             {
                 LikePage.DataContext = new LikePageViewModel(this);
                 CurrentPage = LikePage;
+                PreviousPage.LastPage = LikePage;
             });
         }
 
+        //Открытие окна профиля
         private ICommand _openProfileCommand;
         public ICommand OpenProfileCommand
         {
@@ -162,6 +170,7 @@ namespace Kyrsach_core.ViewModel
             {
                 ProfilePage.DataContext = new ProfileViewModel(this);
                 CurrentPage = ProfilePage;
+                PreviousPage.LastPage = ProfilePage;
             });
 
         }

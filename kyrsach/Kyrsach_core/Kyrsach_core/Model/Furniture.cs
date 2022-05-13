@@ -25,5 +25,7 @@ namespace Kyrsach_core.Model
         public string? ImageIcon { get; set; }
         public List<BasketFurniture> BasketFurnitures { get; set; }
         public List<LikeFurniture> LikeFurnitures { get; set; }
+        public List<OrderFurniture> OrderFurnitures { get; set; }
+        public List<Comment> Comments { get; set; }
     }
 }

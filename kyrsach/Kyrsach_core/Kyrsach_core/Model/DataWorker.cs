@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -7,25 +8,15 @@ using Kyrsach_core.Model.Base;
 using Microsoft.AspNet.Identity;
 using Microsoft.EntityFrameworkCore;
 
+
+// ??? - обозначает, что данная функция не была протестирована.
+
+
 namespace Kyrsach_core.Model
 {
     public static class DataWorker
     {
         private static IPasswordHasher passwordHasher = new PasswordHasher();
-        public static void CreateRole()
-        {
-            using(var bd = new ApplicationContext())
-            {
-                if (bd.Roles.ToList() == null)
-                {
-                    bd.Roles.Add(new Role { UserRole = "Пользователь", ID = 1 });
-                    bd.SaveChanges();
-
-                    bd.Roles.Add(new Role { UserRole = "Админ", ID = 2 });
-                    bd.SaveChanges();
-                }
-            }
-        }
 
         //Добавление пользователя
         public static bool AddUser(string NameUser, string PasswordUser, string Adress, int? Num)
@@ -35,7 +26,7 @@ namespace Kyrsach_core.Model
                 if (GetUser(NameUser, PasswordUser, Num))
                 {
                     string pass = passwordHasher.HashPassword(PasswordUser);
-                    bd.Users.Add(new User { Name = NameUser, Password = pass, Adress = Adress, Phone = Num, RoleID = 1 });
+                    bd.Users.Add(new User { Name = NameUser, Password = pass, Adress = Adress, Phone = Num, IsAdmin = false, Image = "C:\\Users\\mi\\Desktop\\1\\imageDataContext\\Profile.jpg" });
                     bd.SaveChanges();
 
                     bd.Likes.Add(new Like { UserID = bd.Users.OrderBy(p => p.ID).LastOrDefault().ID });
@@ -156,6 +147,36 @@ namespace Kyrsach_core.Model
             }
         }
 
+        //Удаление товара из корзины
+        public static void DeleteFuritureInBasket(Furniture furniture = null)
+        {
+            using (var bd = new ApplicationContext())
+            {
+                if (furniture == null)
+                {
+                    if (GetFurnituresInBasket().Count != 0)
+                    {
+                        var list = new List<BasketFurniture>();
+                        foreach (var item in GetFurnituresInBasket())
+                        {
+                            list = bd.BasketFurnitures.Where(bf => bf.FurnitureID == item.ID).ToList();
+                        }
+                        bd.BasketFurnitures.RemoveRange(list);
+                        bd.SaveChanges();
+                    }
+                }
+                else
+                {
+                    var del = bd.BasketFurnitures.Where(bf => bf.BasketID == GetBasket().ID).ToList().Where(bf => bf.FurnitureID == furniture.ID).FirstOrDefault();
+                    if (del != null)
+                    {
+                        bd.BasketFurnitures.Remove(del);
+                        bd.SaveChanges();
+                    }
+                }
+            }
+        }
+
         //Проверка нахождения товара в корзине 
         private static bool CheckFurnitureInBasket(Furniture furniture)
         {
@@ -167,14 +188,13 @@ namespace Kyrsach_core.Model
             return true;
         }
 
-        //Возвращение всех товаров из корзины
+        //Получение всех товаров из корзины
         public static ObservableCollection<Furniture> GetFurnituresInBasket()
         {
             using (var bd = new ApplicationContext())
             {
                 ObservableCollection<Furniture> list = new ObservableCollection<Furniture>();
-                bd.BasketFurnitures.Where(bf => bf.BasketID == GetBasket().ID).Join(bd.Furnitures, bf => bf.FurnitureID, f => f.ID, (bf, f) => new Furniture { ID = f.ID, Name = f.Name, Type = f.Type, Availability = f.Availability, Category = f.Category, Color = f.Color, Width = f.Width, Length = f.Length, Height = f.Height, Description = f.Description, Image = f.Image, ImageIcon = f.ImageIcon, LivingSector = f.LivingSector, Price = f.Price, Rating = f.Rating }).ToList().ForEach(f => list.Add(f)); 
-                //bd.Furnitures.Join(bd.BasketFurnitures, f => f.ID, bf => bf.FurnitureID, (f, bf) => new Furniture { ID = f.ID, Name = f.Name, Type = f.Type, Availability = f.Availability, Category = f.Category, Color = f.Color, Width = f.Width, Length = f.Length, Height = f.Height, Description = f.Description, Image = f.Image, ImageIcon = f.ImageIcon, LivingSector = f.LivingSector, Price = f.Price, Rating = f.Rating }).ToList().ForEach(f => list.Add(f));
+                bd.BasketFurnitures.Where(bf => bf.BasketID == GetBasket().ID).Join(bd.Furnitures, bf => bf.FurnitureID, f => f.ID, (bf, f) => new Furniture { ID = f.ID, Name = f.Name, Type = f.Type, Availability = f.Availability, Category = f.Category, Color = f.Color, Width = f.Width, Length = f.Length, Height = f.Height, Description = f.Description, Image = f.Image, ImageIcon = f.ImageIcon, LivingSector = f.LivingSector, Price = f.Price, Rating = f.Rating }).ToList().ForEach(f => list.Add(f));
                 return list;
             }
         }
@@ -197,6 +217,93 @@ namespace Kyrsach_core.Model
                 ObservableCollection<Furniture> list = new ObservableCollection<Furniture>();
                 bd.Furnitures.Where(f => EF.Functions.Like(f.Name!, "%" + name + "%")).ToList().ForEach(f => list.Add(f));
                 return list;
+            }
+        }
+
+        //Добаления заказа
+        public static void AddOrder()
+        {
+            using(var bd = new ApplicationContext())
+            {
+                var order = new Order() { UserID = CurrentUser.getInstance().ID };
+                bd.Orders.Add(order);
+                bd.SaveChanges();
+                ListOrdersCurrentUser.AddOrder(order);
+            }
+        }
+
+        //Добавление товара в заказ
+        public static bool AddFurnituresInOrder()
+        {
+            using(var bd = new ApplicationContext())
+            {
+                if (GetFurnituresInBasket().Count != 0)
+                {
+                    AddOrder();
+                    ICollection<OrderFurniture> list = new ObservableCollection<OrderFurniture>();
+                    foreach (Furniture item in GetFurnituresInBasket())
+                    {
+                        bd.OrderFurnitures.Add(new OrderFurniture { FurnitureID = item.ID, OrderID = ListOrdersCurrentUser.GetLastOrder().ID});
+                        bd.SaveChanges();
+                        //d.Orders.Where(o => o.UserID == CurrentUser.getInstance().ID).Join(bd.OrderFurnitures, o => o.ID, of => of.OrderID, (o, of) => new OrderFurniture { OrderID = o.ID, FurnitureID = item.ID }).First()
+                    }
+                    DeleteFuritureInBasket();
+                    return true;
+                }
+                else
+                    return false;
+            }
+        }
+
+        //Смена картинки пользователя
+        public static bool ChangedImageUser(string image)
+        {
+            using (var bd = new ApplicationContext())
+            {
+                if (image != null)
+                {
+                    bd.Users.Where(u => u.ID == CurrentUser.getInstance().ID).First().Image = image;
+                    bd.SaveChanges();
+                    CurrentUser.setInstance(bd.Users.Where(u => u.ID == CurrentUser.getInstance().ID).First());
+                    return true;
+                }
+                else
+                    return false;
+            }
+        }
+
+        //Создание коментария
+        public static void CreateComment(string text, Furniture furniture)
+        {
+            using(var bd = new ApplicationContext())
+            {
+                bd.Comments.Add(new Comment { Text = text , UserID = CurrentUser.getInstance().ID, FurnitureID = furniture.ID});
+                bd.SaveChanges();
+            }
+        }
+
+        //Получение всех коментариев под определенной мебелью
+        public static ObservableCollection<Comment> GetComments(Furniture furniture)
+        {
+            using(var bd = new ApplicationContext())
+            {
+                var comments = new ObservableCollection<Comment>();
+                bd.Comments.Where(c => c.FurnitureID == furniture.ID).ToList().ForEach(c => comments.Add(c));
+                return comments;
+            }
+        }
+
+        //Получение пользователей оставивших коментарий
+        public static ObservableCollection<User> GetUsers(Furniture furniture)
+        {
+            using(var bd = new ApplicationContext())
+            {
+                ObservableCollection<User> users = new ObservableCollection<User>();
+                foreach (var item in GetComments(furniture))
+                {
+                    users.Add(bd.Users.Where(u => u.ID == item.UserID).First());
+                }
+                return users;
             }
         }
     }

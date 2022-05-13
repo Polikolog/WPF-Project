@@ -56,16 +56,17 @@ namespace Kyrsach_core.ViewModel.PagesModel
         }
 
 
-        private ICommand _changeImage;
-        public ICommand ChangeImage
+        private ICommand _changeImageCommand;
+        public ICommand ChangeImageCommand
         {
-            get => _changeImage ?? new ActionCommand(p =>
+            get => _changeImageCommand ?? new ActionCommand(p =>
             {
                 var but = p as Button;
                 QWindow.DataContext = new QuestionViewModel(this);
                 QWindow.Show();
             });
         }
+
 
     }
 }

@@ -9,10 +9,11 @@ namespace Kyrsach_core.Model.Base
         public DbSet<Basket> Baskets { get; set; }
         public DbSet<Furniture> Furnitures { get; set; }
         public DbSet<Like> Likes { get; set; }
-        public DbSet<Servise> Servises { get; set; }
-        public DbSet<Role> Roles { get; set; }
         public DbSet<BasketFurniture> BasketFurnitures { get; set; }
         public DbSet<LikeFurniture> LikeFurnitures { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderFurniture> OrderFurnitures { get; set; }
+        public DbSet<Comment> Comments { get; set; }
 
         public ApplicationContext()
         {
@@ -42,13 +43,19 @@ namespace Kyrsach_core.Model.Base
             modelBuilder.Entity<LikeFurniture>().HasOne<Furniture>(lf => lf.Furniture).WithMany(f => f.LikeFurnitures).HasForeignKey(lf => lf.FurnitureID);
             modelBuilder.Entity<LikeFurniture>().HasOne<Like>(lf => lf.Like).WithMany(l => l.LikeFurnitures).HasForeignKey(lf => lf.LikeID);
 
-            ////Product with Servise
-            //modelBuilder.Entity<ProductServise>().HasKey(ps => new { ps.ProductID, ps.ServiseID });
-            //modelBuilder.Entity<ProductServise>().HasOne<Product>(ps => ps.Product).WithMany(p => p.ProductServises).HasForeignKey(ps => ps.ProductID);
-            //modelBuilder.Entity<ProductServise>().HasOne<Servise>(ps => ps.Servise).WithMany(s => s.ProductServises).HasForeignKey(ps => ps.ServiseID);
+            //Order with Furniture
+            modelBuilder.Entity<OrderFurniture>().HasKey(of => new { of.OrderID, of.FurnitureID });
+            modelBuilder.Entity<OrderFurniture>().HasOne<Furniture>(of => of.Furniture).WithMany(f => f.OrderFurnitures).HasForeignKey(of => of.FurnitureID);
+            modelBuilder.Entity<OrderFurniture>().HasOne<Order>(of => of.Order).WithMany(o => o.OrderFurnitures).HasForeignKey(of => of.OrderID);
 
-            //User with Role
-            modelBuilder.Entity<User>().HasOne<Role>(u => u.Role).WithMany(r => r.Users).HasForeignKey(u => u.RoleID);
+            //Order with User
+            modelBuilder.Entity<Order>().HasOne<User>(c => c.User).WithMany(u => u.Orders).HasForeignKey(c => c.UserID);
+
+            //User with Comment
+            modelBuilder.Entity<Comment>().HasOne<User>(c => c.User).WithMany(u => u.Comments).HasForeignKey(c => c.UserID);
+
+            //Commment with Furniture
+            modelBuilder.Entity<Comment>().HasOne<Furniture>(c => c.Furniture).WithMany(f => f.Comments).HasForeignKey(c => c.FurnitureID);
         }
     }
 }

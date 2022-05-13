@@ -26,7 +26,7 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="50"/>
                     <RowDefinition/>
-                    <RowDefinition/>
+                    <RowDefinition Height="80"/>
                 </Grid.RowDefinitions>
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -35,18 +35,27 @@
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Text="Корзина" HorizontalAlignment="Center" VerticalAlignment="Bottom" Style="{StaticResource tb}" FontSize="30" Margin="0,0,0,5"/>
+                    <TextBlock Text="Корзина" HorizontalAlignment="Center" VerticalAlignment="Bottom" Style="{StaticResource tb}" FontSize="30" Margin="0,0,0,5" />
                     <TextBlock Grid.Column="1" Text="Цена" HorizontalAlignment="Center" VerticalAlignment="Bottom" Style="{StaticResource tb}" FontSize="20" Margin="0,0,0,10"/>
                     <TextBlock Grid.Column="2" Text="Количество" HorizontalAlignment="Center" VerticalAlignment="Bottom" Style="{StaticResource tb}" FontSize="20" Margin="0,0,0,10"/>
                     <TextBlock Grid.Column="3" Text="Cумма" HorizontalAlignment="Center" VerticalAlignment="Bottom" Style="{StaticResource tb}" FontSize="20" Margin="0,0,0,10"/>
                 </Grid>
-                <ListView Grid.Row="1" x:Name="ListBox" ItemsSource="{Binding FurnitureList}" ItemTemplate="{StaticResource ResourceKey=ListTemplate}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" BorderThickness="0,2,0,0">
+                <ListView Grid.Row="1" x:Name="ListBox" ItemsSource="{Binding FurnitureList}" SelectedItem="{Binding FurnitureInBasket}" ItemTemplate="{StaticResource ResourceKey=ListTemplate}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" BorderThickness="0,2" BorderBrush="Black">
                     <ListBox.ItemsPanel>
                         <ItemsPanelTemplate>
                             <WrapPanel HorizontalAlignment="Center"/>
                         </ItemsPanelTemplate>
                     </ListBox.ItemsPanel>
                 </ListView>
+                <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="1" Style="{StaticResource HeaderButton}" Background="White" Margin="0,0,0,5" Content="Заказать" HorizontalAlignment="Center" Width="206" Height="70" VerticalAlignment="Center" FontFamily="Geometria" FontSize="30" Command="{Binding AddOrderCommand}"/>
+                    <Button Style="{StaticResource btCatalog}" Content="Удалить выбранный товар" FontSize="15" Margin="35,20" Command="{Binding DeletFurnitureCommand}"/>
+                </Grid>
             </Grid>
         </ScrollViewer>
     </Grid>

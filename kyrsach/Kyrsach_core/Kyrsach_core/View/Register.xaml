@@ -3,16 +3,17 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:Kyrsach_core.View"
         xmlns:ViewModel="clr-namespace:Kyrsach_core.ViewModel"
         xmlns:Components="clr-namespace:Kyrsach_core.Components"
         mc:Ignorable="d" x:Name="RegisterWindow"
         Title="Reg" Height="600" Width="600">
+    
     <Window.DataContext>
         <ViewModel:RegisterViewModel/>
     </Window.DataContext>
     <Window.Resources>
-        
         <Storyboard x:Key="Storyboard1">
             <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="Regist">
                 <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Hidden}"/>
@@ -26,7 +27,7 @@
                 <DiscreteObjectKeyFrame KeyTime="0:0:0.5" Value="{x:Static Visibility.Visible}"/>
             </ObjectAnimationUsingKeyFrames>
         </Storyboard>
-        
+
         <Storyboard x:Key="Storyboard2">
             <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="Log">
                 <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Hidden}"/>
@@ -41,7 +42,7 @@
                 <DiscreteObjectKeyFrame KeyTime="0:0:0.5" Value="{x:Static Visibility.Hidden}"/>
             </ObjectAnimationUsingKeyFrames>
         </Storyboard>
-        
+
     </Window.Resources>
     <Window.Triggers>
         <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="Regist">
@@ -66,16 +67,20 @@
                 <RowDefinition Height="0.8*"/>
                 <RowDefinition Height="0.2*"/>
             </Grid.RowDefinitions>
-            <Label Content="Войдите в свой акаунт" FontFamily="GOST type A" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="35"/>
+            <Label Content="Войдите в свой аккаунт" FontFamily="Geometria" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30"/>
             <!--<Label x:Name="Logo" Grid.Column="1" FontFamily="GOST type A" Grid.Row="0" Content="Мебель" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="100" FontStyle="Italic"/>-->
             <Image Margin="20,20,20,20" Grid.Column="1" Source="C:/Users/mi/Desktop/1/OOP/kyrsach/Kyrsach_Core/Kyrsach_Core/Images/logo.webp"/>
             <StackPanel Grid.Column="1" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical" Width="298">
-                <Label Content="Email или номер телефона" FontFamily="GOST type A" Foreground="DimGray" FontSize="20" Margin="0,0,0,5"/>
-                <TextBox x:Name="TextBox" Text="{Binding NameUser, Mode=TwoWay}" Height="30" BorderThickness="0, 0, 0, 2"/>
+                <Label Content="Email" FontFamily="Geometria" FontSize="20" Margin="0,0,0,5"/>
+                <TextBox materialDesign:HintAssist.Hint="qwrt@gmail.com" Height="30" FontFamily="Geometria" FontSize="15" x:Name="TextBox" Text="{Binding NameUser, Mode=TwoWay}" BorderThickness="0, 0, 0, 2" BorderBrush="Black"/>
             </StackPanel>
             <StackPanel Grid.Column="1" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical" Width="298">
-                <Label Content="Пароль" FontFamily="GOST type A" Foreground="DimGray" FontSize="20" Margin="0,0,0,5"/>
-                <Components:Passwords x:Name="PasswordUser" Height="30" Password="{Binding PasswordUser}"/>
+                <Label Content="Пароль" FontFamily="Geometria" FontSize="20" Margin="0,0,0,5"/>
+                <Components:Passwords Height="30" Password="{Binding PasswordUser}">
+                    <materialDesign:HintAssist.Hint>
+                        <TextBlock FontFamily="Geometria" FontSize="15">Dfyz1234</TextBlock>
+                    </materialDesign:HintAssist.Hint>
+                </Components:Passwords>
             </StackPanel>
             <Grid Grid.Column="1" Grid.Row="4">
                 <Grid.ColumnDefinitions>
