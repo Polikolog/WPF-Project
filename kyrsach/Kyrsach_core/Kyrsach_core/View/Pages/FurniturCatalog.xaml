@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Kyrsach_core.View.Pages"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="FurniturCatalog" Background="White">
@@ -18,7 +19,102 @@
                 </StackPanel>
             </Border>
         </DataTemplate>
+
+        <DataTemplate x:Key="But">
+            <Button Content="{Binding Category}" BorderBrush="Gray" Style="{StaticResource MaterialDesignRaisedDarkButton}" Padding="2" Background="White" ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Command="{Binding SortCategoryCommand}" CommandParameter="{Binding Category}"/>
+        </DataTemplate>
+
+        <Storyboard x:Key="Storyboard1">
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="Buttons">
+                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.4" Value="{x:Static Visibility.Hidden}"/>
+            </ObjectAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="ButPrice">
+                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Hidden}"/>
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.5" Value="{x:Static Visibility.Visible}"/>
+            </ObjectAnimationUsingKeyFrames>
+        </Storyboard>
+
+        <Storyboard x:Key="Storyboard2">
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="Buttons">
+                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Hidden}"/>
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.5" Value="{x:Static Visibility.Visible}"/>
+            </ObjectAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="ButPrice">
+                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.5" Value="{x:Static Visibility.Hidden}"/>
+            </ObjectAnimationUsingKeyFrames>
+        </Storyboard>
+
+        <Storyboard x:Key="Storyboard3">
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="Buttons">
+                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.4" Value="{x:Static Visibility.Hidden}"/>
+            </ObjectAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="ButSize">
+                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Hidden}"/>
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.5" Value="{x:Static Visibility.Visible}"/>
+            </ObjectAnimationUsingKeyFrames>
+        </Storyboard>
+
+        <Storyboard x:Key="Storyboard4">
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="Buttons">
+                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Hidden}"/>
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.5" Value="{x:Static Visibility.Visible}"/>
+            </ObjectAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="ButSize">
+                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.5" Value="{x:Static Visibility.Hidden}"/>
+            </ObjectAnimationUsingKeyFrames>
+        </Storyboard>
+
+        <Storyboard x:Key="Storyboard5">
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="Buttons">
+                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.4" Value="{x:Static Visibility.Hidden}"/>
+            </ObjectAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="ButCategories">
+                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Hidden}"/>
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.5" Value="{x:Static Visibility.Visible}"/>
+            </ObjectAnimationUsingKeyFrames>
+        </Storyboard>
+
+        <Storyboard x:Key="Storyboard6">
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="Buttons">
+                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Hidden}"/>
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.5" Value="{x:Static Visibility.Visible}"/>
+            </ObjectAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="ButCategories">
+                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.5" Value="{x:Static Visibility.Hidden}"/>
+            </ObjectAnimationUsingKeyFrames>
+        </Storyboard>
+        
     </Page.Resources>
+
+    <Page.Triggers>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="Price">
+            <BeginStoryboard Storyboard="{StaticResource Storyboard1}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="Back1">
+            <BeginStoryboard Storyboard="{StaticResource Storyboard2}"/>
+        </EventTrigger>
+        
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="Size">
+            <BeginStoryboard Storyboard="{StaticResource Storyboard3}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="Back2">
+            <BeginStoryboard Storyboard="{StaticResource Storyboard4}"/>
+        </EventTrigger>
+        
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="Categories">
+            <BeginStoryboard Storyboard="{StaticResource Storyboard5}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="Back3">
+            <BeginStoryboard Storyboard="{StaticResource Storyboard6}"/>
+        </EventTrigger>
+    </Page.Triggers>
+
     <Grid>
         <ScrollViewer VerticalScrollBarVisibility="Hidden">
             <Grid>
@@ -31,9 +127,68 @@
                     <TextBlock Text="{Binding SelectedFurnitureCatalog}" Style="{StaticResource tb}"/>
                     <TextBlock Margin="5,0" Text="{Binding CountFurniture}" Style="{StaticResource tb}" Foreground="LightGray"/>
                 </StackPanel>
-                <StackPanel Grid.Row="1">
-                    <Button Content="{Binding}" Style="{StaticResource HeaderButton}" Command="{Binding }"/>
-                    <Button Style="{StaticResource HeaderButton}" Command="{Binding}"/>
+                <StackPanel x:Name="Buttons" Grid.Row="1" Orientation="Horizontal" Visibility="Hidden">
+                    <Button Margin="10,0" BorderBrush="Gray" Style="{StaticResource MaterialDesignRaisedDarkButton}" Padding="2" Background="White" ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" x:Name="Categories" Height="40" VerticalAlignment="Center" Width="139" Foreground="Black" FontFamily="Geometria" FontWeight="Normal" FontSize="20">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Foreground="#4265a4" Kind="LayersTriple" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <TextBlock Text="Категории"/>
+                        </StackPanel>
+                    </Button>
+                    <Button Margin="10,0" BorderBrush="Gray" Style="{StaticResource MaterialDesignRaisedDarkButton}" Padding="2" Background="White" ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" x:Name="Price" Height="40" VerticalAlignment="Center" Width="82" Foreground="Black" FontFamily="Geometria" FontWeight="Normal" FontSize="20">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Foreground="#4265a4" Kind="Tag" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <TextBlock Text="Цена"/>
+                        </StackPanel>
+                    </Button>
+                    <Button Margin="10,0" BorderBrush="Gray" Style="{StaticResource MaterialDesignRaisedDarkButton}" Padding="2" Background="White" ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" x:Name="Size" Height="40" VerticalAlignment="Center" Width="121" Foreground="Black" FontFamily="Geometria" FontWeight="Normal" FontSize="20">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Foreground="#4265a4" HorizontalAlignment="Center" VerticalAlignment="Center" Kind="RulerSquare" />
+                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Размеры"/>
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+                <StackPanel x:Name="ButPrice" Orientation="Horizontal" Grid.Row="1" Visibility="Hidden">
+                    <Button Margin="10" x:Name="Back1" Style="{StaticResource HeaderButton}" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                        <materialDesign:PackIcon Foreground="#4265a4" Kind="ArrowULeftTopBold" />
+                    </Button>
+                    <Button Margin="10,5" BorderBrush="Gray" Style="{StaticResource MaterialDesignRaisedDarkButton}" Padding="2" Background="White" ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Command="{Binding SortLightPriceCommand}">
+                        <Image Source="C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_core\Kyrsach_core\Images\price1.jpg"/>
+                    </Button>
+                    <Button Margin="10,5" BorderBrush="Gray" Style="{StaticResource MaterialDesignRaisedDarkButton}" Padding="2" Background="White" ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Command="{Binding SortComfortPriceCommand}">
+                        <Image Source="C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_core\Kyrsach_core\Images\price2.jpg"/>
+                    </Button>
+                    <Button Margin="10,5" BorderBrush="Gray" Style="{StaticResource MaterialDesignRaisedDarkButton}" Padding="2" Background="White" ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Command="{Binding SortMediumPriceCommand}">
+                        <Image Source="C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_core\Kyrsach_core\Images\price3.jpg"/>
+                    </Button>
+                    <Button Margin="10,5" BorderBrush="Gray" Style="{StaticResource MaterialDesignRaisedDarkButton}" Padding="2" Background="White" ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Command="{Binding SortPremiumPriceCommand}">
+                        <Image Source="C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_core\Kyrsach_core\Images\price4.jpg"/>
+                    </Button>
+                </StackPanel>
+                <StackPanel x:Name="ButSize" Grid.Row="1" Visibility="Hidden" Orientation="Horizontal">
+                    <Button Margin="10" x:Name="Back2" Style="{StaticResource HeaderButton}" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                        <materialDesign:PackIcon Foreground="#4265a4" Kind="ArrowULeftTopBold" />
+                    </Button>
+                    <Button Margin="10,5" BorderBrush="Gray" Style="{StaticResource MaterialDesignRaisedDarkButton}" Padding="2" Background="White" ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Command="{Binding SortSmallSizeCommand}">
+                        <TextBlock Text="Маленький" Foreground="Black" FontWeight="Normal" Margin="5" FontFamily="Geometria"/>
+                    </Button>
+                    <Button Margin="10,5" BorderBrush="Gray" Style="{StaticResource MaterialDesignRaisedDarkButton}" Padding="2" Background="White" ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Command="{Binding SortMediumSizeCommand}">
+                        <TextBlock Text="Средний" Foreground="Black" FontWeight="Normal" Margin="5" FontFamily="Geometria"/>
+                    </Button>
+                    <Button Margin="10,5" BorderBrush="Gray" Style="{StaticResource MaterialDesignRaisedDarkButton}" Padding="2" Background="White" ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Command="{Binding SortLargeSizeCommand}">
+                        <TextBlock Text="Большой" Foreground="Black" FontWeight="Normal" Margin="5" FontFamily="Geometria"/>
+                    </Button>
+                </StackPanel>
+                <StackPanel x:Name="ButCategories" Orientation="Horizontal" Grid.Row="1" Visibility="Visible">
+                    <Button Margin="10" x:Name="Back3" Style="{StaticResource HeaderButton}" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                        <materialDesign:PackIcon Foreground="#4265a4" Kind="ArrowULeftTopBold" />
+                    </Button>
+                    <ListBox ItemsSource="{Binding CategoriesList}" SelectedItem="{Binding Categories}" ItemTemplate="{StaticResource But}">
+                        <ListBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel HorizontalAlignment="Left"/>
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
+                    </ListBox>
                 </StackPanel>
                 <ListBox Grid.Row="2" x:Name="ListBox" BorderThickness="0" ItemsSource="{Binding FurnitureList}" SelectedItem="{Binding SelectedFurniture}" ItemTemplate="{StaticResource ResourceKey=ListTemplate}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                     <ListBox.ItemsPanel>

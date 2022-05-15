@@ -50,12 +50,14 @@ namespace Kyrsach_core.ViewModel.PagesModel
                     DataWorker.DeleteFuritureInBasket(_furnitureInBasket);
                     FurnitureList.Remove(SelectedFurniture);
                     BasketList.FurnituresInBasket.Remove(SelectedFurniture);
+                    MainViewModel.CountFurnitureInBasket = 0;
                 }
                 else
                 {
                     DataWorker.DeleteFuritureInBasket();
                     FurnitureList.Clear();
                     BasketList.FurnituresInBasket.Clear();
+                    MainViewModel.CountFurnitureInBasket--;
                 }
             });
         }

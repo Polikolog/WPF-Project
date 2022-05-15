@@ -5,6 +5,7 @@ using Kyrsach_core.ViewModel.Other;
 using Kyrsach_core.ViewModel.PagesModel.Base;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,8 +26,11 @@ namespace Kyrsach_core.ViewModel.PagesModel
             Name = CurrentUser.getInstance().Name;
             Adress = CurrentUser.getInstance().Adress;
             Phone = CurrentUser.getInstance().Phone;
+
+            ViewedFurnitureList = CurrentUser.CheckFurniture;
         }
 
+        #region Свойства
         private string _image;
         public string Image
         {
@@ -55,7 +59,16 @@ namespace Kyrsach_core.ViewModel.PagesModel
             set => Set(ref _phone, value);
         }
 
+        private ObservableCollection<Furniture> _viewedFurnitureList;
+        public ObservableCollection<Furniture> ViewedFurnitureList
+        {
+            get => _viewedFurnitureList;
+            set => Set(ref _viewedFurnitureList, value);
+        }
 
+        #endregion
+
+        #region Команды
         private ICommand _changeImageCommand;
         public ICommand ChangeImageCommand
         {
@@ -67,6 +80,14 @@ namespace Kyrsach_core.ViewModel.PagesModel
             });
         }
 
-
+        private ICommand _changedUserCommand;
+        public ICommand ChangedUserCommand
+        {
+            get => _changedUserCommand ?? (_changedUserCommand = new ActionCommand(p => 
+            {
+                DataWorker.ChangedUserParametrs(Name, Adress, Phone);
+            }));
+        }
+        #endregion
     }
 }

@@ -11,12 +11,10 @@
     <None Remove="Images\Cros.png" />
     <None Remove="Images\Gost.jpg" />
     <None Remove="Images\header-logo.png" />
-    <None Remove="Images\header-logo.svg" />
     <None Remove="Images\IconMenu.jpg" />
     <None Remove="Images\LogMenu.png" />
     <None Remove="Images\logo.jpg" />
     <None Remove="Images\logo.webp" />
-    <None Remove="Images\menu.svg" />
   </ItemGroup>
 
   <ItemGroup>
@@ -47,9 +45,6 @@
     <Resource Include="Images\header-logo.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Images\header-logo.svg">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
     <Resource Include="Images\IconMenu.jpg">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
@@ -60,9 +55,6 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\logo.webp">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Images\menu.svg">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Buttons.xaml" />

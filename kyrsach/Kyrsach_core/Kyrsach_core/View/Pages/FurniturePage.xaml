@@ -3,27 +3,27 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:local="clr-namespace:Kyrsach_core.View.Pages"
       xmlns:ViewModal="clr-namespace:Kyrsach_core.ViewModel.PagesModel"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="FurniturePage" Background="white"
       x:Name="FurPage">
-    <!--d:DataContext="{d:DesignInstance Type=Kyrsach_Core:MainViewModel}">-->
     <Page.Resources>
-        
+
         <ControlTemplate TargetType="Button" x:Key="btTemplate">
             <Border CornerRadius="50" MaxHeight="50" MaxWidth="50" BorderThickness="2" Background="#f0f0f0">
                 <ContentControl HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </Border>
         </ControlTemplate>
-        
+
         <ControlTemplate TargetType="Button" x:Key="temp2">
             <Border CornerRadius="3" Background="red" BorderThickness="2" >
                 <ContentControl Content="В корзину" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="white" FontSize="16"/>
             </Border>
         </ControlTemplate>
-        
+
         <DataTemplate x:Key="ListTemplate">
             <Border Margin="10" Padding="5" Background="white" BorderBrush="WhiteSmoke" BorderThickness="2">
                 <StackPanel>
@@ -44,178 +44,183 @@
         </DataTemplate>
 
         <DataTemplate x:Key="UserTemplate">
-            <Border Background="White" BorderThickness="0,0,0,2" BorderBrush="Black" Margin="5">
+            <Border Background="White" Margin="5">
                 <StackPanel Orientation="Vertical">
-                    <Image Source="{Binding Image}" Width="50"/>
-                    <TextBlock Grid.Row="1" Text="{Binding Name}" Width="100"/>
+                    <materialDesign:Chip Content="{Binding Name}" Style="{StaticResource MaterialDesignOutlineChip}">
+                        <materialDesign:Chip.Icon>
+                            <Image Source="{Binding Image}" />
+                        </materialDesign:Chip.Icon>
+                    </materialDesign:Chip>
                 </StackPanel>
             </Border>
         </DataTemplate>
-        
+
     </Page.Resources>
     <Grid>
         <!--<ScrollViewer VerticalScrollBarVisibility="Hidden">-->
-            <Grid Margin="0,10,0,0">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="60"/>
-                    <RowDefinition Height="6*"/>
-                </Grid.RowDefinitions>
-                <Grid>
+        <Grid Margin="0,10,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="6*"/>
+            </Grid.RowDefinitions>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Button Style="{StaticResource HeaderButton}" Command="{Binding OpenPreviousPageCommand}">
+                    <Image Source="C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_Core\Kyrsach_Core\Images\back.png" Margin="10"/>
+                </Button>
+                <TextBlock Grid.Column="1" FontFamily="Geometria" Margin="0,10,0,10" Grid.Row="0" Text="{Binding currentViewModel.SelectedFurniture.Name}" FontSize="30"/>
+            </Grid>
+            <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Hidden">
+                <Grid Grid.Row="1">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="2*"/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <Button Style="{StaticResource HeaderButton}" Command="{Binding OpenPreviousPageCommand}">
-                        <Image Source="C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_Core\Kyrsach_Core\Images\back.png" Margin="10"/>
-                    </Button>
-                    <TextBlock Grid.Column="1" FontFamily="Geometria" Margin="0,10,0,10" Grid.Row="0" Text="{Binding currentViewModel.SelectedFurniture.Name}" FontSize="30"/>
-                </Grid>
-                <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Hidden">
-                    <Grid Grid.Row="1">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="2*"/>
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="4*"/>
-                                <RowDefinition Height="60"/>
-                                <RowDefinition/>
-                            </Grid.RowDefinitions>
-                            <Image Grid.Row="0" Source="{Binding currentViewModel.SelectedFurniture.Image}"/>
-                            <Grid Grid.Row="1">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition/>
-                                    <ColumnDefinition Width="3*"/>
-                                    <ColumnDefinition Width="0.5*"/>
-                                </Grid.ColumnDefinitions>
-                                <TextBlock Text="{Binding currentViewModel.SelectedFurniture.Rating}" Style="{StaticResource tb}" FontSize="30"/>
-                                <TextBox BorderThickness="1" x:Name="Comment" Grid.Column="1" Text="{Binding Comment}" Margin="0,5" VerticalAlignment="Center" FontFamily="Geometria" FontSize="20" BorderBrush="Black"/>
-                                <Button Grid.Column="2" Style="{StaticResource RegBut}" Command="{Binding AddCommentCommand}" CommandParameter="{Binding ElementName=Comment}" Cursor="Hand">
-                                    <Image Source="C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_core\Kyrsach_core\Images\Cros.png" Margin="15"/>
-                                </Button>
-                            </Grid>
-                            <Grid Grid.Row="2" Visibility="Hidden">
-                                <ListView x:Name="listcop" ItemsSource="{Binding SimilarFurniture}" SelectedItem="{Binding SelectedItem}" ItemTemplate="{StaticResource ResourceKey=ListTemplate}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-                                    <!--<ListBox.ItemsPanel>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="4*"/>
+                            <RowDefinition Height="60"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Image Grid.Row="0" Source="{Binding currentViewModel.SelectedFurniture.Image}"/>
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="3*"/>
+                                <ColumnDefinition Width="0.5*"/>
+                            </Grid.ColumnDefinitions>
+                            <!--<materialDesign:RatingBar VerticalAlignment="Center" x:Name="BasicRatingBar" Value="{Binding AddRating}" ValueChanged="BasicRatingBar_ValueChanged" />-->
+                            <TextBox materialDesign:HintAssist.Hint="Оставьте свой коментарий" TextWrapping="Wrap" MaxLength="100" materialDesign:TextFieldAssist.CharacterCounterVisibility="{Binding Path=IsChecked, ElementName=MaterialDesignFilledTextBoxTextCountComboBox, Converter={StaticResource BooleanToVisibilityConverter}}" materialDesign:HintAssist.HelperTextFontSize="16" x:Name="Comment" Grid.Column="1" Text="{Binding Comment}" Margin="5,5" VerticalAlignment="Center" FontFamily="Geometria" FontSize="20" BorderBrush="Black"/>
+                            <Button Grid.Column="2" Style="{StaticResource RegBut}" Command="{Binding AddCommentCommand}" CommandParameter="{Binding ElementName=Comment}" Cursor="Hand">
+                                <Image Source="C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_core\Kyrsach_core\Images\Cros.png" Margin="15"/>
+                            </Button>
+                        </Grid>
+                        <Grid Grid.Row="2" Visibility="Hidden">
+                            <ListView x:Name="listcop" ItemsSource="{Binding SimilarFurniture}" SelectedItem="{Binding SelectedItem}" ItemTemplate="{StaticResource ResourceKey=ListTemplate}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                                <!--<ListBox.ItemsPanel>
                                        <ItemsPanelTemplate>
                                            <WrapPanel HorizontalAlignment="Center"/>
                                        </ItemsPanelTemplate>
                                    </ListBox.ItemsPanel>-->
-                                </ListView>
-                            </Grid>
-                            <Grid Grid.Row="2">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="150"/>
-                                    <ColumnDefinition/>
-                                </Grid.ColumnDefinitions>
-                                <StackPanel Orientation="Vertical">
-                                    <ListView BorderThickness="0" Grid.Column="0" x:Name="UserReviews" ItemsSource="{Binding UsersList}" SelectedItem="{Binding SelectedUser}" ItemTemplate="{StaticResource ResourceKey=UserTemplate}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-                                        <ListBox.ItemsPanel>
-                                            <ItemsPanelTemplate>
-                                                <WrapPanel VerticalAlignment="Center"/>
-                                            </ItemsPanelTemplate>
-                                        </ListBox.ItemsPanel>
-                                    </ListView>
-                                </StackPanel>
-                            <StackPanel Grid.Column="1" Orientation="Vertical">
-                                <ListView BorderThickness="0" Grid.Column="1" x:Name="ListReviews" ItemsSource="{Binding ReviewsList}" SelectedItem="{Binding Review}" ItemTemplate="{StaticResource ResourceKey=CommentTemplate}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-                                        <ListBox.ItemsPanel>
-                                            <ItemsPanelTemplate>
-                                                <WrapPanel VerticalAlignment="Center" />
-                                            </ItemsPanelTemplate>
-                                        </ListBox.ItemsPanel>
-                                    </ListView>
-                                </StackPanel>
-                            </Grid>
+                            </ListView>
                         </Grid>
-                        <Grid Grid.Column="1">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="0.25*"/>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                            </Grid.RowDefinitions>
-                            <Grid Grid.Row="0">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition/>
-                                    <ColumnDefinition Width="2*"/>
-                                    <ColumnDefinition/>
-                                    <ColumnDefinition/>
-                                    <ColumnDefinition/>
-                                    <ColumnDefinition Width="2*"/>
-                                    <ColumnDefinition/>
-                                </Grid.ColumnDefinitions>
-                                <Button Background="White" BorderThickness="0" Grid.Column="1" Height="35" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="0,0,35,0" HorizontalAlignment="Right" Width="35" Command="{Binding currentViewModel.AddFurnitureInLike}" Style="{StaticResource HeaderButton}">
-                                    <Image Width="20" Height="20" Source="C:\Users\mi\Desktop\1\imageDataContext\heart.png"/>
-                                </Button>
-                                <Button Style="{StaticResource HeaderButton}" Height="35" Width="35" Grid.Column="5" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                    <Image Width="20" Source="C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_Core\Kyrsach_Core\Images\Comparison.png"/>
-                                </Button>
-                            </Grid>
-                            <Border Grid.Row="1" Margin="0,10,0,0" Background="#f9fafc" CornerRadius="20" >
-                                <Grid>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="70"/>
-                                        <RowDefinition Height="70"/>
-                                    </Grid.RowDefinitions>
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition/>
-                                            <ColumnDefinition/>
-                                        </Grid.ColumnDefinitions>
-                                        <StackPanel Grid.Column="0" Orientation="Horizontal">
-                                            <TextBlock FontFamily="Geometria" Margin="40,20, 5,20" FontSize="20" Text="{Binding currentViewModel.SelectedFurniture.Price}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                            <TextBlock Text="руб." HorizontalAlignment="Center" FontSize="20" VerticalAlignment="Center"/>
-                                        </StackPanel>
-                                        <Button x:Name="AddFurniture" Content="В корзину" FontSize="15" MaxHeight="40" MaxWidth="100" FontFamily="Geometria" Grid.Column="1" Margin="20,20" Command="{Binding currentViewModel.AddFunritureInBasketCommand}" Style="{StaticResource RegBut}"/>
-                                        <!--Template="{StaticResource temp2}"-->
-                                    </Grid>
-                                    <Grid Grid.Row="1">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition/>
-                                            <ColumnDefinition/>
-                                        </Grid.ColumnDefinitions>
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition/>
-                                            <RowDefinition/>
-                                        </Grid.RowDefinitions>
-                                        <TextBlock FontFamily="Geometria" FontSize="15" Text="Производитель" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,10"/>
-                                        <Image Source="{Binding currentViewModel.SelectedFurniture.ImageIcon}" Grid.Row="1"/>
-                                    </Grid>
-                                </Grid>
-                            </Border>
-                            <Border Margin="0,10,0,0" Grid.Row="2" Background="#f9fafc" CornerRadius="20">
+                        <Grid Grid.Row="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="150"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <ItemsControl Grid.ColumnSpan="2" ItemsSource="{Binding ReviewsList}" Grid.IsSharedSizeScope="True">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate DataType="{x:Type local:FurniturePage}">
+                                        <Border x:Name="Border" Padding="8" BorderThickness="0,0,0,1" BorderBrush="Black">
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition SharedSizeGroup="Checkerz" />
+                                                    <ColumnDefinition />
+                                                </Grid.ColumnDefinitions>
+                                                <materialDesign:Chip Content="{Binding User.Name}" Style="{StaticResource MaterialDesignOutlineChip}">
+                                                    <materialDesign:Chip.Icon>
+                                                        <Image Source="{Binding User.Image}" />
+                                                    </materialDesign:Chip.Icon>
+                                                </materialDesign:Chip>
+                                                <StackPanel Margin="8 0 0 0" Grid.Column="1">
+                                                    <TextBlock Text="{Binding Comment.Text}" FontWeight="Bold" TextWrapping="Wrap"/>
+                                                </StackPanel>
+                                            </Grid>
+                                        </Border>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </Grid>
+                    </Grid>
+                    <Grid Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="0.25*"/>
+                            <RowDefinition Height="1.2*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="0.1*"/>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <ToggleButton Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Content="{materialDesign:PackIcon Kind=Heart, Size=21}" Style="{StaticResource MaterialDesignFlatPrimaryToggleButton}" ToolTip="MaterialDesignFlatPrimaryToggleButton" IsChecked="False" Foreground="Red"/>
+                            <Button Style="{StaticResource HeaderButton}" Height="35" Width="35" Grid.Column="5" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <Image Width="20" Source="C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_Core\Kyrsach_Core\Images\Comparison.png"/>
+                            </Button>
+                        </Grid>
+                        <Border Grid.Row="1" Margin="0,10,0,0" Background="#f9fafc" CornerRadius="20" >
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="70"/>
+                                    <RowDefinition Height="120"/>
+                                </Grid.RowDefinitions>
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition/>
                                         <ColumnDefinition/>
                                     </Grid.ColumnDefinitions>
+                                    <StackPanel Grid.Column="0" Orientation="Horizontal">
+                                        <TextBlock FontFamily="Geometria" Margin="40,20, 5,20" FontSize="20" Text="{Binding currentViewModel.SelectedFurniture.Price}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        <TextBlock Text="руб." HorizontalAlignment="Center" FontSize="20" VerticalAlignment="Center"/>
+                                    </StackPanel>
+                                    <Button x:Name="AddFurniture" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="В корзину" Padding="0" FontSize="15" MaxHeight="40" MaxWidth="100" FontFamily="Geometria" Grid.Column="1" Command="{Binding currentViewModel.AddFunritureInBasketCommand}" Style="{StaticResource MaterialDesignRaisedButton}" Background="White" Foreground="Black" Height="32" BorderBrush="White" VerticalAlignment="Center" HorizontalAlignment="Center" Width="94"/>
+                                </Grid>
+                                <Grid Grid.Row="1">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
                                     <Grid.RowDefinitions>
-                                        <RowDefinition Height="2*"/>
-                                        <RowDefinition/>
-                                        <RowDefinition/>
-                                        <RowDefinition/>
                                         <RowDefinition/>
                                         <RowDefinition/>
                                     </Grid.RowDefinitions>
-                                    <TextBlock Text="Характеристики" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,10" FontFamily="Geometria" Grid.ColumnSpan="2"/>
-                                    <TextBlock Text="Категория"  FontFamily="Geometria" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,5" Grid.Row="1"/>
-                                    <TextBlock Grid.Column="1" Text="{Binding currentViewModel.SelectedFurniture.Type}" FontFamily="Geometria" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,5" Grid.Row="1"/>
-                                    <TextBlock Text="Высота" FontFamily="Geometria" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,5" Grid.Row="2"/>
-                                    <TextBlock Text="{Binding currentViewModel.SelectedFurniture.Height}" FontFamily="Geometria" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,5" Grid.Row="2" Grid.Column="1"/>
-                                    <TextBlock Text="Ширина" FontFamily="Geometria" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,5" Grid.Row="3"/>
-                                    <TextBlock Text="{Binding currentViewModel.SelectedFurniture.Width}" FontFamily="Geometria" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,5" Grid.Row="3" Grid.Column="1"/>
-                                    <TextBlock Text="Длина" FontFamily="Geometria" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,5" Grid.Row="4"/>
-                                    <TextBlock Text="{Binding currentViewModel.SelectedFurniture.Length}" FontFamily="Geometria" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,5" Grid.Row="4" Grid.Column="1"/>
-                                    <TextBlock Text="Цвет" FontFamily="Geometria" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,5" Grid.Row="5"/>
-                                    <TextBlock Text="{Binding currentViewModel.SelectedFurniture.Color}" FontFamily="Geometria" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,5" Grid.Row="5" Grid.Column="1"/>
+                                    <TextBlock Grid.Row="1" FontFamily="Geometria" FontSize="15" Text="Производитель" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    <TextBlock FontFamily="Geometria" FontSize="15" Text="Рейтинг" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    <materialDesign:RatingBar Grid.Column="1" VerticalAlignment="Center" x:Name="ReadOnlyRatingBar" Value="{Binding currentViewModel.SelectedFurniture.Rating}" IsReadOnly="True" />
+                                    <Image Source="{Binding currentViewModel.SelectedFurniture.ImageIcon}" Margin="5" Grid.Row="1" Grid.Column="1"/>
                                 </Grid>
-                            </Border>
-                        </Grid>
+                            </Grid>
+                        </Border>
+                        <Border Margin="0,10,0,10" Grid.Row="2" Background="#f9fafc" CornerRadius="20">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="2*"/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <TextBlock Text="Характеристики" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,10" FontFamily="Geometria" Grid.ColumnSpan="2"/>
+                                <TextBlock Text="Категория"  FontFamily="Geometria" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,5" Grid.Row="1"/>
+                                <TextBlock Grid.Column="1" Text="{Binding currentViewModel.SelectedFurniture.Type}" FontFamily="Geometria" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,5" Grid.Row="1"/>
+                                <TextBlock Text="Высота" FontFamily="Geometria" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,5" Grid.Row="2"/>
+                                <TextBlock Text="{Binding currentViewModel.SelectedFurniture.Height}" FontFamily="Geometria" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,5" Grid.Row="2" Grid.Column="1"/>
+                                <TextBlock Text="Ширина" FontFamily="Geometria" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,5" Grid.Row="3"/>
+                                <TextBlock Text="{Binding currentViewModel.SelectedFurniture.Width}" FontFamily="Geometria" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,5" Grid.Row="3" Grid.Column="1"/>
+                                <TextBlock Text="Длина" FontFamily="Geometria" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,5" Grid.Row="4"/>
+                                <TextBlock Text="{Binding currentViewModel.SelectedFurniture.Length}" FontFamily="Geometria" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,5" Grid.Row="4" Grid.Column="1"/>
+                                <TextBlock Text="Цвет" FontFamily="Geometria" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,5" Grid.Row="5"/>
+                                <TextBlock Text="{Binding currentViewModel.SelectedFurniture.Color}" FontFamily="Geometria" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,5" Grid.Row="5" Grid.Column="1"/>
+                            </Grid>
+                        </Border>
                     </Grid>
-                </ScrollViewer>
-            </Grid>
-        <!--</ScrollViewer>-->
+                </Grid>
+            </ScrollViewer>
+        </Grid>
     </Grid>
 </Page>

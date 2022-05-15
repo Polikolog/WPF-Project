@@ -132,8 +132,8 @@ namespace Kyrsach_core.ViewModel
         {
             get => _catalogСabinetsCommand ?? new ActionCommand((p) =>
             {
-                var o = p as Button;
-                FurnitureCatalog.DataContext = new CatalogViewModel(o.Content.ToString(), this);
+                var o = p as string;
+                FurnitureCatalog.DataContext = new CatalogViewModel(o, this);
                 CurrentPage = FurnitureCatalog;
                 PreviousPage.LastPage = FurnitureCatalog;
             });

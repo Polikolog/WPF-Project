@@ -7,9 +7,6 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="Components\ButtonMainPage.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Update="View\AdminPage\AdminPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -60,9 +57,6 @@
     <Resource Update="Resources\Buttons.xaml">
       <SubType>Designer</SubType>
     </Resource>
-    <Page Update="Components\ButtonMainPage.xaml">
-      <SubType>Designer</SubType>
-    </Page>
     <Page Update="Resources\ElemetList.xaml">
       <SubType>Designer</SubType>
     </Page>

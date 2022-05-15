@@ -54,7 +54,7 @@
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
                     <Button Grid.Column="1" Style="{StaticResource HeaderButton}" Background="White" Margin="0,0,0,5" Content="Заказать" HorizontalAlignment="Center" Width="206" Height="70" VerticalAlignment="Center" FontFamily="Geometria" FontSize="30" Command="{Binding AddOrderCommand}"/>
-                    <Button Style="{StaticResource btCatalog}" Content="Удалить выбранный товар" FontSize="15" Margin="35,20" Command="{Binding DeletFurnitureCommand}"/>
+                    <Button Style="{StaticResource btCatalog}" Content="Удалить выбранный товар" FontSize="15" Margin="35,20" Command="{Binding DeleteFurnitureCommand}"/>
                 </Grid>
             </Grid>
         </ScrollViewer>

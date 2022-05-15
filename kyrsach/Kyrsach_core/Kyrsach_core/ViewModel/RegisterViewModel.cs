@@ -69,6 +69,7 @@ namespace Kyrsach_core.ViewModel
                 if (DataWorker.GetUser(_nameUser, _passwordUser))
                 {
                     MainWindow mw = new MainWindow();
+                    mw.DataContext = new MainViewModel();
                     mw.Show();
                     Application.Current.MainWindow.Hide();
                 }

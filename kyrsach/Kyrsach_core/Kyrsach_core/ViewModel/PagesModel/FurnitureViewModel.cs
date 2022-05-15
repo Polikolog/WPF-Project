@@ -1,8 +1,10 @@
 ﻿using Kyrsach_core.Infrastructur;
 using Kyrsach_core.Infrastructur.Base;
 using Kyrsach_core.Model;
+using Kyrsach_core.Model.Other;
 using Kyrsach_core.ViewModel.PagesModel.Base;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -20,17 +22,10 @@ namespace Kyrsach_core.ViewModel.PagesModel
             mainViewModel = basepage.MainViewModel;
 
             ReviewsList = DataWorker.GetComments(currentViewModel.SelectedFurniture);
-            UsersList = DataWorker.GetUsers(currentViewModel.SelectedFurniture);
+            //UsersList = DataWorker.GetUsers(currentViewModel.SelectedFurniture);
         }
 
         #region Свойтсва
-
-        private int width;
-        public int Width
-        {
-            get { return width; }
-            set => Set(ref width, value);
-        }
 
         private string _comment;
         public string Comment
@@ -39,32 +34,29 @@ namespace Kyrsach_core.ViewModel.PagesModel
             set => Set(ref _comment, value);
         }
 
-        private ObservableCollection<Comment> _reviewsList;
-        public ObservableCollection<Comment> ReviewsList
+        private int _rating;
+        public int AddRating
+        {
+            get => _rating;
+            set 
+            { 
+                Set(ref _rating, value);
+                DataWorker.UpdateRating(value, currentViewModel.SelectedFurniture);
+            }
+        }
+
+        private ObservableCollection<UserComment> _reviewsList;
+        public ObservableCollection<UserComment> ReviewsList
         {
             get => _reviewsList;
             set => Set(ref _reviewsList, value);
         }
 
-        private Comment _review;
-        public Comment Review
+        private UserComment _review;
+        public UserComment Review
         {
             get => _review;
             set => Set(ref _review, value);
-        }
-
-        private User _selectedUser;
-        public User SelectedUser
-        {
-            get => _selectedUser;
-            set => Set(ref _selectedUser, value);
-        }
-
-        private ObservableCollection<User> _usersList;
-        public ObservableCollection<User> UsersList
-        {
-            get => _usersList;
-            set => Set(ref _usersList, value);
         }
         #endregion
 
@@ -78,7 +70,7 @@ namespace Kyrsach_core.ViewModel.PagesModel
                 {
                     DataWorker.CreateComment(Comment, currentViewModel.SelectedFurniture);
                     ReviewsList = DataWorker.GetComments(currentViewModel.SelectedFurniture);
-                    UsersList = DataWorker.GetUsers(currentViewModel.SelectedFurniture);
+                    //UsersList = DataWorker.GetUsers(currentViewModel.SelectedFurniture);
                     Comment = null;
                 }
                 else

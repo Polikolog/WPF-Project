@@ -28,8 +28,8 @@
             <RowDefinition Height="*"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Button x:Name="ImageBut" Template="{StaticResource cur}" Command="{Binding ChangeImageCommand}" CommandParameter="{Binding ElementName=ImageBut}" Height="225" VerticalAlignment="Center" HorizontalAlignment="Left" Width="400">
-            <Image Source="{Binding Image}"/>
+        <Button x:Name="ImageBut" Style="{StaticResource HeaderButton}" Command="{Binding ChangeImageCommand}" CommandParameter="{Binding ElementName=ImageBut}" Height="225" VerticalAlignment="Center" HorizontalAlignment="Center" Width="400">
+            <Image HorizontalAlignment="Left" VerticalAlignment="Top" Height="150" Source="{Binding Image}"/>
         </Button>
         <Grid Grid.Column="1">
             <Grid.ColumnDefinitions>
@@ -40,13 +40,15 @@
                 <RowDefinition/>
                 <RowDefinition/>
                 <RowDefinition/>
+                <RowDefinition/>
             </Grid.RowDefinitions>
             <Label Content="Имя" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Geometria" FontSize="20" BorderThickness="0,0,0,1" BorderBrush="Black"/>
-            <TextBox Width="300" Margin="0,20" Grid.Column="1" Text="{Binding Name}" HorizontalAlignment="Center" FontFamily="Geometria" FontSize="20" BorderThickness="0,0,0,1" BorderBrush="Black"/>
+            <TextBox VerticalAlignment="Center" Height="35" Width="300" Margin="0,20" Grid.Column="1" Text="{Binding Name}" HorizontalAlignment="Center" FontFamily="Geometria" FontSize="20" BorderThickness="0,0,0,1" BorderBrush="Black"/>
             <Label Grid.Row="1" Content="Адресс" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Geometria" FontSize="20" BorderThickness="0,0,0,1" BorderBrush="Black"/>
-            <TextBox Width="300" Margin="0,20"  Grid.Column="1" HorizontalAlignment="Center" FontFamily="Geometria" FontSize="20" Grid.Row="1" Text="{Binding Adress}" BorderThickness="0,0,0,1" BorderBrush="Black"/>
+            <TextBox VerticalAlignment="Center" Height="35" Width="300" Margin="0,20"  Grid.Column="1" HorizontalAlignment="Center" FontFamily="Geometria" FontSize="20" Grid.Row="1" Text="{Binding Adress}" BorderThickness="0,0,0,1" BorderBrush="Black"/>
             <Label Grid.Row="2" Content="Номер" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Geometria" FontSize="20" BorderThickness="0,0,0,1" BorderBrush="Black"/>
-            <TextBox Width="300" Margin="0,20" Grid.Column="1" HorizontalAlignment="Center" FontFamily="Geometria" FontSize="20" Grid.Row="2" Text="{Binding Phone}"  BorderThickness="0,0,0,1" BorderBrush="Black"/>
+            <TextBox VerticalAlignment="Center" Height="35" Width="300" Margin="0,20" Grid.Column="1" HorizontalAlignment="Center" FontFamily="Geometria" FontSize="20" Grid.Row="2" Text="{Binding Phone}"  BorderThickness="0,0,0,1" BorderBrush="Black"/>
+            <Button Grid.ColumnSpan="2" Grid.Row="3" Content="Сохранить изменения" HorizontalAlignment="Center" VerticalAlignment="Center" Width="250" Height="40" Style="{StaticResource HeaderButton}" Command="{Binding ChangedUserCommand}"/>
         </Grid>
         <Grid Margin="0, 20,0,10" Grid.Row="1" Grid.ColumnSpan="2">
             <Grid.RowDefinitions>
