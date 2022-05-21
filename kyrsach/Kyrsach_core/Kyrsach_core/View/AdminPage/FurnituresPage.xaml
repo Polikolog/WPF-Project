@@ -9,6 +9,8 @@
       Title="FurnituresPage" Background="White">
 
     <Grid>
-        
+        <DataGrid ItemsSource="{Binding FurnitureList}" CanUserAddRows="False" SelectionUnit="Cell" SelectionMode="Extended">
+            
+        </DataGrid>
     </Grid>
 </Page>

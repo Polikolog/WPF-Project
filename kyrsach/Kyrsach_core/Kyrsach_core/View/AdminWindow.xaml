@@ -4,31 +4,62 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Kyrsach_core.View"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="AdminWindow" MinHeight="768" Width="1366">
+        Title="AdminWindow" MinHeight="768" Width="1366" WindowStartupLocation="CenterScreen">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="215"/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <Grid Grid.Column="0">
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            <Button Grid.Row="0" Content="Мебель" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" Style="{StaticResource HeaderButton}"/>
-            <Button Grid.Row="1" Content="Пользователи" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" Style="{StaticResource HeaderButton}"/>
-            <Button Grid.Row="2" Content="Заказы" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" Style="{StaticResource HeaderButton}"/>
-            <Button Grid.Row="3" Content="Коментарии" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" Style="{StaticResource HeaderButton}"/>
-            <Button Grid.Row="4" Style="{StaticResource HeaderButton}"/>
-            <Button Grid.Row="5" Style="{StaticResource HeaderButton}"/>
-        </Grid>
-        <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Hidden">
-            <Frame Content="{Binding CurrentPage}" NavigationUIVisibility="Hidden"/>
-        </ScrollViewer>
+        <materialDesign:DrawerHost x:Name="DrawerHost" BottomDrawerBackground="{DynamicResource SecondaryHueLightBrush}">
+            <materialDesign:DrawerHost.Style>
+                <Style TargetType="materialDesign:DrawerHost" BasedOn="{StaticResource {x:Type materialDesign:DrawerHost}}">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsChecked, ElementName=BackgroundToggle}" Value="True">
+                            <Setter Property="OverlayBackground" Value="{DynamicResource PrimaryHueMidBrush}" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </materialDesign:DrawerHost.Style>
+            <materialDesign:DrawerHost.LeftDrawerContent>
+                <Grid Grid.Column="0" Background="White">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Button Command="{x:Static materialDesign:DrawerHost.CloseDrawerCommand}" CommandParameter="{x:Static Dock.Left}" Style="{StaticResource MaterialDesignFlatButton}" Height="60">
+                        <materialDesign:PackIcon Kind="Backburger" Width="50" Height="50" Foreground="Black"/>
+                    </Button>
+                    <Button Grid.Row="1" Content="Мебель" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" Style="{StaticResource HeaderButton}"/>
+                    <Button Grid.Row="2" Content="Пользователи" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" Style="{StaticResource HeaderButton}"/>
+                    <Button Grid.Row="3" Content="Заказы" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" Style="{StaticResource HeaderButton}"/>
+                    <Button Grid.Row="4" Content="Коментарии" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" Style="{StaticResource HeaderButton}"/>
+                    <Button Grid.Row="5" Style="{StaticResource HeaderButton}"/>
+                    <Button Grid.Row="6" Style="{StaticResource HeaderButton}"/>
+                </Grid>
+            </materialDesign:DrawerHost.LeftDrawerContent>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="100"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Button FontSize="30" BorderBrush="Black" HorizontalAlignment="Left" Margin="5,0" Command="{x:Static materialDesign:DrawerHost.OpenDrawerCommand}" CommandParameter="{x:Static Dock.Left}" Grid.Row="0" Grid.Column="0" Width="90" Height="90" Background="White" Foreground="Black">
+                        <materialDesign:PackIcon Kind="Menu" Width="70" Height="70" HorizontalAlignment="Center"/>
+                    </Button>
+                    <TextBlock Grid.Column="1" Text="Админка" Style="{StaticResource tb}" FontSize="50" FontWeight="Bold"/>
+                </Grid>
+                <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Hidden">
+                    <Frame Content="{Binding CurrentPage}" NavigationUIVisibility="Hidden"/>
+                </ScrollViewer>
+            </Grid>
+        </materialDesign:DrawerHost>
     </Grid>
+
 </Window>

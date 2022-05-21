@@ -7,6 +7,7 @@ using System.Windows.Input;
 using Kyrsach_core.Infrastructur;
 using System.Windows;
 using Kyrsach_core.ViewModel.PagesModel;
+using Kyrsach_core.View;
 
 namespace Kyrsach_core.ViewModel
 {
@@ -14,14 +15,18 @@ namespace Kyrsach_core.ViewModel
     {
 
         #region Поля
-        FurniturCatalog FurnitureCatalog = new FurniturCatalog();
+        private UnitOfWork unitOfWork;
+        private Page FurnitureCatalog = new FurniturCatalog();
         private Page MainPage = new MainPage();
         private Page BasketPage = new BasketPage();
         private Page LikePage = new LikePage();
         private Page ProfilePage = new ProfilePage();
+        private Page ComparisonPage = new Comparison();
+        private Page TypeCategoriesPage = new TypeCategoriesPage();
         #endregion
 
         #region Свойства
+        public UnitOfWork db { get => unitOfWork; }
 
         //Текущая страница
         private Page currentPage;
@@ -168,13 +173,36 @@ namespace Kyrsach_core.ViewModel
         {
             get => _openProfileCommand ?? new ActionCommand((p) =>
             {
-                ProfilePage.DataContext = new ProfileViewModel(this);
+                var o = p as MainWindow;
+                ProfilePage.DataContext = new ProfileViewModel(this, ref o);
                 CurrentPage = ProfilePage;
                 PreviousPage.LastPage = ProfilePage;
             });
 
         }
 
+        //Открытие страницы сравнения
+        private ICommand _openComparisonCommand;
+        public ICommand OpenComparisonCommand
+        {
+            get => _openComparisonCommand ?? (_openComparisonCommand = new ActionCommand(p =>
+            {
+                ComparisonPage.DataContext = new ComparisonViewModel();
+                CurrentPage = ComparisonPage;
+            }));
+        }
+
+        //Открытие каталога категорий
+        private ICommand _openTypeCategoriesCommand;
+        public ICommand OpenTypeCategoriesCommand
+        {
+            get => _openTypeCategoriesCommand ?? (_openTypeCategoriesCommand = new ActionCommand( p =>
+            {
+                TypeCategoriesPage.DataContext = new TypeCategoriesViewModel(this);
+                CurrentPage = TypeCategoriesPage;
+                PreviousPage.LastPage = TypeCategoriesPage;
+            }));
+        }
         #endregion
     }
 }

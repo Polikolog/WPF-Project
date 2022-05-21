@@ -1,5 +1,6 @@
 ﻿using Kyrsach_core.Infrastructur;
 using Kyrsach_core.Model;
+using Kyrsach_core.View;
 using Kyrsach_core.View.Other;
 using Kyrsach_core.ViewModel.Other;
 using Kyrsach_core.ViewModel.PagesModel.Base;
@@ -9,6 +10,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
@@ -18,9 +20,12 @@ namespace Kyrsach_core.ViewModel.PagesModel
     {
         private QuestionWindow QWindow = new QuestionWindow();
         private MainViewModel mainViewModel = new MainViewModel();
+        private Window mainwin;
 
-        public ProfileViewModel(MainViewModel mainViewModel)
+        public ProfileViewModel(MainViewModel mainViewModel, ref MainWindow win)
         {
+            mainwin = win;
+
             this.mainViewModel = mainViewModel;
             Image = CurrentUser.getInstance().Image;
             Name = CurrentUser.getInstance().Name;
@@ -86,6 +91,16 @@ namespace Kyrsach_core.ViewModel.PagesModel
             get => _changedUserCommand ?? (_changedUserCommand = new ActionCommand(p => 
             {
                 DataWorker.ChangedUserParametrs(Name, Adress, Phone);
+            }));
+        }
+
+        private ICommand _exitCommand;
+        public ICommand ExitCommand
+        {
+            get => _exitCommand ?? (_exitCommand = new ActionCommand(p =>
+            {
+                mainwin.Close();
+                App.Current.MainWindow.Show();
             }));
         }
         #endregion

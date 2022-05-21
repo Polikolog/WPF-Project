@@ -34,6 +34,9 @@
     <Compile Update="View\Pages\BasketPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="View\Pages\Comparison.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="View\Pages\FurniturCatalog.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -50,6 +53,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="View\Pages\RegisterPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\Pages\TypeCategoriesPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -87,6 +93,9 @@
     <Page Update="View\Pages\BasketPage.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="View\Pages\Comparison.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="View\Pages\FurniturCatalog.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -103,6 +112,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\Pages\RegisterPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\Pages\TypeCategoriesPage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\Register.xaml">

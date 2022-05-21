@@ -21,7 +21,9 @@
         </DataTemplate>
 
         <DataTemplate x:Key="But">
-            <Button Content="{Binding Category}" BorderBrush="Gray" Style="{StaticResource MaterialDesignRaisedDarkButton}" Padding="2" Background="White" ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Command="{Binding SortCategoryCommand}" CommandParameter="{Binding Category}"/>
+            <Border Background="white" BorderThickness="0">
+                <Button Content="{Binding Category}"  Margin="10,0" BorderBrush="Gray" Style="{StaticResource MaterialDesignRaisedDarkButton}" Padding="2" Background="White" ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" x:Name="Size" Height="40" VerticalAlignment="Center" Width="121" Foreground="Black" FontFamily="Geometria" FontWeight="Normal" FontSize="20" Command="{Binding SortCategoriesCommand}" CommandParameter="{Binding Category}"/>
+            </Border>
         </DataTemplate>
 
         <Storyboard x:Key="Storyboard1">
@@ -127,7 +129,7 @@
                     <TextBlock Text="{Binding SelectedFurnitureCatalog}" Style="{StaticResource tb}"/>
                     <TextBlock Margin="5,0" Text="{Binding CountFurniture}" Style="{StaticResource tb}" Foreground="LightGray"/>
                 </StackPanel>
-                <StackPanel x:Name="Buttons" Grid.Row="1" Orientation="Horizontal" Visibility="Hidden">
+                <StackPanel x:Name="Buttons" Grid.Row="1" Orientation="Horizontal" Visibility="Visible">
                     <Button Margin="10,0" BorderBrush="Gray" Style="{StaticResource MaterialDesignRaisedDarkButton}" Padding="2" Background="White" ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" x:Name="Categories" Height="40" VerticalAlignment="Center" Width="139" Foreground="Black" FontFamily="Geometria" FontWeight="Normal" FontSize="20">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Foreground="#4265a4" Kind="LayersTriple" HorizontalAlignment="Center" VerticalAlignment="Center"/>
@@ -144,6 +146,12 @@
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Foreground="#4265a4" HorizontalAlignment="Center" VerticalAlignment="Center" Kind="RulerSquare" />
                             <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Размеры"/>
+                        </StackPanel>
+                    </Button>
+                    <Button  Margin="10,0" BorderBrush="Gray" Style="{StaticResource MaterialDesignRaisedDarkButton}" Padding="2" Background="White" ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Height="40" VerticalAlignment="Center" Width="165" Foreground="Black" FontFamily="Geometria" FontWeight="Normal" FontSize="20" Command="{Binding ReloadListCommand}">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Reload" Foreground="#4265a4" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <TextBlock Text="Без филтров" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </StackPanel>
                     </Button>
                 </StackPanel>
@@ -178,11 +186,11 @@
                         <TextBlock Text="Большой" Foreground="Black" FontWeight="Normal" Margin="5" FontFamily="Geometria"/>
                     </Button>
                 </StackPanel>
-                <StackPanel x:Name="ButCategories" Orientation="Horizontal" Grid.Row="1" Visibility="Visible">
+                <StackPanel x:Name="ButCategories" Orientation="Horizontal" Grid.Row="1" Visibility="Hidden">
                     <Button Margin="10" x:Name="Back3" Style="{StaticResource HeaderButton}" HorizontalAlignment="Center" VerticalAlignment="Center" >
                         <materialDesign:PackIcon Foreground="#4265a4" Kind="ArrowULeftTopBold" />
                     </Button>
-                    <ListBox ItemsSource="{Binding CategoriesList}" SelectedItem="{Binding Categories}" ItemTemplate="{StaticResource But}">
+                    <ListBox ItemsSource="{Binding CategoriesList}" SelectedItem="{Binding Categories}" ItemTemplate="{StaticResource ResourceKey=But}">
                         <ListBox.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <WrapPanel HorizontalAlignment="Left"/>

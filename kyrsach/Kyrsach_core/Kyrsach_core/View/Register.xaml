@@ -8,8 +8,11 @@
         xmlns:ViewModel="clr-namespace:Kyrsach_core.ViewModel"
         xmlns:Components="clr-namespace:Kyrsach_core.Components"
         mc:Ignorable="d" x:Name="RegisterWindow"
-        Title="Reg" Height="600" Width="600">
-    
+        Title="Reg" Height="600" Width="600"
+        WindowStartupLocation="CenterScreen">
+
+    <!--xmlns:Valid="clr-namespace:Kyrsach_core.Model.Validation"-->
+
     <Window.DataContext>
         <ViewModel:RegisterViewModel/>
     </Window.DataContext>
@@ -72,7 +75,15 @@
             <Image Margin="20,20,20,20" Grid.Column="1" Source="C:/Users/mi/Desktop/1/OOP/kyrsach/Kyrsach_Core/Kyrsach_Core/Images/logo.webp"/>
             <StackPanel Grid.Column="1" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical" Width="298">
                 <Label Content="Email" FontFamily="Geometria" FontSize="20" Margin="0,0,0,5"/>
-                <TextBox materialDesign:HintAssist.Hint="qwrt@gmail.com" Height="30" FontFamily="Geometria" FontSize="15" x:Name="TextBox" Text="{Binding NameUser, Mode=TwoWay}" BorderThickness="0, 0, 0, 2" BorderBrush="Black"/>
+                <TextBox materialDesign:HintAssist.Hint="qwrt@gmail.com" Height="30" FontFamily="Geometria" FontSize="15" x:Name="TextBox" BorderThickness="0, 0, 0, 2" BorderBrush="Black" Text="{Binding NameUser}">
+                    <!--<TextBox.Text>
+                        <Binding Path="NameUser" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <Valid:InputValidationRule ErrorMessage="Введите сумму"/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>-->
+                </TextBox>
             </StackPanel>
             <StackPanel Grid.Column="1" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical" Width="298">
                 <Label Content="Пароль" FontFamily="Geometria" FontSize="20" Margin="0,0,0,5"/>
@@ -118,22 +129,22 @@
             <Label Grid.Column="1" FontFamily="GOST type A" Grid.Row="0" Content="Мебель" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="100" FontStyle="Italic"/>
             <StackPanel Grid.Column="1" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical" Width="298">
                 <Label Content="Email или номер телефона" FontFamily="GOST type A" Foreground="DimGray" FontSize="20" Margin="0,0,0,5"/>
-                <TextBox x:Name="RegText" Text="{Binding NameUser, Mode=TwoWay}" Height="30" BorderThickness="0, 0, 0, 2"/>
+                <TextBox x:Name="RegText" Text="{Binding NameUserReg, Mode=TwoWay}" Height="30" BorderThickness="0, 0, 0, 2" BorderBrush="Black"/>
             </StackPanel>
             <StackPanel Grid.Column="1" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical" Width="298">
                 <Label Content="Пароль" FontFamily="GOST type A" Foreground="DimGray" FontSize="20" Margin="0,0,0,5"/>
-                <Components:Passwords x:Name="RegPassword" Height="30" Password="{Binding PasswordUser}"/>
+                <Components:Passwords x:Name="RegPassword" Height="30" Password="{Binding PasswordUserReg}"/>
             </StackPanel>
             <StackPanel Grid.Row="4" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical" Width="298">
                 <Label Content="Адресс"  FontFamily="GOST type A" Foreground="DimGray" FontSize="20" Margin="0,0,0,5"/>
-                <TextBox x:Name="Adress" Text="{Binding UserAdress, Mode=TwoWay}" Height="30" BorderThickness="0,0,0,2" />
+                <TextBox x:Name="Adress" Text="{Binding UserAdress, Mode=TwoWay}" Height="30" BorderThickness="0,0,0,2" BorderBrush="Black"/>
             </StackPanel>
             <StackPanel Grid.Row="5" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical" Width="298">
                 <Label Content="Номер телефона"  FontFamily="GOST type A" Foreground="DimGray" FontSize="20" Margin="0,0,0,5"/>
-                <TextBox x:Name="Num" Text="{Binding UserNum, Mode=TwoWay}" Height="30" BorderThickness="0,0,0,2" />
+                <TextBox x:Name="Num" Text="{Binding UserNum, Mode=TwoWay}" Height="30" BorderThickness="0,0,0,2" BorderBrush="Black"/>
             </StackPanel>
             <StackPanel Grid.Row="6" Grid.Column="1" HorizontalAlignment="Center" Margin="0,10,0,5" Orientation="Vertical" Width="380">
-                <Button x:Name="Reg" FontFamily="GOST type A" Width="200" Height="50" Content="Зарегистрироваться" FontSize="30" BorderThickness="0" Command="{Binding RegisterUserCommand}" CommandParameter="{Binding ElementName=Label2}" Cursor="Hand" Template="{StaticResource regstr}"/>
+                <Button x:Name="Reg" FontFamily="GOST type A" Width="200" Height="50" Content="Зарегистрироваться" FontSize="30" BorderThickness="0"  Command="{Binding RegisterUserCommand}" CommandParameter="{Binding ElementName=Label2}" Cursor="Hand" Template="{StaticResource regstr}"/>
             </StackPanel>
         </Grid>
     </Grid>

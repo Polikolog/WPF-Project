@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text.RegularExpressions;
+using Kyrsach_core.Infrastructur;
 using Kyrsach_core.Model.Base;
 using Kyrsach_core.Model.Other;
 using Microsoft.AspNet.Identity;
@@ -17,6 +18,7 @@ namespace Kyrsach_core.Model
 {
     public static class DataWorker
     {
+        private static UnitOfWork db = new UnitOfWork();
         private static IPasswordHasher passwordHasher = new PasswordHasher();
 
         //Добавление пользователя
@@ -28,11 +30,11 @@ namespace Kyrsach_core.Model
                 {
                     string pass = passwordHasher.HashPassword(PasswordUser);
                     db.Users.Add(new User { Name = NameUser, Password = pass, Adress = Adress, Phone = Num, IsAdmin = false, Image = "C:\\Users\\mi\\Desktop\\1\\imageDataContext\\Profile.jpg" });
-                    db.SaveChanges();
+                    //db.SaveChanges();
 
                     db.Likes.Add(new Like { UserID = db.Users.OrderBy(p => p.ID).LastOrDefault().ID });
                     db.Baskets.Add(new Basket { Price = null, OrderCompleted = null, UserID = db.Users.OrderBy(p => p.ID).LastOrDefault().ID });
-                    db.SaveChanges();
+                    //db.SaveChanges();
 
                     return true;
                 }
@@ -48,11 +50,14 @@ namespace Kyrsach_core.Model
             {
                 if (phone == null)
                 {
-                    PasswordVerificationResult ver = passwordHasher.VerifyHashedPassword(db.Users.Where(u => u.Name == name).FirstOrDefault().Password, password);
-                    if (ver == PasswordVerificationResult.Success)
+                    PasswordVerificationResult ver = passwordHasher.VerifyHashedPassword(db.Users.FirstOrDefault(u => u.Name == name).Password, password);
+                    if(ver == PasswordVerificationResult.Success)
                     {
-                        CurrentUser.setInstance(db.Users.Where(u => u.Name == name).First());
-                        return true;
+                        CurrentUser.setInstance(db.Users.FirstOrDefault(u => u.Name == name));
+                        if(CurrentUser.getInstance() != null)
+                            return true;
+                        else
+                            return false;
                     }
                     else
                         return false;
@@ -149,7 +154,16 @@ namespace Kyrsach_core.Model
             using (var db = new ApplicationContext())
             {
                 var list = new ObservableCollection<Categories>();
-                db.Furnitures.Where(f => f.Type == type).ToList().ForEach(f => list.Add(new Categories { Category = f.Category }));
+                db.Furnitures.Where(f => f.Type == type).ToList().ForEach(f =>
+                {
+                    if (list.Count > 0)
+                    {
+                        if (list.Where(l => l.Category == f.Category).ToList().Count <= 0)
+                            list.Add(new Categories { Category = f.Category });
+                    }
+                    else
+                        list.Add(new Categories { Category = f.Category });
+                });
                 return list;
             }
         }

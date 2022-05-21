@@ -16,25 +16,34 @@ namespace Kyrsach_core.ViewModel.PagesModel
     {
         private ObservableCollection<Furniture> List = new ObservableCollection<Furniture>();
 
-        public CatalogViewModel(string type, MainViewModel page)
+        public CatalogViewModel( string type, MainViewModel page, string Category = null)
         {
             MainViewModel = page;
 
             SelectedFurnitureCatalog = type;
 
             CountFurniture = DataWorker.CountFurniturСertainType(type).ToString() + " модели";
-
             List = DataWorker.GetFurniturе(type);
-            FurnitureList = List;
-
             CategoriesList = DataWorker.GetCategories(type);
+            if (Category == null)
+            { 
+                FurnitureList = List;
+            }
+            else
+            {
+                ObservableCollection<Furniture> list = new ObservableCollection<Furniture>();
+                List.Where(f => f.Category == Category).ToList().ForEach(f => list.Add(f));
+                FurnitureList = list;
+                CountFurniture += "     Категория " + Category;
+            }
         }
 
         public CatalogViewModel(string type, ObservableCollection<Furniture> list, MainViewModel main)
         {
             MainViewModel = main;
             SelectedFurnitureCatalog = type;
-            CountFurniture = list.Count.ToString() + " найдено совпадений"; 
+            CountFurniture = list.Count.ToString() + " найдено совпадений";
+            List = list;
             FurnitureList = list;
         }
 
@@ -171,6 +180,15 @@ namespace Kyrsach_core.ViewModel.PagesModel
             }));
         }
         #endregion
+
+        private ICommand _reloadListCommand;
+        public ICommand ReloadListCommand
+        {
+            get => _reloadListCommand ?? (_reloadListCommand = new ActionCommand( p =>
+            {
+                FurnitureList = List;
+            }));
+        }
 
         #endregion
 

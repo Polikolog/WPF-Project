@@ -93,3 +93,10 @@ C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_core\Kyrsach_core\obj\Release\net6.0-w
 C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_core\Kyrsach_core\obj\Release\net6.0-windows\View\AdminWindow.baml
 C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_core\Kyrsach_core\obj\Release\net6.0-windows\View\AdminPage\AdminPage.g.cs
 C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_core\Kyrsach_core\obj\Release\net6.0-windows\View\AdminPage\AdminPage.baml
+C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_core\Kyrsach_core\obj\Release\net6.0-windows\View\Pages\Comparison.g.cs
+C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_core\Kyrsach_core\obj\Release\net6.0-windows\View\Pages\Comparison.baml
+C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_core\Kyrsach_core\obj\Release\net6.0-windows\View\Pages\TypeCategoriesPage.g.cs
+C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_core\Kyrsach_core\obj\Release\net6.0-windows\View\Pages\TypeCategoriesPage.baml
+C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_core\Kyrsach_core\bin\Release\net6.0-windows\Microsoft.Expression.Interactions.dll
+C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_core\Kyrsach_core\bin\Release\net6.0-windows\System.Windows.Interactivity.dll
+C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_core\Kyrsach_core\bin\Release\net6.0-windows\ShowMeTheXAML.dll

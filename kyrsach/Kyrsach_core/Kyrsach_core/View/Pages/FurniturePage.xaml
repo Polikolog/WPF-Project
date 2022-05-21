@@ -61,7 +61,7 @@
         <Grid Margin="0,10,0,0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="60"/>
-                <RowDefinition Height="6*"/>
+                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -71,7 +71,7 @@
                 <Button Style="{StaticResource HeaderButton}" Command="{Binding OpenPreviousPageCommand}">
                     <Image Source="C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_Core\Kyrsach_Core\Images\back.png" Margin="10"/>
                 </Button>
-                <TextBlock Grid.Column="1" FontFamily="Geometria" Margin="0,10,0,10" Grid.Row="0" Text="{Binding currentViewModel.SelectedFurniture.Name}" FontSize="30"/>
+                <TextBlock Grid.Column="1" FontFamily="Geometria" Margin="20 ,10,0,10" Grid.Row="0" Text="{Binding currentViewModel.SelectedFurniture.Name}" FontSize="30"/>
             </Grid>
             <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Hidden">
                 <Grid Grid.Row="1">
@@ -92,22 +92,13 @@
                                 <ColumnDefinition Width="3*"/>
                                 <ColumnDefinition Width="0.5*"/>
                             </Grid.ColumnDefinitions>
-                            <!--<materialDesign:RatingBar VerticalAlignment="Center" x:Name="BasicRatingBar" Value="{Binding AddRating}" ValueChanged="BasicRatingBar_ValueChanged" />-->
+                            <materialDesign:RatingBar VerticalAlignment="Center" x:Name="BasicRatingBar" Value="{Binding AddRating}"/>
                             <TextBox materialDesign:HintAssist.Hint="Оставьте свой коментарий" TextWrapping="Wrap" MaxLength="100" materialDesign:TextFieldAssist.CharacterCounterVisibility="{Binding Path=IsChecked, ElementName=MaterialDesignFilledTextBoxTextCountComboBox, Converter={StaticResource BooleanToVisibilityConverter}}" materialDesign:HintAssist.HelperTextFontSize="16" x:Name="Comment" Grid.Column="1" Text="{Binding Comment}" Margin="5,5" VerticalAlignment="Center" FontFamily="Geometria" FontSize="20" BorderBrush="Black"/>
                             <Button Grid.Column="2" Style="{StaticResource RegBut}" Command="{Binding AddCommentCommand}" CommandParameter="{Binding ElementName=Comment}" Cursor="Hand">
                                 <Image Source="C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_core\Kyrsach_core\Images\Cros.png" Margin="15"/>
                             </Button>
                         </Grid>
-                        <Grid Grid.Row="2" Visibility="Hidden">
-                            <ListView x:Name="listcop" ItemsSource="{Binding SimilarFurniture}" SelectedItem="{Binding SelectedItem}" ItemTemplate="{StaticResource ResourceKey=ListTemplate}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-                                <!--<ListBox.ItemsPanel>
-                                       <ItemsPanelTemplate>
-                                           <WrapPanel HorizontalAlignment="Center"/>
-                                       </ItemsPanelTemplate>
-                                   </ListBox.ItemsPanel>-->
-                            </ListView>
-                        </Grid>
-                        <Grid Grid.Row="2">
+                        <Grid Grid.Row="2" MinHeight="20">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="150"/>
                                 <ColumnDefinition/>
@@ -138,9 +129,9 @@
                     </Grid>
                     <Grid Grid.Column="1">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="0.25*"/>
-                            <RowDefinition Height="1.2*"/>
-                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="220"/>
+                            <RowDefinition Height="220"/>
                             <RowDefinition Height="0.1*"/>
                         </Grid.RowDefinitions>
                         <Grid Grid.Row="0">
@@ -153,8 +144,8 @@
                                 <ColumnDefinition Width="2*"/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
-                            <ToggleButton Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Content="{materialDesign:PackIcon Kind=Heart, Size=21}" Style="{StaticResource MaterialDesignFlatPrimaryToggleButton}" ToolTip="MaterialDesignFlatPrimaryToggleButton" IsChecked="False" Foreground="Red"/>
-                            <Button Style="{StaticResource HeaderButton}" Height="35" Width="35" Grid.Column="5" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <ToggleButton Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Content="{materialDesign:PackIcon Kind=Heart, Size=21}" Style="{StaticResource MaterialDesignFlatPrimaryToggleButton}" ToolTip="MaterialDesignFlatPrimaryToggleButton" IsChecked="False" Foreground="Red" Command="{Binding currentViewModel.AddFurnitureInLike}"/>
+                            <Button Style="{StaticResource HeaderButton}" Height="35" Width="35" Grid.Column="5" HorizontalAlignment="Center" VerticalAlignment="Center" Command="{Binding AddFurnitureInComparison}">
                                 <Image Width="20" Source="C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_Core\Kyrsach_Core\Images\Comparison.png"/>
                             </Button>
                         </Grid>

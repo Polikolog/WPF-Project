@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Kyrsach_core.Infrastructur.Entity.Base;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Kyrsach_core.Model
 {
-    public class Basket
+    public class Basket : Entity
     {
         public int ID { get; set; }
         public decimal? Price { get; set; }

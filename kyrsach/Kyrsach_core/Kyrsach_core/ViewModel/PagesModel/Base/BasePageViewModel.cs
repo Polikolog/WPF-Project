@@ -39,7 +39,7 @@ namespace Kyrsach_core.ViewModel.PagesModel.Base
                 if (value != null)
                 {
                     var furnitureViewModel = new FurnitureViewModel(this);
-                    CurrentUser.CheckFurniture.Add(value);
+                    CurrentUser.AddFurnitureInViewed(value);
                     FurniturePage.DataContext = furnitureViewModel;
                     MainViewModel.CurrentPage = FurniturePage;
                 }

@@ -3,7 +3,11 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:Kyrsach_core.View.Pages"
+      xmlns:local="clr-namespace:Kyrsach_core.View.Pages" 
+      xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
+      xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+      xmlns:smtx="clr-namespace:ShowMeTheXAML;assembly=ShowMeTheXAML"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="BasketPage" Background="white">
@@ -53,7 +57,20 @@
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <Button Grid.Column="1" Style="{StaticResource HeaderButton}" Background="White" Margin="0,0,0,5" Content="Заказать" HorizontalAlignment="Center" Width="206" Height="70" VerticalAlignment="Center" FontFamily="Geometria" FontSize="30" Command="{Binding AddOrderCommand}"/>
+                    <Button Grid.Column="1" Style="{StaticResource HeaderButton}" Background="White" Margin="0,0,0,5" Content="Заказать" HorizontalAlignment="Center" Width="206" Height="70" VerticalAlignment="Center" FontFamily="Geometria" FontSize="30" Command="{Binding AddOrderCommand}" CommandParameter="{Binding ElementName=SnackbarThree}">
+                        <!--<i:Interaction.Triggers>
+                                                        
+                            <i:EventTrigger EventName="Click" >
+                                                                
+                                <ei:CallMethodAction TargetObject="{Binding}" MethodName="NumberValidationTextBox" />
+                                                            
+                            </i:EventTrigger>
+                                                    
+                        </i:Interaction.Triggers>-->
+                    </Button>
+                    <smtx:XamlDisplay Width="200" Grid.Column="3" UniqueKey="snackbar_3" VerticalContentAlignment="Center">
+                        <materialDesign:Snackbar BorderThickness="1" BorderBrush="Black" x:Name="SnackbarThree" FontFamily="Geometria" FontSize="25" MessageQueue="{materialDesign:MessageQueue}"/>
+                    </smtx:XamlDisplay>
                     <Button Style="{StaticResource btCatalog}" Content="Удалить выбранный товар" FontSize="15" Margin="35,20" Command="{Binding DeleteFurnitureCommand}"/>
                 </Grid>
             </Grid>

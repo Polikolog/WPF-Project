@@ -60,7 +60,7 @@
                                     <RowDefinition/>
                                 </Grid.RowDefinitions>
                                 <Image Source="C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_core\Kyrsach_core\Images\BedRoom.jpg"/>
-                                <TextBlock FontFamily="Geometria" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="1" Text="Спалня"/>
+                                <TextBlock FontFamily="Geometria" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="1" Text="Спальня"/>
                             </Grid>
                         </Button.Content>
                     </Button>
@@ -72,7 +72,7 @@
                                     <RowDefinition/>
                                 </Grid.RowDefinitions>
                                 <Image Source="C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_core\Kyrsach_core\Images\ChildRoom.jpg"/>
-                                <Label FontFamily="Geometria" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="1" Content="Детская"/>
+                                <TextBlock FontFamily="Geometria" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="1" Text="Детская"/>
                             </Grid>
                         </Button.Content>
                     </Button>

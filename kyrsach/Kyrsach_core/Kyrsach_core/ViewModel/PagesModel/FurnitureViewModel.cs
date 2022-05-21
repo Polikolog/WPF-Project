@@ -22,7 +22,6 @@ namespace Kyrsach_core.ViewModel.PagesModel
             mainViewModel = basepage.MainViewModel;
 
             ReviewsList = DataWorker.GetComments(currentViewModel.SelectedFurniture);
-            //UsersList = DataWorker.GetUsers(currentViewModel.SelectedFurniture);
         }
 
         #region Свойтсва
@@ -41,7 +40,6 @@ namespace Kyrsach_core.ViewModel.PagesModel
             set 
             { 
                 Set(ref _rating, value);
-                DataWorker.UpdateRating(value, currentViewModel.SelectedFurniture);
             }
         }
 
@@ -70,7 +68,6 @@ namespace Kyrsach_core.ViewModel.PagesModel
                 {
                     DataWorker.CreateComment(Comment, currentViewModel.SelectedFurniture);
                     ReviewsList = DataWorker.GetComments(currentViewModel.SelectedFurniture);
-                    //UsersList = DataWorker.GetUsers(currentViewModel.SelectedFurniture);
                     Comment = null;
                 }
                 else
@@ -85,6 +82,25 @@ namespace Kyrsach_core.ViewModel.PagesModel
             {
                 mainViewModel.CurrentPage = PreviousPage.LastPage;
                 currentViewModel.SelectedFurniture = null;
+            }));
+        }
+
+        private ICommand _addFurnitureInComparison;
+        public ICommand AddFurnitureInComparison
+        {
+            get => _addFurnitureInComparison ?? (_addFurnitureInComparison = new ActionCommand(p =>
+            {
+                CurrentUser.FurnitureInComparison.Add(currentViewModel.SelectedFurniture);
+            }));
+        }
+
+        private ICommand _changedRatingCommandd;
+        public ICommand ChangedRatingCommandd
+        {
+            get => _changedRatingCommandd ?? (_changedRatingCommandd = new ActionCommand( p =>
+            {
+                if(AddRating != 0)
+                    DataWorker.UpdateRating(AddRating, currentViewModel.SelectedFurniture);
             }));
         }
         #endregion

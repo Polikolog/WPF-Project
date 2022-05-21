@@ -1,10 +1,11 @@
-﻿using System;
+﻿using Kyrsach_core.Infrastructur.Entity.Base;
+using System;
 using System.Collections.Generic;
 #pragma warning disable CS8618
 
 namespace Kyrsach_core.Model
 {
-    public class User
+    public class User : Entity
     {
         public int ID { get; set; }
         public string Name { get; set; }

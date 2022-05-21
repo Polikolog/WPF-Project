@@ -38,5 +38,24 @@ namespace Kyrsach_core.Model
         }
 
         public static ObservableCollection<Furniture> CheckFurniture = new ObservableCollection<Furniture>();
+        public static void AddFurnitureInViewed(Furniture furniture)
+        {
+            if(CheckFurniture.Where(f => f.ID == furniture.ID).Count() <= 0)
+            {
+                CheckFurniture.Add(furniture);
+            }
+        }
+
+        public static ObservableCollection<Furniture> FurnitureInComparison = new ObservableCollection<Furniture>();
+
+        public static ObservableCollection<string> GetTypesInComparison()
+        {
+            var list = new ObservableCollection<string>();
+            foreach(var item in FurnitureInComparison)
+            {
+                list.Add(item.Type.ToString());
+            }
+            return list;
+        }
     }
 }

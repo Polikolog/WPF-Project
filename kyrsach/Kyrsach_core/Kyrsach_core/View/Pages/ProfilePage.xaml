@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Kyrsach_core.View.Pages"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ProfilePage" Background="White">
@@ -48,7 +49,20 @@
             <TextBox VerticalAlignment="Center" Height="35" Width="300" Margin="0,20"  Grid.Column="1" HorizontalAlignment="Center" FontFamily="Geometria" FontSize="20" Grid.Row="1" Text="{Binding Adress}" BorderThickness="0,0,0,1" BorderBrush="Black"/>
             <Label Grid.Row="2" Content="Номер" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Geometria" FontSize="20" BorderThickness="0,0,0,1" BorderBrush="Black"/>
             <TextBox VerticalAlignment="Center" Height="35" Width="300" Margin="0,20" Grid.Column="1" HorizontalAlignment="Center" FontFamily="Geometria" FontSize="20" Grid.Row="2" Text="{Binding Phone}"  BorderThickness="0,0,0,1" BorderBrush="Black"/>
-            <Button Grid.ColumnSpan="2" Grid.Row="3" Content="Сохранить изменения" HorizontalAlignment="Center" VerticalAlignment="Center" Width="250" Height="40" Style="{StaticResource HeaderButton}" Command="{Binding ChangedUserCommand}"/>
+            <Grid Grid.Row="3" Grid.ColumnSpan="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="130"/>
+                </Grid.ColumnDefinitions>
+                <Button Content="Сохранить изменения" HorizontalAlignment="Center" VerticalAlignment="Center" Width="250" Height="40" Style="{StaticResource HeaderButton}" Command="{Binding ChangedUserCommand}"/>
+                <Button Grid.Column="1" VerticalAlignment="Center" Style="{StaticResource HeaderButton}" Command="{Binding ExitCommand}">
+                    <StackPanel>
+                        <materialDesign:PackIcon Kind="ExitToApp" HorizontalAlignment="Center" VerticalAlignment="Center" Width="30" Height="30"/>
+                        <TextBlock Text="Выйти из акаунта" FontSize="14" FontFamily="Geometria" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+            </Grid>
+            
         </Grid>
         <Grid Margin="0, 20,0,10" Grid.Row="1" Grid.ColumnSpan="2">
             <Grid.RowDefinitions>
@@ -56,7 +70,7 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <Label Content="Просмотренные товары" FontFamily="Geometria" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            <ListBox Grid.Row="1" x:Name="ListBox" BorderThickness="0" ItemsSource="{Binding ViewedFurnitureList}" SelectedItem="{Binding ViewedFurniture}" ItemTemplate="{StaticResource ResourceKey=ListTemplate}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+            <ListBox Grid.Row="1" x:Name="ListBox" BorderThickness="0" ItemsSource="{Binding ViewedFurnitureList}" SelectedItem="{Binding ViewedFurniture}" ItemTemplate="{StaticResource ResourceKey=ListTemplate}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Hidden">
                 <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>
                         <WrapPanel HorizontalAlignment="Center"/>
