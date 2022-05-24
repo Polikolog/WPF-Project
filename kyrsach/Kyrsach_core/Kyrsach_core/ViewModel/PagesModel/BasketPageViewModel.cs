@@ -1,19 +1,17 @@
 ﻿using Kyrsach_core.Infrastructur;
+using Kyrsach_core.Infrastructur.Entity;
 using Kyrsach_core.Model;
-using Kyrsach_core.View.Pages;
 using Kyrsach_core.ViewModel.PagesModel.Base;
 using MaterialDesignThemes.Wpf;
-using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace Kyrsach_core.ViewModel.PagesModel
 {
     public class BasketPageViewModel : BasePageViewModel
     {
+
         public BasketPageViewModel(MainViewModel mv)
         {
             MainViewModel = mv;

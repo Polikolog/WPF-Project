@@ -62,8 +62,8 @@ namespace Kyrsach_core.ViewModel
             set => Set(ref _userAdress, value);
         }
 
-        private int? _userNum;
-        public int? UserNum
+        private string _userNum;
+        public string UserNum
         {
             get => _userNum;
             set => Set(ref _userNum, value);
@@ -88,14 +88,14 @@ namespace Kyrsach_core.ViewModel
                     {
                         AdminWindow aw = new AdminWindow();
                         aw.DataContext = new AdminViewModel();
-                        App.Current.MainWindow.Hide();
+                        App.Current.MainWindow.Close();
                         aw.Show();
                     }
                     else
                     {
                         MainWindow mw = new MainWindow();
                         mw.DataContext = new MainViewModel();
-                        App.Current.MainWindow.Hide();
+                        App.Current.MainWindow.Close();
                         mw.Show();
                     }
                 }

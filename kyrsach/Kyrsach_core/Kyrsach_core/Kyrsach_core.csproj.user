@@ -13,10 +13,13 @@
     <Compile Update="View\AdminPage\CommentsPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="View\AdminPage\FurnituresPage.xaml.cs">
+    <Compile Update="View\AdminPage\FurniturePage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="View\AdminPage\OrdersPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\AdminPage\SelectedPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="View\AdminPage\UsersPage.xaml.cs">
@@ -72,10 +75,13 @@
     <Page Update="View\AdminPage\CommentsPage.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="View\AdminPage\FurnituresPage.xaml">
+    <Page Update="View\AdminPage\FurniturePage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\AdminPage\OrdersPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\AdminPage\SelectedPage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\AdminPage\UsersPage.xaml">

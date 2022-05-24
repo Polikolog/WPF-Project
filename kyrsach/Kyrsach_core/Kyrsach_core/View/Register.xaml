@@ -5,10 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:Kyrsach_core.View"
+        xmlns:Valid="clr-namespace:Kyrsach_core.Model.Validation"
         xmlns:ViewModel="clr-namespace:Kyrsach_core.ViewModel"
         xmlns:Components="clr-namespace:Kyrsach_core.Components"
         mc:Ignorable="d" x:Name="RegisterWindow"
-        Title="Reg" Height="600" Width="600"
+        Title="Reg" MinHeight="600" MaxHeight="600" MinWidth="460" MaxWidth="460"
         WindowStartupLocation="CenterScreen">
 
     <!--xmlns:Valid="clr-namespace:Kyrsach_core.Model.Validation"-->
@@ -58,9 +59,9 @@
     <Grid>
         <Grid x:Name="Log">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="60"/>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="60"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="2*"/>
@@ -70,19 +71,19 @@
                 <RowDefinition Height="0.8*"/>
                 <RowDefinition Height="0.2*"/>
             </Grid.RowDefinitions>
-            <Label Content="Войдите в свой аккаунт" FontFamily="Geometria" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30"/>
+            <Label Content="Войдите в свой аккаунт" FontFamily="Geometria" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25" FontWeight="Bold"/>
             <!--<Label x:Name="Logo" Grid.Column="1" FontFamily="GOST type A" Grid.Row="0" Content="Мебель" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="100" FontStyle="Italic"/>-->
             <Image Margin="20,20,20,20" Grid.Column="1" Source="C:/Users/mi/Desktop/1/OOP/kyrsach/Kyrsach_Core/Kyrsach_Core/Images/logo.webp"/>
             <StackPanel Grid.Column="1" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical" Width="298">
                 <Label Content="Email" FontFamily="Geometria" FontSize="20" Margin="0,0,0,5"/>
-                <TextBox materialDesign:HintAssist.Hint="qwrt@gmail.com" Height="30" FontFamily="Geometria" FontSize="15" x:Name="TextBox" BorderThickness="0, 0, 0, 2" BorderBrush="Black" Text="{Binding NameUser}">
-                    <!--<TextBox.Text>
+                <TextBox materialDesign:HintAssist.Hint="qwrt@gmail.com" Height="30" FontFamily="Geometria" FontSize="15" x:Name="TextBox" BorderThickness="0, 0, 0, 2" BorderBrush="Black">
+                    <TextBox.Text>
                         <Binding Path="NameUser" UpdateSourceTrigger="PropertyChanged">
                             <Binding.ValidationRules>
-                                <Valid:InputValidationRule ErrorMessage="Введите сумму"/>
+                                <Valid:RegexValidationRule RegexText="(\b\w+@[a-zA-Z_]+((\.[a-zA-Z]{2,6})|)\b)" ErrorMessage="Указанно некорретное имя" RegexOptions="IgnoreCase"/>
                             </Binding.ValidationRules>
                         </Binding>
-                    </TextBox.Text>-->
+                    </TextBox.Text>
                 </TextBox>
             </StackPanel>
             <StackPanel Grid.Column="1" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical" Width="298">
@@ -106,14 +107,14 @@
                     <RowDefinition Height="0.6*"/>
                 </Grid.RowDefinitions>
                 <Button Grid.Column="1" Grid.ColumnSpan="3" Content="Войти" x:Name="Login" Width="200" Height="50" Command="{Binding EntryUserCommand}" CommandParameter="{Binding ElementName=TextBox}" Style="{StaticResource RegBut}"/>
-                <Button Grid.Row="1" Grid.Column="2" x:Name="Regist" Content="Регистрация" FontFamily="GOST type A" FontSize="16" BorderThickness="0" Background="White" FontStyle="Italic" Foreground="Green" Cursor="Hand" Template="{StaticResource regstr}"/>
+                <Button Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" Grid.ColumnSpan="3" x:Name="Regist" Content="Регистрация" FontFamily="Geometria" FontSize="16" BorderThickness="0" Background="White" Foreground="Green" Cursor="Hand" Template="{StaticResource regstr}"/>
             </Grid>
         </Grid>
         <Grid x:Name="Regis" Visibility="Hidden">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="60"/>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="60"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="2*"/>
@@ -125,26 +126,59 @@
                 <RowDefinition Height="0.8*"/>
                 <RowDefinition Height="0.2*"/>
             </Grid.RowDefinitions>
-            <Label x:Name="Label2" Content="Введите почту и придумайте пароль" FontFamily="GOST type A" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="35"/>
-            <Label Grid.Column="1" FontFamily="GOST type A" Grid.Row="0" Content="Мебель" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="100" FontStyle="Italic"/>
+            <Label x:Name="Label2" Content="Регестрация" FontFamily="Geometria" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30"/>
+            <Image Margin="20,20,20,20" Grid.Column="1" Source="C:/Users/mi/Desktop/1/OOP/kyrsach/Kyrsach_Core/Kyrsach_Core/Images/logo.webp"/>
             <StackPanel Grid.Column="1" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical" Width="298">
-                <Label Content="Email или номер телефона" FontFamily="GOST type A" Foreground="DimGray" FontSize="20" Margin="0,0,0,5"/>
-                <TextBox x:Name="RegText" Text="{Binding NameUserReg, Mode=TwoWay}" Height="30" BorderThickness="0, 0, 0, 2" BorderBrush="Black"/>
+                <Label Content="Email" FontFamily="Geometria" Foreground="DimGray" FontSize="18" Margin="0,0,0,5"/>
+                <TextBox x:Name="RegText" Height="30" BorderThickness="0, 0, 0, 2" BorderBrush="Black">
+                    <TextBox.Text>
+                        <Binding Path="NameUserReg" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <Valid:RegexValidationRule RegexText="(\b\w+@[a-zA-Z_]+((\.[a-zA-Z]{2,6})|)\b)" ErrorMessage="Указанно некорретное имя"/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
             </StackPanel>
             <StackPanel Grid.Column="1" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical" Width="298">
-                <Label Content="Пароль" FontFamily="GOST type A" Foreground="DimGray" FontSize="20" Margin="0,0,0,5"/>
-                <Components:Passwords x:Name="RegPassword" Height="30" Password="{Binding PasswordUserReg}"/>
+                <Label Content="Пароль" FontFamily="Geometria" Foreground="DimGray" FontSize="18" Margin="0,0,0,5"/>
+                <TextBox x:Name="RegPassword" Height="30" BorderThickness="0,0,0,2" BorderBrush="Black">
+                    <TextBox.Text>
+                        <Binding Path="PasswordUserReg" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <Valid:RegexValidationRule RegexText="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^a-zA-Z0-9])\S{1,16}$" ErrorMessage="Указанно некорретный пароль(Пароль должен начинаться не с цифры, содержать мин одну цифру и заглавную букву)" RegexOptions="IgnoreCase"/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
             </StackPanel>
             <StackPanel Grid.Row="4" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical" Width="298">
-                <Label Content="Адресс"  FontFamily="GOST type A" Foreground="DimGray" FontSize="20" Margin="0,0,0,5"/>
-                <TextBox x:Name="Adress" Text="{Binding UserAdress, Mode=TwoWay}" Height="30" BorderThickness="0,0,0,2" BorderBrush="Black"/>
+                <Label Content="Адресс"  FontFamily="Geometria" Foreground="DimGray" FontSize="18" Margin="0,0,0,5"/>
+                <TextBox x:Name="Adress" Height="30" BorderThickness="0,0,0,2" BorderBrush="Black">
+                    <TextBox.Text>
+                        <Binding Path="UserAdress" Mode="TwoWay" >
+                            <Binding.ValidationRules>
+                                <Valid:RegexValidationRule RegexText="^(г[.]\s?[А-Яа-я]{3,20}\s+ул[.]\s?[А-Яа-я]{3,20}\s+д[.]\s?[0-9]{1,4}\s+кв[.]\s?[0-9]{1,4})$" ErrorMessage="Некорретный формат адреса"/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
             </StackPanel>
             <StackPanel Grid.Row="5" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical" Width="298">
-                <Label Content="Номер телефона"  FontFamily="GOST type A" Foreground="DimGray" FontSize="20" Margin="0,0,0,5"/>
-                <TextBox x:Name="Num" Text="{Binding UserNum, Mode=TwoWay}" Height="30" BorderThickness="0,0,0,2" BorderBrush="Black"/>
+                <Label Content="Номер телефона"  FontFamily="Geometria" Foreground="DimGray" FontSize="18" Margin="0,0,0,5"/>
+                <TextBox x:Name="Num" Height="30" BorderThickness="0,0,0,2" BorderBrush="Black">
+                    <TextBox.Text>
+                        <Binding Path="UserNum" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <Valid:RegexValidationRule RegexText="(^\+\d{1,2})?((\(\d{3}\))|(\-?\d{3}\-)|(\d{3}))((\d{3}\-\d{4})|(\d{3}\-\d\d\  
+-\d\d)|(\d{7})|(\d{3}\-\d\-\d{3}))" ErrorMessage="Некорретный номер"/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
             </StackPanel>
             <StackPanel Grid.Row="6" Grid.Column="1" HorizontalAlignment="Center" Margin="0,10,0,5" Orientation="Vertical" Width="380">
-                <Button x:Name="Reg" FontFamily="GOST type A" Width="200" Height="50" Content="Зарегистрироваться" FontSize="30" BorderThickness="0"  Command="{Binding RegisterUserCommand}" CommandParameter="{Binding ElementName=Label2}" Cursor="Hand" Template="{StaticResource regstr}"/>
+                <Button x:Name="Reg" FontFamily="Geometria" Width="200" Height="50" Content="Зарегистрироваться" FontSize="25" BorderThickness="0"  Command="{Binding RegisterUserCommand}" CommandParameter="{Binding ElementName=Label2}" Cursor="Hand" Template="{StaticResource regstr}"/>
             </StackPanel>
         </Grid>
     </Grid>

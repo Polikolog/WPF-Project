@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Kyrsach_core.Infrastructur.Entity;
+using System;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Kyrsach_core.Model
 {

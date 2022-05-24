@@ -5,6 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Kyrsach_core.View.Pages"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:Valid="clr-namespace:Kyrsach_core.Model.Validation"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ProfilePage" Background="White">
@@ -43,12 +44,37 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <Label Content="Имя" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Geometria" FontSize="20" BorderThickness="0,0,0,1" BorderBrush="Black"/>
-            <TextBox VerticalAlignment="Center" Height="35" Width="300" Margin="0,20" Grid.Column="1" Text="{Binding Name}" HorizontalAlignment="Center" FontFamily="Geometria" FontSize="20" BorderThickness="0,0,0,1" BorderBrush="Black"/>
+            <Label Content="Почта" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Geometria" FontSize="20" BorderThickness="0,0,0,1" BorderBrush="Black"/>
+            <TextBox VerticalAlignment="Center" Height="35" Width="300" Margin="0,20" Grid.Column="1" HorizontalAlignment="Center" FontFamily="Geometria" FontSize="20" BorderThickness="0,0,0,1" BorderBrush="Black">
+                <TextBox.Text>
+                    <Binding Path="Name">
+                        <Binding.ValidationRules>
+                            <Valid:RegexValidationRule RegexText="(\b\w+@[a-zA-Z_]+((\.[a-zA-Z]{2,6})|)\b)" ErrorMessage="Указанно некорретное имя"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
             <Label Grid.Row="1" Content="Адресс" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Geometria" FontSize="20" BorderThickness="0,0,0,1" BorderBrush="Black"/>
-            <TextBox VerticalAlignment="Center" Height="35" Width="300" Margin="0,20"  Grid.Column="1" HorizontalAlignment="Center" FontFamily="Geometria" FontSize="20" Grid.Row="1" Text="{Binding Adress}" BorderThickness="0,0,0,1" BorderBrush="Black"/>
+            <TextBox VerticalAlignment="Center" Height="35" Width="300" Margin="0,20"  Grid.Column="1" HorizontalAlignment="Center" FontFamily="Geometria" FontSize="20" Grid.Row="1" BorderThickness="0,0,0,1" BorderBrush="Black">
+                <TextBox.Text>
+                    <Binding Path="Adress" Mode="TwoWay" >
+                        <Binding.ValidationRules>
+                            <Valid:RegexValidationRule RegexText="^(г[.]\s?[А-Яа-я]{3,20}\s+ул[.]\s?[А-Яа-я]{3,20}\s+д[.]\s?[0-9]{1,4}\s+кв[.]\s?[0-9]{1,4})$" ErrorMessage="Некорретный формат адреса"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
             <Label Grid.Row="2" Content="Номер" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Geometria" FontSize="20" BorderThickness="0,0,0,1" BorderBrush="Black"/>
-            <TextBox VerticalAlignment="Center" Height="35" Width="300" Margin="0,20" Grid.Column="1" HorizontalAlignment="Center" FontFamily="Geometria" FontSize="20" Grid.Row="2" Text="{Binding Phone}"  BorderThickness="0,0,0,1" BorderBrush="Black"/>
+            <TextBox VerticalAlignment="Center" Height="35" Width="300" Margin="0,20" Grid.Column="1" HorizontalAlignment="Center" FontFamily="Geometria" FontSize="20" Grid.Row="2"  BorderThickness="0,0,0,1" BorderBrush="Black">
+                <TextBox.Text>
+                    <Binding Path="Phone" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                        <Binding.ValidationRules>
+                            <Valid:RegexValidationRule RegexText="(^\+\d{1,2})?((\(\d{3}\))|(\-?\d{3}\-)|(\d{3}))((\d{3}\-\d{4})|(\d{3}\-\d\d\  
+-\d\d)|(\d{7})|(\d{3}\-\d\-\d{3}))" ErrorMessage="Некорретный номер"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
             <Grid Grid.Row="3" Grid.ColumnSpan="2">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>

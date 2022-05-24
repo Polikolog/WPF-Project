@@ -1,14 +1,10 @@
-﻿using Kyrsach_core.Infrastructur.Base;
+﻿using Kyrsach_core.Infrastructur;
+using Kyrsach_core.Infrastructur.Entity;
 using Kyrsach_core.Model;
-using Kyrsach_core.View.Pages;
 using Kyrsach_core.ViewModel.PagesModel.Base;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using Kyrsach_core.Infrastructur;
-using System.Windows.Input;
 using System.Linq;
-using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace Kyrsach_core.ViewModel.PagesModel
 {

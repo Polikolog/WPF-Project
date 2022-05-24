@@ -4,17 +4,21 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Kyrsach_core.View.Pages"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="LikePage" Background="white">
     <Page.Resources>
         <DataTemplate x:Key="ListTemplate">
             <Border Margin="10" Padding="5" Background="white" BorderBrush="WhiteSmoke" BorderThickness="2">
-                <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Vertical">
                     <Image MaxHeight="100" MaxWidth="100" Source="{Binding Image}"/>
                     <TextBlock FontFamily="Geometria" Margin="5" Text="{Binding Name}"/>
                     <TextBlock FontFamily="Geometria" Margin="5" Text="Цена"/>
                     <TextBlock FontFamily="Geometria" Margin="5" Text="{Binding Price}"/>
+                    <Button Style="{StaticResource HeaderButton}" HorizontalAlignment="Right" Margin="5" Command="{Binding ElementName=ListBox, Path=DataContext.DeleteSelectedFurnitureCommand}" CommandParameter="{Binding}">
+                        <materialDesign:PackIcon Kind="Close" Foreground="Black" FontSize="30"/>
+                    </Button>
                 </StackPanel>
             </Border>
         </DataTemplate>
@@ -25,7 +29,7 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="50"/>
                     <RowDefinition/>
-                    <RowDefinition/>
+                    <RowDefinition Height="60"/>
                 </Grid.RowDefinitions>
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -36,13 +40,14 @@
                     </Grid.ColumnDefinitions>
                     <TextBlock Text="Понравившиеся" HorizontalAlignment="Center" VerticalAlignment="Bottom" Style="{StaticResource tb}" FontSize="30" Margin="0,0,0,5"/>
                 </Grid>
-                <ListView BorderBrush="Black" BorderThickness="0, 2, 0, 0" Grid.Row="1" x:Name="ListBox" ItemsSource="{Binding FurnitureList}" SelectedItem="{Binding SelectedFurniture}" ItemTemplate="{StaticResource ResourceKey=ListTemplate}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                <ListView BorderBrush="Black" BorderThickness="0, 2, 0, 0" Grid.Row="1" x:Name="ListBox" ItemsSource="{Binding FurnitureList}" SelectedItem="{Binding SelectedItemInLike}" ItemTemplate="{StaticResource ResourceKey=ListTemplate}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                     <ListBox.ItemsPanel>
                         <ItemsPanelTemplate>
                             <WrapPanel HorizontalAlignment="Center"/>
                         </ItemsPanelTemplate>
                     </ListBox.ItemsPanel>
                 </ListView>
+                <Button Grid.Row="2" HorizontalAlignment="Center" Style="{StaticResource HeaderButton}" Content="Удалить все товары из списка понравившихся" FontSize="15" Margin="35,20" Command="{Binding DeleteFurnitureCommand}"/>
             </Grid>
         </ScrollViewer>
     </Grid>

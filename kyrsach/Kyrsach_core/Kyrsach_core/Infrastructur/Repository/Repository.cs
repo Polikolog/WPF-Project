@@ -1,5 +1,5 @@
-﻿using Kyrsach_core.Infrastructur.Repository.Base;
-using Kyrsach_core.Model.Base;
+﻿using Kyrsach_core.Infrastructur.Base;
+using Kyrsach_core.Infrastructur.Repository.Base;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
@@ -8,8 +8,8 @@ namespace Kyrsach_core.Infrastructur.Repository
 {
     public abstract class Repository<T> : IRepository<T> where T : Kyrsach_core.Infrastructur.Entity.Base.Entity, new()
     {
-        private ApplicationContext db;
-        private DbSet<T> dbSet;
+        private readonly ApplicationContext db;
+        private readonly DbSet<T> dbSet;
 
         public Repository(ApplicationContext db)
         {
@@ -39,7 +39,10 @@ namespace Kyrsach_core.Infrastructur.Repository
 
         public void Update(T item)
         {
-            throw new NotImplementedException();
+            if (item == null)
+                return;
+            db.Entry(item).State = EntityState.Modified;
+            db.SaveChanges();
         }
     }
 }

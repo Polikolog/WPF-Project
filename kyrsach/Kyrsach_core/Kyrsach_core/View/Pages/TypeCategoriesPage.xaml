@@ -16,7 +16,7 @@
     </Page.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="300"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="0">
@@ -33,67 +33,67 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <Button Style="{StaticResource btCatalog}" Command="{Binding SelectCategoryCommand}" CommandParameter="Кухня">
-                <StackPanel Orientation="Horizontal">
-                    <Image MaxHeight="30" Source="C:/Users/mi/Desktop/1/OOP/kyrsach/Kyrsach_core/Kyrsach_core/Images/Catalogs/menu-01.png"/>
-                    <TextBlock Margin="20,0" Text="Кухни" Style="{StaticResource tb}"/>
+            <Button Width="300" HorizontalAlignment="Left" Style="{StaticResource btCatalog}" Command="{Binding SelectCategoryCommand}" CommandParameter="Кухня" Height="41" VerticalAlignment="Center">
+                <StackPanel Orientation="Horizontal" Width="300">
+                    <Image HorizontalAlignment="Left" Margin="10,0" MaxHeight="30" Source="C:/Users/mi/Desktop/1/OOP/kyrsach/Kyrsach_core/Kyrsach_core/Images/Catalogs/menu-01.png"/>
+                    <TextBlock Margin="30,0" Text="Кухни" Style="{StaticResource tb}"/>
                 </StackPanel>
             </Button>
-            <Button Grid.Row="1" Style="{StaticResource btCatalog}" Command="{Binding SelectCategoryCommand}" CommandParameter="Шкаф">
-                <StackPanel Orientation="Horizontal">
-                    <Image MaxHeight="30" Source="C:/Users/mi/Desktop/1/OOP/kyrsach/Kyrsach_core/Kyrsach_core/Images/Catalogs/menu-02.png"/>
-                    <TextBlock Margin="20,0" Text="Шкафы"  Style="{StaticResource tb}"/>
+            <Button Width="300" Grid.Row="1" Style="{StaticResource btCatalog}" Command="{Binding SelectCategoryCommand}" CommandParameter="Шкаф">
+                <StackPanel Orientation="Horizontal" Width="300">
+                    <Image Margin="30,0" HorizontalAlignment="Left" MaxHeight="30" Source="C:/Users/mi/Desktop/1/OOP/kyrsach/Kyrsach_core/Kyrsach_core/Images/Catalogs/menu-02.png"/>
+                    <TextBlock Margin="23,0" Text="Шкафы"  Style="{StaticResource tb}"/>
                 </StackPanel>
             </Button>
-            <Button Grid.Row="2" Style="{StaticResource btCatalog}" Command="{Binding SelectCategoryCommand}" CommandParameter="Кровать">
+            <Button HorizontalAlignment="Left" Grid.Row="2" Style="{StaticResource btCatalog}" Command="{Binding SelectCategoryCommand}" CommandParameter="Кровать">
                 <StackPanel Orientation="Horizontal">
                     <Image MaxHeight="30" Source="C:/Users/mi/Desktop/1/OOP/kyrsach/Kyrsach_core/Kyrsach_core/Images/Catalogs/menu-04.png"/>
                     <TextBlock Margin="20,0" Text="Кровати"  Style="{StaticResource tb}"/>
                 </StackPanel>
             </Button>
-            <Button Grid.Row="3" Style="{StaticResource btCatalog}" Command="{Binding SelectCategoryCommand}" CommandParameter="Матрас">
+            <Button HorizontalAlignment="Left" Grid.Row="3" Style="{StaticResource btCatalog}" Command="{Binding SelectCategoryCommand}" CommandParameter="Матрас">
                 <StackPanel Orientation="Horizontal">
                     <Image MaxHeight="30" MaxWidth="50" Source="C:/Users/mi/Desktop/1/OOP/kyrsach/Kyrsach_core/Kyrsach_core/Images/Catalogs/menu-03.png"/>
                     <TextBlock Margin="20,0" Text="Матрасы"  Style="{StaticResource tb}"/>
                 </StackPanel>
             </Button>
-            <Button Grid.Row="4" Style="{StaticResource btCatalog}" Command="{Binding SelectCategoryCommand}" CommandParameter="Офисная мебель">
+            <Button HorizontalAlignment="Left" Grid.Row="4" Style="{StaticResource btCatalog}" Command="{Binding SelectCategoryCommand}" CommandParameter="Офисная мебель">
                 <StackPanel Orientation="Horizontal">
                     <Image MaxHeight="30" Source="C:/Users/mi/Desktop/1/OOP/kyrsach/Kyrsach_core/Kyrsach_core/Images/Catalogs/menu-05.png"/>
                     <TextBlock Margin="20,0" Text="Офисная мебель"  Style="{StaticResource tb}"/>
                 </StackPanel>
             </Button>
-            <Button Grid.Row="5" Style="{StaticResource btCatalog}" Command="{Binding SelectCategoryCommand}" CommandParameter="Детская мебель">
+            <Button HorizontalAlignment="Left" Grid.Row="5" Style="{StaticResource btCatalog}" Command="{Binding SelectCategoryCommand}" CommandParameter="Детская мебель">
                 <StackPanel Orientation="Horizontal">
                     <Image MaxHeight="30" Source="C:/Users/mi/Desktop/1/OOP/kyrsach/Kyrsach_core/Kyrsach_core/Images/Catalogs/menu-06.png"/>
                     <TextBlock Margin="20,0" Text="Детская мебель"  Style="{StaticResource tb}"/>
                 </StackPanel>
             </Button>
-            <Button Grid.Row="6" Style="{StaticResource btCatalog}" Command="{Binding SelectCategoryCommand}" CommandParameter="Диван">
+            <Button HorizontalAlignment="Left" Grid.Row="6" Style="{StaticResource btCatalog}" Command="{Binding SelectCategoryCommand}" CommandParameter="Диван">
                 <StackPanel Orientation="Horizontal">
                     <Image MaxHeight="30" Source="C:/Users/mi/Desktop/1/OOP/kyrsach/Kyrsach_core/Kyrsach_core/Images/Catalogs/menu-07.png"/>
                     <TextBlock Margin="20,0" Text="Диваны"  Style="{StaticResource tb}"/>
                 </StackPanel>
             </Button>
-            <Button Grid.Row="7" Style="{StaticResource btCatalog}" Command="{Binding SelectCategoryCommand}" CommandParameter="Кресло">
+            <Button HorizontalAlignment="Left" Grid.Row="7" Style="{StaticResource btCatalog}" Command="{Binding SelectCategoryCommand}" CommandParameter="Кресло">
                 <StackPanel Orientation="Horizontal">
                     <Image MaxHeight="30" Source="C:/Users/mi/Desktop/1/OOP/kyrsach/Kyrsach_core/Kyrsach_core/Images/Catalogs/menu-08.png"/>
                     <TextBlock Margin="20,0" Text="Кресла"  Style="{StaticResource tb}"/>
                 </StackPanel>
             </Button>
-            <Button Grid.Row="8" Style="{StaticResource btCatalog}" Command="{Binding SelectCategoryCommand}" CommandParameter="Стол">
+            <Button HorizontalAlignment="Left" Grid.Row="8" Style="{StaticResource btCatalog}" Command="{Binding SelectCategoryCommand}" CommandParameter="Стол">
                 <StackPanel Orientation="Horizontal">
                     <Image MaxHeight="30" Source="C:/Users/mi/Desktop/1/OOP/kyrsach/Kyrsach_core/Kyrsach_core/Images/Catalogs/menu-09.png"/>
                     <TextBlock Margin="20,0" Text="Столы"  Style="{StaticResource tb}"/>
                 </StackPanel>
             </Button>
-            <Button Grid.Row="9" Style="{StaticResource btCatalog}" Command="{Binding SelectCategoryCommand}" CommandParameter="Стул">
+            <Button HorizontalAlignment="Left" Grid.Row="9" Style="{StaticResource btCatalog}" Command="{Binding SelectCategoryCommand}" CommandParameter="Стул">
                 <StackPanel Orientation="Horizontal">
                     <Image MaxHeight="30" Source="C:/Users/mi/Desktop/1/OOP/kyrsach/Kyrsach_core/Kyrsach_core/Images/Catalogs/menu-10.png"/>
                     <TextBlock Margin="20,0" Text="Стулья"  Style="{StaticResource tb}"/>
                 </StackPanel>
             </Button>
-            <Button Grid.Row="10" Style="{StaticResource btCatalog}" Command="{Binding SelectCategoryCommand}" CommandParameter="Камод">
+            <Button HorizontalAlignment="Left" Grid.Row="10" Style="{StaticResource btCatalog}" Command="{Binding SelectCategoryCommand}" CommandParameter="Камод">
                 <StackPanel Orientation="Horizontal">
                     <Image MaxHeight="30" Source="C:/Users/mi/Desktop/1/OOP/kyrsach/Kyrsach_core/Kyrsach_core/Images/Catalogs/menu-11.png"/>
                     <TextBlock Margin="20,0" Text="Комоды и тумбы"  Style="{StaticResource tb}"/>

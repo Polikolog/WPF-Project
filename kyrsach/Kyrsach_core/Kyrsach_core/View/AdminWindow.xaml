@@ -32,10 +32,10 @@
                     <Button Command="{x:Static materialDesign:DrawerHost.CloseDrawerCommand}" CommandParameter="{x:Static Dock.Left}" Style="{StaticResource MaterialDesignFlatButton}" Height="60">
                         <materialDesign:PackIcon Kind="Backburger" Width="50" Height="50" Foreground="Black"/>
                     </Button>
-                    <Button Grid.Row="1" Content="Мебель" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" Style="{StaticResource HeaderButton}"/>
-                    <Button Grid.Row="2" Content="Пользователи" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" Style="{StaticResource HeaderButton}"/>
+                    <Button Grid.Row="1" Content="Мебель" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" Style="{StaticResource HeaderButton}" Command="{Binding OpenFurnitureCommand}"/>
+                    <Button Grid.Row="2" Content="Пользователи" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" Style="{StaticResource HeaderButton}" Command="{Binding OpenUserCommand}"/>
                     <Button Grid.Row="3" Content="Заказы" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" Style="{StaticResource HeaderButton}"/>
-                    <Button Grid.Row="4" Content="Коментарии" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" Style="{StaticResource HeaderButton}"/>
+                    <Button Grid.Row="4" Content="Коментарии" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" Style="{StaticResource HeaderButton}" Command="{Binding OpenCommentCommand}"/>
                     <Button Grid.Row="5" Style="{StaticResource HeaderButton}"/>
                     <Button Grid.Row="6" Style="{StaticResource HeaderButton}"/>
                 </Grid>
@@ -55,9 +55,7 @@
                     </Button>
                     <TextBlock Grid.Column="1" Text="Админка" Style="{StaticResource tb}" FontSize="50" FontWeight="Bold"/>
                 </Grid>
-                <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Hidden">
-                    <Frame Content="{Binding CurrentPage}" NavigationUIVisibility="Hidden"/>
-                </ScrollViewer>
+                <Frame Margin="20,0" Grid.Row="1" Content="{Binding CurrentPage}" NavigationUIVisibility="Hidden"/>
             </Grid>
         </materialDesign:DrawerHost>
     </Grid>

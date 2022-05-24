@@ -1,15 +1,12 @@
 ﻿using Kyrsach_core.Infrastructur;
+using Kyrsach_core.Infrastructur.Entity;
 using Kyrsach_core.Model;
 using Kyrsach_core.View;
 using Kyrsach_core.View.Other;
 using Kyrsach_core.ViewModel.Other;
 using Kyrsach_core.ViewModel.PagesModel.Base;
-using System;
-using System.Collections.Generic;
+using Microsoft.Win32;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -18,9 +15,9 @@ namespace Kyrsach_core.ViewModel.PagesModel
 {
     public class ProfileViewModel : BasePageViewModel
     {
-        private QuestionWindow QWindow = new QuestionWindow();
         private MainViewModel mainViewModel = new MainViewModel();
         private Window mainwin;
+        private readonly OpenFileDialog _openFileDialog = new OpenFileDialog();
 
         public ProfileViewModel(MainViewModel mainViewModel, ref MainWindow win)
         {
@@ -57,8 +54,8 @@ namespace Kyrsach_core.ViewModel.PagesModel
             set => Set(ref _adress, value);
         }
 
-        private int? _phone;
-        public int? Phone
+        private string _phone;
+        public string Phone
         {
             get => _phone;
             set => Set(ref _phone, value);
@@ -79,9 +76,12 @@ namespace Kyrsach_core.ViewModel.PagesModel
         {
             get => _changeImageCommand ?? new ActionCommand(p =>
             {
-                var but = p as Button;
-                QWindow.DataContext = new QuestionViewModel(this);
-                QWindow.Show();
+                _openFileDialog.Filter = "Image files (*.BMP, *.JPG, *.GIF, *.TIF, *.PNG, *.ICO, *.EMF, *.WMF)" +
+                                 "|*.bmp;*.jpg;*.gif; *.tif; *.png; *.ico; *.emf; *.wmf";
+                _openFileDialog.ShowDialog();
+                Image = _openFileDialog.FileName;
+                DataWorker.ChangedImageUser(Image);
+                CurrentUser.getInstance().Image = Image;
             });
         }
 
@@ -100,7 +100,8 @@ namespace Kyrsach_core.ViewModel.PagesModel
             get => _exitCommand ?? (_exitCommand = new ActionCommand(p =>
             {
                 mainwin.Close();
-                App.Current.MainWindow.Show();
+                Window Register = new Register();
+                Register.Show();
             }));
         }
         #endregion

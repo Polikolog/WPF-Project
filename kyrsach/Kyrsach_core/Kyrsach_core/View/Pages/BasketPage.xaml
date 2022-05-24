@@ -15,18 +15,23 @@
         <DataTemplate x:Key="ListTemplate">
             <Border Margin="10" Padding="5" Background="white" BorderBrush="WhiteSmoke" BorderThickness="0,0,0,2">
                 <StackPanel Orientation="Horizontal" MinWidth="200" Width="1200" MaxWidth="1000">
-                    <Image MaxHeight="100" MaxWidth="100" Source="{Binding Image}"/>
+                    <Image MinWidth="100" MinHeight="100" MaxHeight="100" MaxWidth="100" Source="{Binding Image}"/>
                     <TextBlock FontFamily="Geometria" Margin="40,0,0,0" Text="{Binding Name}" Style="{StaticResource tb}"/>
-                    <TextBlock Margin="250,0,0,0" FontFamily="Geometria" Text="{Binding Price}" Style="{StaticResource tb}"/>
-                    <TextBlock />
-                    <TextBlock />
+                    <TextBlock Margin="290,0,0,0" FontFamily="Geometria" Text="{Binding Price}" Style="{StaticResource tb}"/>
+                    <Button Margin="120, 0,0,0" Command="{Binding DataContext.DeleteCountFurnitureCommand}">
+                        <materialDesign:PackIcon Kind="MinusCircleOutline" />
+                    </Button>
+                    <TextBlock Width="40" Text="{Binding Count}"/>
+                    <Button Command="{Binding DataContext.AddCountFurnitureCommand}">
+                        <materialDesign:PackIcon Kind="PlusCircleOutline"/>
+                    </Button>
+                    <TextBlock Margin="100,0,0,0" Text="{Binding CountPrice}"/>
                 </StackPanel>
             </Border>
         </DataTemplate>
     </Page.Resources>
     <Grid>
-        <ScrollViewer VerticalScrollBarVisibility="Hidden">
-            <Grid>
+        <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="50"/>
                     <RowDefinition/>
@@ -44,14 +49,16 @@
                     <TextBlock Grid.Column="2" Text="Количество" HorizontalAlignment="Center" VerticalAlignment="Bottom" Style="{StaticResource tb}" FontSize="20" Margin="0,0,0,10"/>
                     <TextBlock Grid.Column="3" Text="Cумма" HorizontalAlignment="Center" VerticalAlignment="Bottom" Style="{StaticResource tb}" FontSize="20" Margin="0,0,0,10"/>
                 </Grid>
-                <ListView Grid.Row="1" x:Name="ListBox" ItemsSource="{Binding FurnitureList}" SelectedItem="{Binding FurnitureInBasket}" ItemTemplate="{StaticResource ResourceKey=ListTemplate}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" BorderThickness="0,2" BorderBrush="Black">
+            <ScrollViewer VerticalScrollBarVisibility="Hidden" Grid.Row="1">
+                <ListView x:Name="ListBox" ItemsSource="{Binding FurnitureList}" SelectedItem="{Binding FurnitureInBasket}" ItemTemplate="{StaticResource ResourceKey=ListTemplate}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" BorderThickness="0,2" BorderBrush="Black">
                     <ListBox.ItemsPanel>
                         <ItemsPanelTemplate>
                             <WrapPanel HorizontalAlignment="Center"/>
                         </ItemsPanelTemplate>
                     </ListBox.ItemsPanel>
                 </ListView>
-                <Grid Grid.Row="2">
+            </ScrollViewer>
+            <Grid Grid.Row="2">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
@@ -72,8 +79,7 @@
                         <materialDesign:Snackbar BorderThickness="1" BorderBrush="Black" x:Name="SnackbarThree" FontFamily="Geometria" FontSize="25" MessageQueue="{materialDesign:MessageQueue}"/>
                     </smtx:XamlDisplay>
                     <Button Style="{StaticResource btCatalog}" Content="Удалить выбранный товар" FontSize="15" Margin="35,20" Command="{Binding DeleteFurnitureCommand}"/>
-                </Grid>
             </Grid>
-        </ScrollViewer>
+        </Grid>
     </Grid>
 </Page>

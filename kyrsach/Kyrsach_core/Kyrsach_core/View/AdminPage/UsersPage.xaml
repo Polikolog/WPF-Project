@@ -4,11 +4,170 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Kyrsach_core.View.AdminPage"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:Valid="clr-namespace:Kyrsach_core.Model.Validation"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="UsersPage" Background="White">
+      d:DesignHeight="450" d:DesignWidth="800" Background="White">
+    <Page.Resources>
+        <DataTemplate x:Key="ListTemplate">
+            <Border Margin="10" Padding="5" Background="white" BorderBrush="WhiteSmoke" BorderThickness="2">
+                <StackPanel Orientation="Vertical">
+                    <Image MaxHeight="100" MaxWidth="100" Source="{Binding Image}"/>
+                    <TextBlock FontFamily="Geometria" Margin="5" Text="{Binding Name}"/>
+                    <TextBlock FontFamily="Geometria" Margin="5" Text="Цена"/>
+                    <TextBlock FontFamily="Geometria" Margin="5" Text="{Binding Price}"/>
+                </StackPanel>
+            </Border>
+        </DataTemplate>
 
+        <DataTemplate x:Key="ListOrder">
+            <Border Margin="10" Padding="5" Background="white" BorderBrush="WhiteSmoke" BorderThickness="2">
+                <StackPanel Orientation="Vertical">
+                    <TextBlock FontFamily="Geometria" Margin="5" Text="ID товара в заказе"/>
+                    <TextBlock FontFamily="Geometria" Margin="5" Text="{Binding FurnitureID}"/>
+                    <TextBlock FontFamily="Geometria" Margin="5" Text="ID заказа"/>
+                    <TextBlock FontFamily="Geometria" Margin="5" Text="{Binding OrderID}"/>
+                </StackPanel>
+            </Border>
+        </DataTemplate>
+    </Page.Resources>
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="80"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="250"/>
+            </Grid.ColumnDefinitions>
+            <Button Style="{StaticResource HeaderButton}" Command="{Binding BackPageCommand}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="20,0">
+                <materialDesign:PackIcon Kind="ArrowLeft" Width="30" Height="30"/>
+            </Button>
+            <TextBox materialDesign:HintAssist.Hint="Почта клиента" Width="400" Grid.Column="1" BorderThickness="0,0,0,1" BorderBrush="Gray"  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Geometria" FontSize="20">
+                <TextBox.Text>
+                    <Binding Path="SelectedItem.Name" UpdateSourceTrigger="PropertyChanged">
+                        <Binding.ValidationRules>
+                            <Valid:RegexValidationRule RegexText="(\b\w+@[a-zA-Z_]+((\.[a-zA-Z]{2,6})|)\b)" ErrorMessage="Указанно некорретная почта"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            <Button HorizontalAlignment="Center" Grid.Column="2" VerticalAlignment="Center" Content="Сохранить изменения" Style="{StaticResource HeaderButton}" Command="{Binding SaveChangedCommand}"/>
+        </Grid>
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Hidden">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="300"/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid Margin="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition Height="60"/>
+                        </Grid.RowDefinitions>
+                        <Image Source="{Binding SelectedItem.Image}"/>
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Button Content="Выбрать картинку" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Geometria" FontSize="20" Command="{Binding ChangedImageCommand}"/>
+                        </Grid>
+                    </Grid>
+                    <Grid Grid.Column="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel>
+                            <TextBlock Text="ID" HorizontalAlignment="Center" Margin="10" FontFamily="Geometria" FontSize="20"/>
+                            <TextBlock Text="Хэш-Пароль" HorizontalAlignment="Center" Margin="10" FontFamily="Geometria" FontSize="20"/>
+                            <TextBlock Text="Адрес" HorizontalAlignment="Center" Margin="10" FontFamily="Geometria" FontSize="20"/>
+                            <TextBlock Text="Телефон" HorizontalAlignment="Center" Margin="10" FontFamily="Geometria" FontSize="20"/>
+                        </StackPanel>
+                        <StackPanel Grid.Column="1">
+                            <TextBlock materialDesign:HintAssist.Hint="qwrt@gmail.com" Text="{Binding SelectedItem.ID}" HorizontalAlignment="Center" Width="180" Margin="10" FontFamily="Geometria" FontSize="20"/>
+                            <TextBlock materialDesign:HintAssist.Hint="***********" Width="180" Text="{Binding SelectedItem.Password}" HorizontalAlignment="Left" Margin="10" FontFamily="Geometria" FontSize="20"/>
+                            <TextBox Width="300" materialDesign:HintAssist.Hint="г.Минск, ул.Бобруйская, д. 36, кв. 32" BorderThickness="0,0,0,1" BorderBrush="Gray" HorizontalAlignment="Left" Margin="5" FontFamily="Geometria" FontSize="20">
+                                <TextBox.Text>
+                                    <Binding Path="SelectedItem.Adress" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                                        <Binding.ValidationRules>
+                                            <Valid:RegexValidationRule RegexText="^(г[.]\s?[А-Яа-я]{3,20}\s+ул[.]\s?[А-Яа-я]{3,20}\s+д[.]\s?[0-9]{1,4}\s+кв[.]\s?[0-9]{1,4})$" ErrorMessage="Некорретный формат адреса"/>
+                                        </Binding.ValidationRules>
+                                    </Binding>
+                                </TextBox.Text>
+                            </TextBox>
+                            <TextBox Width="300" materialDesign:HintAssist.Hint="+375298589517" BorderThickness="0,0,0,1" BorderBrush="Gray" HorizontalAlignment="Left" Margin="5" FontFamily="Geometria" FontSize="20">
+                                <TextBox.Text>
+                                    <Binding Path="SelectedItem.Phone" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                                        <Binding.ValidationRules>
+                                            <Valid:RegexValidationRule RegexText="(^\+\d{1,2})?((\(\d{3}\))|(\-?\d{3}\-)|(\d{3}))((\d{3}\-\d{4})|(\d{3}\-\d\d\  
+-\d\d)|(\d{7})|(\d{3}\-\d\-\d{3}))" ErrorMessage="Некорретный номер"/>
+                                        </Binding.ValidationRules>
+                                    </Binding>
+                                </TextBox.Text>
+                            </TextBox>
+                        </StackPanel>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="70"/>
+                        <RowDefinition/>
+                        <RowDefinition Height="70"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="Товары в списке покравившихся" FontSize="20" FontFamily="Geometria" Margin="20"/>
+                    <ListView BorderBrush="Black" BorderThickness="0, 2, 0, 0" Grid.Row="1" x:Name="ListBox" ItemsSource="{Binding FurnitureInLikeList}" SelectedItem="{Binding SelectedFurnitureInLike}" ItemTemplate="{StaticResource ResourceKey=ListTemplate}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                        <ListBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel HorizontalAlignment="Center"/>
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
+                    </ListView>
+                    <Button Grid.Row="2" Style="{StaticResource HeaderButton}" Content="Удалить выбранный элемент из понравившихся" Command="{Binding DeleteFurnitureInLikeCommand}"/>
+                </Grid>
+                <Grid Grid.Row="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="70"/>
+                        <RowDefinition/>
+                        <RowDefinition Height="70"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="Товары в корзине" FontSize="20" FontFamily="Geometria" Margin="20"/>
+                    <ListView BorderBrush="Black" BorderThickness="0, 2, 0, 0" Grid.Row="1" ItemsSource="{Binding FurnitureInBasketList}" SelectedItem="{Binding SelectedFurnitureInBasket}" ItemTemplate="{StaticResource ResourceKey=ListTemplate}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                        <ListBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel HorizontalAlignment="Center"/>
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
+                    </ListView>
+                    <Button Grid.Row="2" Content="Удалить выбранный элемент из корзины" Style="{StaticResource HeaderButton}" Command="{Binding DeleteFurnitureInBasketCommand}"/>
+                </Grid>
+                <Grid Grid.Row="3">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="70"/>
+                        <RowDefinition/>
+                        <RowDefinition Height="70"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="Заказы" FontSize="20" FontFamily="Geometria" Margin="20"/>
+                    <ListView BorderBrush="Black" BorderThickness="0, 2, 0, 0" Grid.Row="1" ItemsSource="{Binding OrderList}" SelectedItem="{Binding SelectedOrder}" ItemTemplate="{StaticResource ResourceKey=ListOrder}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                        <ListBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel HorizontalAlignment="Center"/>
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
+                    </ListView>
+                    <Button Grid.Row="2" Content="Удалить выбранный заказ" Style="{StaticResource HeaderButton}" Command="{Binding DeleteSelectedOrderCommand}"/>
+                </Grid>
+            </Grid>
+        </ScrollViewer>
     </Grid>
 </Page>

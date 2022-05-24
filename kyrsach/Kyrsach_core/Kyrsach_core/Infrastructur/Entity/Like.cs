@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace Kyrsach_core.Infrastructur.Entity
 {
-    internal class Like
+    public class Like : Kyrsach_core.Infrastructur.Entity.Base.Entity
     {
+        public int ID { get; set; }
+        public int UserID { get; set; }
+        public User User { get; set; }
+        public List<LikeFurniture> LikeFurnitures { get; set; }
     }
 }

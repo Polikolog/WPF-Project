@@ -9,46 +9,46 @@ using System.Windows.Controls;
 
 namespace Kyrsach_core.Model.Validation
 {
-	public class NotEmptyValidationRule : ValidationRule
-	{
-		public override ValidationResult Validate(object value, CultureInfo cultureInfo)
-		{
-			return string.IsNullOrWhiteSpace((value ?? "").ToString())
-				? new ValidationResult(false, "Field is required.")
-				: new ValidationResult(true, "Field is qqq.");
-		}
+	//public class NotEmptyValidationRule : ValidationRule
+	//{
+	//	public override ValidationResult Validate(object value, CultureInfo cultureInfo)
+	//	{
+	//		return string.IsNullOrWhiteSpace((value ?? "").ToString())
+	//			? new ValidationResult(false, "Field is required.")
+	//			: new ValidationResult(true, "Field is qqq.");
+	//	}
 
 		
-	}
+	//}
 
-	public class InputValidationRule : ValidationRule
-	{
-		private string _errorMessage;
-		public string ErrorMessage
-		{
-			get { return _errorMessage; }
-			set { _errorMessage = value; }
-		}
+	//public class InputValidationRule : ValidationRule
+	//{
+	//	private string _errorMessage;
+	//	public string ErrorMessage
+	//	{
+	//		get { return _errorMessage; }
+	//		set { _errorMessage = value; }
+	//	}
 
-		public override ValidationResult Validate(object value, CultureInfo cultureInfo)
-		{
+	//	public override ValidationResult Validate(object value, CultureInfo cultureInfo)
+	//	{
 
-			string input = value.ToString();
+	//		string input = value.ToString();
 
-			bool rt = Regex.IsMatch(input, @"[0-9]{1,}");
-			if (!rt)
-			{
-				return new ValidationResult(false, this.ErrorMessage);
-			}
-			else
-			{
-				return new ValidationResult(true, null);
-			}
-		}
+	//		bool rt = Regex.IsMatch(input, @"[0-9]{1,}");
+	//		if (!rt)
+	//		{
+	//			return new ValidationResult(false, this.ErrorMessage);
+	//		}
+	//		else
+	//		{
+	//			return new ValidationResult(true, null);
+	//		}
+	//	}
 
 	
 		
-	}
+	//}
 
 	public class RegexValidationRule : ValidationRule
 	{

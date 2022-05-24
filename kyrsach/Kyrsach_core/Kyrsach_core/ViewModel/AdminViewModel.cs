@@ -1,35 +1,26 @@
-﻿using Kyrsach_core.Infrastructur.Base;
+﻿using Kyrsach_core.Infrastructur;
+using Kyrsach_core.Infrastructur.Base;
 using Kyrsach_core.Model;
 using Kyrsach_core.View.AdminPage;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Kyrsach_core.ViewModel.PagesModel.AdminViewModel;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace Kyrsach_core.ViewModel
 {
     public class AdminViewModel : ViewModelBase
     {
-        private Page FurnituresPage = new FurnituresPage();
+        private Page SelectedPage = new SelectedPage();
+        private UnitOfWork db = new UnitOfWork();
 
         public AdminViewModel()
         {
 
-            FurnituresPage.DataContext = this;
-            CurrentPage = FurnituresPage;
-
-            //FurnitureList = DataWorker.GetFurniturе();
+            SelectedPage.DataContext = new AdminFurnitureViewModel(this);
+            CurrentPage = SelectedPage;
+            PreviousPage.AdminPage = SelectedPage;
         }
 
-        private ObservableCollection<Furniture> _furnitureList;
-        public ObservableCollection<Furniture> FurnitureList
-        {
-            get => _furnitureList;
-            set => Set(ref _furnitureList, value);
-        }
         #region Свойства
         //Текущая страница
         private Page _currentPage;
@@ -41,6 +32,39 @@ namespace Kyrsach_core.ViewModel
         #endregion
 
         #region Команды
+        //Октрытие страницы товаров
+        private ICommand _openFurnitureCommand;
+        public ICommand OpenFurnitureCommand
+        {
+            get => _openFurnitureCommand ?? (_openFurnitureCommand = new ActionCommand( p =>
+            {
+                SelectedPage.DataContext = new AdminFurnitureViewModel(this);
+                CurrentPage = SelectedPage;
+                PreviousPage.AdminPage = SelectedPage;
+            }));
+        }
+
+        private ICommand _openUserCommand;
+        public ICommand OpenUserCommand
+        {
+            get => _openUserCommand ?? (_openUserCommand = new ActionCommand(p =>
+            {
+                SelectedPage.DataContext = new AdminUserViewModel(this);
+                CurrentPage = SelectedPage;
+                PreviousPage.AdminPage = SelectedPage;
+            }));
+        }
+
+        private ICommand _openCommentCommand;
+        public ICommand OpenCommentCommand
+        {
+            get => _openCommentCommand ?? (_openCommentCommand = new ActionCommand(p =>
+            {
+                SelectedPage.DataContext = new AdminCommentViewModel(this);
+                CurrentPage = SelectedPage;
+                PreviousPage.AdminPage = SelectedPage;
+            }));
+        }
         #endregion
 
     }

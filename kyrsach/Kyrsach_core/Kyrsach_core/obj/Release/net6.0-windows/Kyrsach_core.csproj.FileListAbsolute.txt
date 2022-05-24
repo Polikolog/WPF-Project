@@ -80,14 +80,11 @@ C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_core\Kyrsach_core\bin\Release\net6.0-w
 C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_core\Kyrsach_core\bin\Release\net6.0-windows\MaterialDesignThemes.Wpf.dll
 C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_core\Kyrsach_core\bin\Release\net6.0-windows\MaterialDesignThemes.MahApps.dll
 C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_core\Kyrsach_core\bin\Release\net6.0-windows\Microsoft.Xaml.Behaviors.dll
-C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_core\Kyrsach_core\obj\Release\net6.0-windows\Kyrsach_core.csproj.AssemblyReference.cache
 C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_core\Kyrsach_core\obj\Release\net6.0-windows\View\AdminPage\CommentsPage.g.cs
-C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_core\Kyrsach_core\obj\Release\net6.0-windows\View\AdminPage\FurnituresPage.g.cs
 C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_core\Kyrsach_core\obj\Release\net6.0-windows\View\AdminPage\OrdersPage.g.cs
 C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_core\Kyrsach_core\obj\Release\net6.0-windows\View\AdminPage\UsersPage.g.cs
 C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_core\Kyrsach_core\obj\Release\net6.0-windows\View\AdminWindow.g.cs
 C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_core\Kyrsach_core\obj\Release\net6.0-windows\View\AdminPage\CommentsPage.baml
-C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_core\Kyrsach_core\obj\Release\net6.0-windows\View\AdminPage\FurnituresPage.baml
 C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_core\Kyrsach_core\obj\Release\net6.0-windows\View\AdminPage\OrdersPage.baml
 C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_core\Kyrsach_core\obj\Release\net6.0-windows\View\AdminPage\UsersPage.baml
 C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_core\Kyrsach_core\obj\Release\net6.0-windows\View\AdminWindow.baml
@@ -100,3 +97,8 @@ C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_core\Kyrsach_core\obj\Release\net6.0-w
 C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_core\Kyrsach_core\bin\Release\net6.0-windows\Microsoft.Expression.Interactions.dll
 C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_core\Kyrsach_core\bin\Release\net6.0-windows\System.Windows.Interactivity.dll
 C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_core\Kyrsach_core\bin\Release\net6.0-windows\ShowMeTheXAML.dll
+C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_core\Kyrsach_core\obj\Release\net6.0-windows\View\AdminPage\SelectedPage.g.cs
+C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_core\Kyrsach_core\obj\Release\net6.0-windows\View\AdminPage\SelectedPage.baml
+C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_core\Kyrsach_core\obj\Release\net6.0-windows\View\AdminPage\FurniturePage.g.cs
+C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_core\Kyrsach_core\obj\Release\net6.0-windows\View\AdminPage\FurniturePage.baml
+C:\Users\mi\Desktop\1\OOP\kyrsach\Kyrsach_core\Kyrsach_core\obj\Release\net6.0-windows\Kyrsach_core.csproj.AssemblyReference.cache

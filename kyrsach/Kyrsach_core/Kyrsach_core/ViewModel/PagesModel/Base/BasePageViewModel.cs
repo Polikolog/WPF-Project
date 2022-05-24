@@ -1,14 +1,9 @@
 ﻿using Kyrsach_core.Infrastructur;
 using Kyrsach_core.Infrastructur.Base;
+using Kyrsach_core.Infrastructur.Entity;
 using Kyrsach_core.Model;
 using Kyrsach_core.View.Pages;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 

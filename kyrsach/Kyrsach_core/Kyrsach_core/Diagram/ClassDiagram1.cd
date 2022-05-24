@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Kyrsach_core.ViewModel.MainViewModel" Collapsed="true">
+    <Position X="10" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BABgBAICQEIQgQgAEgAgAAKABAAkAkCAMAEAAwoEAgM=</HashCode>
+      <FileName>ViewModel\MainViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kyrsach_core.ViewModel.RegisterViewModel" Collapsed="true">
+    <Position X="8.25" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAIQAIAAEAQAIAACAAAADCBAIAIACAAIAIQAICBAAA=</HashCode>
+      <FileName>ViewModel\RegisterViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kyrsach_core.ViewModel.PagesModel.BasketPageViewModel" Collapsed="true">
+    <Position X="10" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAhABBAAAAAAEAAAAAAAAAAAAAAAAAAAAAAIACAAA=</HashCode>
+      <FileName>ViewModel\PagesModel\BasketPageViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kyrsach_core.ViewModel.PagesModel.CatalogViewModel" Collapsed="true">
+    <Position X="11.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgQIAAAUAAAEgCEgAAAAAYAAEEgAcEAAAAAAgAsCI=</HashCode>
+      <FileName>ViewModel\PagesModel\CatalogViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kyrsach_core.ViewModel.PagesModel.ComparisonViewModel" Collapsed="true">
+    <Position X="13.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAEAAAAAAAAAAAAAAAAAAAAAAAABAAgAAAAA=</HashCode>
+      <FileName>ViewModel\PagesModel\ComparisonViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kyrsach_core.ViewModel.PagesModel.FurnitureViewModel" Collapsed="true">
+    <Position X="6.5" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgEEAAABAIAJABCCBAAAAAABQBAgACAAIAAAIA=</HashCode>
+      <FileName>ViewModel\PagesModel\FurnitureViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kyrsach_core.ViewModel.PagesModel.LikePageViewModel" Collapsed="true">
+    <Position X="6.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\PagesModel\LikePageViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kyrsach_core.ViewModel.PagesModel.MainPageViewModel" Collapsed="true">
+    <Position X="8.25" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\PagesModel\MainPageViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kyrsach_core.ViewModel.PagesModel.ProfileViewModel" Collapsed="true">
+    <Position X="15.25" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIIAAAACAAAEAIABIAAQAAAgIRBEAASAAICAAABA=</HashCode>
+      <FileName>ViewModel\PagesModel\ProfileViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kyrsach_core.ViewModel.PagesModel.TypeCategoriesViewModel" Collapsed="true">
+    <Position X="17" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAEAAAIAAEAACAAAAAAAAAEIAAAAAAAAMAAAAAAACgA=</HashCode>
+      <FileName>ViewModel\PagesModel\TypeCategoriesViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kyrsach_core.View.MainWindow" Collapsed="true">
+    <Position X="1" Y="1.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.21" />
+  </Class>
+  <Class Name="Kyrsach_core.Infrastructur.UnitOfWork" Collapsed="true">
+    <Position X="4.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAACAAACAQAABCAAAAAAQCABAAgABCAAAAAIAAAAI=</HashCode>
+      <FileName>Infrastructur\UnitOfWork.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Kyrsach_core.Infrastructur.Repository.BasketRepository" Collapsed="true">
+    <Position X="3" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Infrastructur\Repository\BasketRepository.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kyrsach_core.Infrastructur.Repository.Repository&lt;T&gt;" Collapsed="true">
+    <Position X="3" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYAAAAAAAAQAABAAAAAAAAAAEEAAAAACAAAAAAAAAA=</HashCode>
+      <FileName>Infrastructur\Repository\Repository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Kyrsach_core.ViewModel.PagesModel.Base.BasePageViewModel" Collapsed="true">
+    <Position X="12.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEEIgAAEEAAAAAAACAAAAACAAAAAACAAAIAAAA=</HashCode>
+      <FileName>ViewModel\PagesModel\Base\BasePageViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="Kyrsach_core.Infrastructur.Repository.Base.IRepository&lt;T&gt;" Collapsed="true">
+    <Position X="3" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYAAAAAAAAAAABAAAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Infrastructur\Repository\Base\IRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="System.Windows.Markup.IComponentConnector" Collapsed="true">
+    <Position X="1.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="System.IDisposable" Collapsed="true">
+    <Position X="4.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

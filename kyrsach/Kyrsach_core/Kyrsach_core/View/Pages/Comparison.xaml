@@ -10,7 +10,7 @@
       Title="Comparison" Background="White">
     <Page.Resources>
         <DataTemplate x:Key="ListTemplate">
-            <StackPanel Height="450" Width="200">
+            <StackPanel Height="450" Width="200" Background="LightGray">
                 <Border Margin="10" Padding="5" Background="white" BorderBrush="WhiteSmoke" BorderThickness="2">
                     <StackPanel Height="150" Orientation="Vertical">
                         <Image  Height="50" Source="{Binding Image}"/>
@@ -19,7 +19,7 @@
                         <TextBlock FontFamily="Geometria" Margin="5" Text="{Binding Price}" Style="{StaticResource tb}"/>
                     </StackPanel>
                 </Border>
-                <StackPanel Height="300" Orientation="Vertical">
+                <StackPanel Height="350" Orientation="Vertical">
                     <TextBlock Height="43" FontSize="20" Style="{StaticResource tb}" Text="{Binding Height}"/>
                     <TextBlock Height="43" FontSize="20" Style="{StaticResource tb}" Text="{Binding Length}"/>
                     <TextBlock Height="43" FontSize="20" Style="{StaticResource tb}" Text="{Binding Width}"/>
@@ -46,17 +46,17 @@
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="190"/>
-                    <RowDefinition Height="300"/>
+                    <RowDefinition Height="310"/>
                 </Grid.RowDefinitions>
                 <ComboBox BorderBrush="Black" Margin="0,20,0,0" SelectedItem="{Binding SelectedType}" x:Name="OutlinedComboBox" Style="{StaticResource MaterialDesignOutlinedComboBox}" IsEnabled="{Binding Path=IsChecked, ElementName=OutlinedComboBoxEnabledCheckBox}" materialDesign:HintAssist.Hint="Тип мебели" ItemsSource="{Binding TypesFurniture}" Height="40" FontSize="15" Padding="7" VerticalAlignment="Top"/>
                 <StackPanel Grid.Row="1" Orientation="Vertical">
-                    <TextBlock Margin="5" Text="Высота" Style="{StaticResource tb}"/>
-                    <TextBlock Margin="5" Text="Длина" Style="{StaticResource tb}"/>
-                    <TextBlock Margin="5" Text="Ширина" Style="{StaticResource tb}"/>
-                    <TextBlock Margin="5" Text="Материал" Style="{StaticResource tb}"/>
-                    <TextBlock Margin="5" Text="Цвет" Style="{StaticResource tb}"/>
-                    <TextBlock Margin="5" Text="Наличие" Style="{StaticResource tb}"/>
-                    <TextBlock Margin="5" Text="Жилая зона" Style="{StaticResource tb}"/>
+                    <TextBlock Margin="10" Text="Высота" Style="{StaticResource tb}"/>
+                    <TextBlock Margin="10" Text="Длина" Style="{StaticResource tb}"/>
+                    <TextBlock Margin="10" Text="Ширина" Style="{StaticResource tb}"/>
+                    <TextBlock Margin="10" Text="Материал" Style="{StaticResource tb}"/>
+                    <TextBlock Margin="10" Text="Цвет" Style="{StaticResource tb}"/>
+                    <TextBlock Margin="10" Text="Наличие" Style="{StaticResource tb}"/>
+                    <TextBlock Margin="10" Text="Жилая зона" Style="{StaticResource tb}"/>
                 </StackPanel>
             </Grid>
             <Grid Grid.Column="1">

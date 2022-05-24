@@ -1,10 +1,6 @@
-﻿using Kyrsach_core.Infrastructur.Repository;
-using Kyrsach_core.Model.Base;
+﻿using Kyrsach_core.Infrastructur.Base;
+using Kyrsach_core.Infrastructur.Repository;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Kyrsach_core.Infrastructur
 {
@@ -13,8 +9,13 @@ namespace Kyrsach_core.Infrastructur
         private ApplicationContext db = new ApplicationContext();
         private UserRepository userRepository;
         private LikeRepository likeRepository;
-        private BasketRepoitory basketRepoitory;
-
+        private BasketRepository basketRepoitory;
+        private FurnitureRepository furnitureRepository;
+        private BasketFurnitureRepository basketFurnitureRepository;
+        private LikeFurnitureRepository likeFurnitureRepository;
+        private OrderRepository orderRepository;
+        private OrderFurnitureRepository orderFurnitureRepository;
+        private CommentRepository commentRepository;
         public UserRepository Users
         {
             get
@@ -35,13 +36,73 @@ namespace Kyrsach_core.Infrastructur
             }
         }
 
-        public BasketRepoitory Baskets
+        public BasketRepository Baskets
         {
             get
             {
                 if(basketRepoitory == null)
-                    basketRepoitory = new BasketRepoitory(db);
+                    basketRepoitory = new BasketRepository(db);
                 return basketRepoitory;
+            }
+        }
+
+        public FurnitureRepository Furnitures
+        {
+            get
+            {
+                if(furnitureRepository == null)
+                    furnitureRepository = new FurnitureRepository(db);
+                return furnitureRepository;
+            }
+        }
+        
+        public BasketFurnitureRepository BasketFurnitures
+        {
+            get
+            {
+                if (basketFurnitureRepository == null)
+                    basketFurnitureRepository = new BasketFurnitureRepository(db);
+                return basketFurnitureRepository;
+            }
+        }
+
+        public LikeFurnitureRepository LikeFurnitures
+        {
+            get
+            {
+                if (likeFurnitureRepository == null)
+                    likeFurnitureRepository = new LikeFurnitureRepository(db);
+                return likeFurnitureRepository;
+            }
+        }
+
+        public OrderRepository Order
+        {
+            get
+            {
+                if(orderRepository == null)
+                    orderRepository = new OrderRepository(db);
+                return orderRepository;
+            }
+        }
+
+        public OrderFurnitureRepository OrderFurnitures
+        {
+            get
+            {
+                if (orderFurnitureRepository == null)
+                    orderFurnitureRepository = new OrderFurnitureRepository(db);
+                return orderFurnitureRepository;
+            }
+        }
+
+        public CommentRepository Comment
+        {
+            get
+            {
+                if(commentRepository == null)
+                    commentRepository = new CommentRepository(db);
+                return commentRepository;
             }
         }
 

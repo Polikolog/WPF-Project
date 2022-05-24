@@ -6,5 +6,6 @@ namespace Kyrsach_core.Model
     {
         public static Page CurrentPage { get; set; }
         public static Page LastPage { get; set; }
+        public static Page AdminPage { get; set; }
     }
 }

@@ -190,7 +190,7 @@
                     <Button Margin="10" x:Name="Back3" Style="{StaticResource HeaderButton}" HorizontalAlignment="Center" VerticalAlignment="Center" >
                         <materialDesign:PackIcon Foreground="#4265a4" Kind="ArrowULeftTopBold" />
                     </Button>
-                    <ListBox ItemsSource="{Binding CategoriesList}" SelectedItem="{Binding Categories}" ItemTemplate="{StaticResource ResourceKey=But}">
+                    <ListBox ItemsSource="{Binding CategoriesList}" SelectedItem="{Binding Categories}" ItemTemplate="{StaticResource ResourceKey=But}" ScrollViewer.VerticalScrollBarVisibility="Disabled">
                         <ListBox.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <WrapPanel HorizontalAlignment="Left"/>

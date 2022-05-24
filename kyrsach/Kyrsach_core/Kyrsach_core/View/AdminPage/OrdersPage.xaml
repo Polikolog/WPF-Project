@@ -4,11 +4,31 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Kyrsach_core.View.AdminPage"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="OrdersPage" Background="White">
 
     <Grid>
-        
+        <ScrollViewer VerticalScrollBarVisibility="Hidden">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="80"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="250"/>
+                    </Grid.ColumnDefinitions>
+                    <Button Style="{StaticResource HeaderButton}" Command="{Binding BackPageCommand}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="20,0">
+                        <materialDesign:PackIcon Kind="ArrowLeft" Width="30" Height="30"/>
+                    </Button>
+                    <TextBox materialDesign:HintAssist.Hint="Имя товара" Width="400" Grid.Column="1" Text="{Binding SelectedItem.Name}" BorderThickness="0,0,0,1" BorderBrush="Gray"  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Geometria" FontSize="20"/>
+                    <Button HorizontalAlignment="Center" Grid.Column="2" VerticalAlignment="Center" Content="Сохранить изменения" Style="{StaticResource HeaderButton}" Command="{Binding SaveChangedCommand}"/>
+                </Grid>
+            </Grid>
+        </ScrollViewer>
     </Grid>
 </Page>

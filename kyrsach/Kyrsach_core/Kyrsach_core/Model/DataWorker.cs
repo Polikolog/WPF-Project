@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text.RegularExpressions;
 using Kyrsach_core.Infrastructur;
-using Kyrsach_core.Model.Base;
+using Kyrsach_core.Infrastructur.Base;
+using Kyrsach_core.Infrastructur.Entity;
 using Kyrsach_core.Model.Other;
 using Microsoft.AspNet.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -22,40 +21,45 @@ namespace Kyrsach_core.Model
         private static IPasswordHasher passwordHasher = new PasswordHasher();
 
         //Добавление пользователя
-        public static bool AddUser(string NameUser, string PasswordUser, string Adress, int? Num)
+        public static bool AddUser(string NameUser, string PasswordUser, string Adress, string Num)
         {
-            using (var db = new ApplicationContext())
-            {
+            //using (var db = new ApplicationContext())
+            //{
                 if (GetUser(NameUser, PasswordUser, Num))
                 {
                     string pass = passwordHasher.HashPassword(PasswordUser);
                     db.Users.Add(new User { Name = NameUser, Password = pass, Adress = Adress, Phone = Num, IsAdmin = false, Image = "C:\\Users\\mi\\Desktop\\1\\imageDataContext\\Profile.jpg" });
                     //db.SaveChanges();
 
-                    db.Likes.Add(new Like { UserID = db.Users.OrderBy(p => p.ID).LastOrDefault().ID });
-                    db.Baskets.Add(new Basket { Price = null, OrderCompleted = null, UserID = db.Users.OrderBy(p => p.ID).LastOrDefault().ID });
+                    db.Likes.Add(new Like { UserID = db.Users.GetAllItems.OrderBy(p => p.ID).LastOrDefault().ID });
+                    db.Baskets.Add(new Basket { Price = null, OrderCompleted = null, UserID = db.Users.GetAllItems.OrderBy(p => p.ID).LastOrDefault().ID });
                     //db.SaveChanges();
 
                     return true;
                 }
                 else
                     return false; 
-            }
+            //}
         }
 
         //Получение пользователя
-        public static bool GetUser(string name, string password, int? phone = null)
+        public static bool GetUser(string name, string password, string phone = null)
         {
-            using(var db = new ApplicationContext())
-            {
+            //using(var db = new ApplicationContext())
+            //{
                 if (phone == null)
                 {
-                    PasswordVerificationResult ver = passwordHasher.VerifyHashedPassword(db.Users.FirstOrDefault(u => u.Name == name).Password, password);
-                    if(ver == PasswordVerificationResult.Success)
+                    if (db.Users.GetAllItems.FirstOrDefault(u => u.Name == name) != null)
                     {
-                        CurrentUser.setInstance(db.Users.FirstOrDefault(u => u.Name == name));
-                        if(CurrentUser.getInstance() != null)
-                            return true;
+                        PasswordVerificationResult ver = passwordHasher.VerifyHashedPassword(db.Users.GetAllItems.FirstOrDefault(u => u.Name == name).Password, password);
+                        if (ver == PasswordVerificationResult.Success)
+                        {
+                            CurrentUser.setInstance(db.Users.GetAllItems.FirstOrDefault(u => u.Name == name));
+                            if (CurrentUser.getInstance() != null)
+                                return true;
+                            else
+                                return false;
+                        }
                         else
                             return false;
                     }
@@ -64,13 +68,13 @@ namespace Kyrsach_core.Model
                 }
                 else
                 {
-                    var user = db.Users.FirstOrDefault(u => u.Name == name || u.Password == password || u.Phone == phone);
+                    var user = db.Users.GetAllItems.FirstOrDefault(u => u.Name == name || u.Password == password || u.Phone == phone);
                     if (user == null)
                         return true;
                     else
                         return false;
                 }
-            }
+            //}
         }
 
         //Смена картинки пользователя
@@ -91,7 +95,7 @@ namespace Kyrsach_core.Model
         }
 
         //Изменение параметров пользователя
-        public static void ChangedUserParametrs(string name, string adress, int? phone)
+        public static void ChangedUserParametrs(string name, string adress, string phone)
         {
             using(var db = new ApplicationContext())
             {
@@ -106,12 +110,12 @@ namespace Kyrsach_core.Model
         //Получение списка товаров определенного типа 
         public static ObservableCollection<Furniture> GetFurniturе(string type)
         {
-            using(var db = new ApplicationContext())
-            {
+            //using(var db = new ApplicationContext())
+            //{
                 var fr = new ObservableCollection<Furniture>();
-                db.Furnitures.Where(f => f.Type == type).ToList().ForEach(f => fr.Add(f));
+                db.Furnitures.GetAllItems.Where(f => f.Type == type).ToList().ForEach(f => fr.Add(f));
                 return fr;
-            }
+            //}
         }
 
         //Получение списка понравившихся товаров пользователя
@@ -145,6 +149,36 @@ namespace Kyrsach_core.Model
                 ObservableCollection<Furniture> list = new ObservableCollection<Furniture>();
                 db.LikeFurnitures.Where(lf => lf.LikeID == GetLike().ID).Join(db.Furnitures, lf => lf.FurnitureID, f => f.ID, (lf, f) => new Furniture { ID = f.ID, Name = f.Name, Type = f.Type, Availability = f.Availability, Category = f.Category, Color = f.Color, Width = f.Width, Length = f.Length, Height = f.Height, Description = f.Description, Image = f.Image, ImageIcon = f.ImageIcon, LivingSector = f.LivingSector, Price = f.Price, Rating = f.Rating }).ToList().ForEach(f => list.Add(f));
                 return list;
+            }
+        }
+
+        //Удаление товаров из списка понравившихся
+        public static void DeleteFurnitureInLike(Furniture furniture = null)
+        {
+            using(var db = new ApplicationContext())
+            {
+                if(furniture == null)
+                {
+                    if(GetFurnituresInLike().Count != 0)
+                    {
+                        var list = new List<LikeFurniture>();
+                        foreach(var item in GetFurnituresInLike())
+                        {
+                            list.Add(db.LikeFurnitures.Where(lf => lf.FurnitureID == item.ID).ToList().FirstOrDefault());
+                        }
+                        db.LikeFurnitures.RemoveRange(list);
+                        db.SaveChanges();
+                    }
+                }
+                else
+                {
+                    var del = db.LikeFurnitures.Where(lf => lf.LikeID == GetLike().ID).ToList().Where(lf => lf.FurnitureID == furniture.ID).FirstOrDefault();
+                    if(del != null)
+                    {
+                        db.LikeFurnitures.Remove(del);
+                        db.SaveChanges();
+                    }
+                }
             }
         }
 
@@ -215,7 +249,7 @@ namespace Kyrsach_core.Model
                         var list = new List<BasketFurniture>();
                         foreach (var item in GetFurnituresInBasket())
                         {
-                            list = db.BasketFurnitures.Where(bf => bf.FurnitureID == item.ID).ToList();
+                            list.Add(db.BasketFurnitures.Where(bf => bf.FurnitureID == item.ID).ToList().FirstOrDefault());
                         }
                         db.BasketFurnitures.RemoveRange(list);
                         db.SaveChanges();
