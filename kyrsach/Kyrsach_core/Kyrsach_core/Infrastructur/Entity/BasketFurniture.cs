@@ -12,5 +12,6 @@ namespace Kyrsach_core.Infrastructur.Entity
         public Basket Basket { get; set; }
         public int FurnitureID { get; set; }
         public Furniture Furniture { get; set; }
+        public int CountFurniture { get; set; }
     }
 }

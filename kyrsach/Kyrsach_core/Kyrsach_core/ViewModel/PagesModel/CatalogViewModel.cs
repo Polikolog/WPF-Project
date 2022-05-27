@@ -4,6 +4,7 @@ using Kyrsach_core.Model;
 using Kyrsach_core.ViewModel.PagesModel.Base;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows;
 using System.Windows.Input;
 
 namespace Kyrsach_core.ViewModel.PagesModel
@@ -32,6 +33,9 @@ namespace Kyrsach_core.ViewModel.PagesModel
                 FurnitureList = list;
                 CountFurniture += "     Категория " + Category;
             }
+
+            ////////
+            CountComment = 123;
         }
 
         public CatalogViewModel(string type, ObservableCollection<Furniture> list, MainViewModel main)
@@ -66,6 +70,13 @@ namespace Kyrsach_core.ViewModel.PagesModel
             get => _categoriesList;
             set => Set(ref _categoriesList, value);
         }
+
+        private int _countComment;
+        public int CountComment
+        {
+            get => _countComment;
+            set => Set(ref _countComment, value);
+        }
         #endregion
 
         #region Команды
@@ -80,7 +91,9 @@ namespace Kyrsach_core.ViewModel.PagesModel
                 {
                     var list = new ObservableCollection<Furniture>();
                     List.Where(f => f.Price < (GetAvgInFurnitureList() / 2)).ToList().ForEach(f => list.Add(f));
-                    FurnitureList = list;
+
+                    if(list.Count > 0)
+                        FurnitureList = list;
                 }
             }));
         }
@@ -93,8 +106,11 @@ namespace Kyrsach_core.ViewModel.PagesModel
                 if(FurnitureList.Count != 0)
                 { 
                     var list = new ObservableCollection<Furniture>();
-                    List.Where(f => f.Price < GetAvgInFurnitureList() && f.Price > (GetAvgInFurnitureList() / 2)).ToList().ForEach(f => list.Add(f));
-                    FurnitureList = list;
+                    
+                    List.Where(f => f.Price <= GetAvgInFurnitureList() && f.Price > (GetAvgInFurnitureList() / 2)).ToList().ForEach(f => list.Add(f));
+
+                    if(list.Count > 0)
+                        FurnitureList = list;
                 }
             }));
         }
@@ -108,7 +124,9 @@ namespace Kyrsach_core.ViewModel.PagesModel
                 {
                     var list = new ObservableCollection<Furniture>();
                     List.Where(f => f.Price > GetAvgInFurnitureList() && f.Price < (GetAvgInFurnitureList() * 2)).ToList().ForEach(f => list.Add(f));
-                    FurnitureList = list;
+
+                    if (list.Count > 0)
+                        FurnitureList = list;
                 }
             }));
         }
@@ -122,7 +140,9 @@ namespace Kyrsach_core.ViewModel.PagesModel
                 {
                     var list = new ObservableCollection<Furniture>();
                     List.Where(f => f.Price > (GetAvgInFurnitureList() * 2)).ToList().ForEach(f => list.Add(f));
-                    FurnitureList = list;
+
+                    if (list.Count > 0)
+                        FurnitureList = list;
                 }
             }));
         }

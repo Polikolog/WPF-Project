@@ -76,12 +76,17 @@ namespace Kyrsach_core.ViewModel.PagesModel
         {
             get => _changeImageCommand ?? new ActionCommand(p =>
             {
-                _openFileDialog.Filter = "Image files (*.BMP, *.JPG, *.GIF, *.TIF, *.PNG, *.ICO, *.EMF, *.WMF)" +
-                                 "|*.bmp;*.jpg;*.gif; *.tif; *.png; *.ico; *.emf; *.wmf";
-                _openFileDialog.ShowDialog();
-                Image = _openFileDialog.FileName;
-                DataWorker.ChangedImageUser(Image);
-                CurrentUser.getInstance().Image = Image;
+                try
+                {
+                    _openFileDialog.Filter = "Image files (*.BMP, *.JPG, *.GIF, *.TIF, *.PNG, *.ICO, *.EMF, *.WMF)" +
+                                     "|*.bmp;*.jpg;*.gif; *.tif; *.png; *.ico; *.emf; *.wmf";
+                    _openFileDialog.ShowDialog();
+                    Image = _openFileDialog.FileName;
+                    DataWorker.ChangedImageUser(Image);
+                    CurrentUser.getInstance().Image = Image;
+                }
+                catch
+                { }
             });
         }
 
@@ -99,9 +104,10 @@ namespace Kyrsach_core.ViewModel.PagesModel
         {
             get => _exitCommand ?? (_exitCommand = new ActionCommand(p =>
             {
-                mainwin.Close();
+                CurrentUser.setInstance(null);
                 Window Register = new Register();
                 Register.Show();
+                mainwin.Close();
             }));
         }
         #endregion

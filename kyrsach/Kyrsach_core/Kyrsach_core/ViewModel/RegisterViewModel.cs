@@ -84,6 +84,8 @@ namespace Kyrsach_core.ViewModel
             {
                 if (DataWorker.GetUser(NameUser, PasswordUser))
                 {
+                    UserNum = null;
+                    PasswordUser = null;
                     if (CurrentUser.getInstance().IsAdmin)
                     {
                         AdminWindow aw = new AdminWindow();

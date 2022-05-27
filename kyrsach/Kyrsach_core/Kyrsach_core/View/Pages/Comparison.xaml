@@ -60,7 +60,7 @@
                 </StackPanel>
             </Grid>
             <Grid Grid.Column="1">
-                <ListBox x:Name="ListBox" BorderThickness="0" ItemsSource="{Binding FurnitureList}" ItemTemplate="{StaticResource ResourceKey=ListTemplate}" ScrollViewer.HorizontalScrollBarVisibility="Hidden">
+                <ListBox materialDesign:ListBoxItemAssist.ShowSelection="False" x:Name="ListBox" BorderThickness="0" ItemsSource="{Binding FurnitureList}" ItemTemplate="{StaticResource ResourceKey=ListTemplate}" ScrollViewer.HorizontalScrollBarVisibility="Hidden">
                     <ListBox.ItemsPanel>
                         <ItemsPanelTemplate>
                             <WrapPanel HorizontalAlignment="Left"/>

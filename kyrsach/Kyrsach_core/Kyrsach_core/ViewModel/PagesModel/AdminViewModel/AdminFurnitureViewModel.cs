@@ -4,6 +4,7 @@ using Kyrsach_core.Model;
 using Kyrsach_core.View.AdminPage;
 using Kyrsach_core.ViewModel.PagesModel.AdminViewModel.Base;
 using Microsoft.Win32;
+using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Controls;
@@ -79,11 +80,18 @@ namespace Kyrsach_core.ViewModel.PagesModel.AdminViewModel
         {
             get => _changedImageCommand ?? (_changedImageCommand = new ActionCommand(p =>
             {
-                _openFileDialog.Filter = "Image files (*.BMP, *.JPG, *.GIF, *.TIF, *.PNG, *.ICO, *.EMF, *.WMF)" +
-                                 "|*.bmp;*.jpg;*.gif; *.tif; *.png; *.ico; *.emf; *.wmf";
-                _openFileDialog.ShowDialog();
-                SelectedItem.Image = _openFileDialog.FileName;
-                db.Users.GetAllItems.Where(u => u.ID == SelectedItem.ID).FirstOrDefault().Image = SelectedItem.Image;
+                try
+                {
+                    _openFileDialog.Filter = "Image files (*.BMP, *.JPG, *.GIF, *.TIF, *.PNG, *.ICO, *.EMF, *.WMF)" +
+                                     "|*.bmp;*.jpg;*.gif; *.tif; *.png; *.ico; *.emf; *.wmf";
+                    _openFileDialog.ShowDialog();
+                    SelectedItem.Image = _openFileDialog.FileName;
+                    db.Users.GetAllItems.Where(u => u.ID == SelectedItem.ID).FirstOrDefault().Image = SelectedItem.Image;
+                }
+                catch(Exception ex)
+                {
+
+                }
             }));
         }
         #endregion

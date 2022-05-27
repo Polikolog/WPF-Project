@@ -4,12 +4,13 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Kyrsach_core.View.Pages"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="TypeCategoriesPage" Background="White">
     <Page.Resources>
         <DataTemplate x:Key="CategoriesTemplate">
-            <Border BorderBrush="Gray" BorderThickness="1" CornerRadius="5" Background="White">
+            <Border BorderBrush="Gray" BorderThickness="1" CornerRadius="5" Background="White" Cursor="Hand">
                 <TextBlock Margin="10" Text="{Binding Category}" FontFamily="Geometria" FontSize="25" Style="{StaticResource tb}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </Border>
         </DataTemplate>
@@ -106,7 +107,7 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <Button Content="{Binding CatalogType}" Command="{Binding CatalogСabinetsCommand}" CommandParameter="{Binding CatalogType}" Style="{StaticResource HeaderButton}" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="30" Margin="10,0"/>
-            <ListView Grid.Row="1" ItemsSource="{Binding CategoriesList}" SelectedItem="{Binding SelectedCategory}" ItemTemplate="{StaticResource ResourceKey=CategoriesTemplate}">
+            <ListView materialDesign:ListBoxItemAssist.ShowSelection="False" Grid.Row="1" ItemsSource="{Binding CategoriesList}" SelectedItem="{Binding SelectedCategory}" ItemTemplate="{StaticResource ResourceKey=CategoriesTemplate}">
                 <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>
                         <WrapPanel HorizontalAlignment="Left" VerticalAlignment="Top"/>

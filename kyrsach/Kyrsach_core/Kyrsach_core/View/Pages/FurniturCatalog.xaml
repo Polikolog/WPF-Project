@@ -10,19 +10,22 @@
       Title="FurniturCatalog" Background="White">
     <Page.Resources>
         <DataTemplate x:Key="ListTemplate">
-            <Border Margin="10" Padding="5" Background="white" BorderBrush="WhiteSmoke" BorderThickness="2">
+            <Border Margin="10" Padding="5" Width="302" Height="390" Background="white" BorderBrush="WhiteSmoke" BorderThickness="2" Cursor="Hand">
                 <StackPanel>
-                    <Image MaxHeight="200" MaxWidth="200" Source="{Binding Image}"/>
-                    <TextBlock FontFamily="Geometria" Margin="5" Text="{Binding Name}"/>
-                    <TextBlock FontFamily="Geometria" Margin="5" Text="Цена"/>
-                    <TextBlock FontFamily="Geometria" Margin="5" Text="{Binding Price}"/>
+                    <Image MaxHeight="210" MinHeight="210" MaxWidth="286" MinWidth="286" Source="{Binding Image}" Margin="15"/>
+                    <TextBlock FontFamily="Geometria" Margin="20,5" Text="{Binding Name}" FontWeight="Bold" FontSize="18"/>
+                    <TextBlock FontFamily="Geometria" Margin="20,5" Text="Цена"/>
+                    <TextBlock FontFamily="Geometria" Margin="20,5" Text="{Binding Price}" FontWeight="Bold" FontSize="18"/>
+                    <StackPanel Orientation="Horizontal" Margin="16,5">
+                        <materialDesign:RatingBar x:Name="ReadOnlyRatingBar" Value="{Binding Rating}" IsReadOnly="True"/>
+                    </StackPanel>
                 </StackPanel>
             </Border>
         </DataTemplate>
 
         <DataTemplate x:Key="But">
-            <Border Background="white" BorderThickness="0">
-                <Button Content="{Binding Category}"  Margin="10,0" BorderBrush="Gray" Style="{StaticResource MaterialDesignRaisedDarkButton}" Padding="2" Background="White" ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" x:Name="Size" Height="40" VerticalAlignment="Center" Width="121" Foreground="Black" FontFamily="Geometria" FontWeight="Normal" FontSize="20" Command="{Binding SortCategoriesCommand}" CommandParameter="{Binding Category}"/>
+            <Border Background="white" BorderThickness="0" Cursor="Hand">
+                <Button Content="{Binding Category}"  Margin="10,0" BorderBrush="Gray" Style="{StaticResource MaterialDesignRaisedDarkButton}" Padding="2" Background="White" ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" x:Name="Size" Height="40" VerticalAlignment="Center" Width="121" Foreground="Black" FontFamily="Geometria" FontWeight="Normal" FontSize="20" Command="{Binding ElementName=Main, Path=DataContext.SortCategoriesCommand}" CommandParameter="{Binding Category}"/>
             </Border>
         </DataTemplate>
 
@@ -115,11 +118,13 @@
         <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="Back3">
             <BeginStoryboard Storyboard="{StaticResource Storyboard6}"/>
         </EventTrigger>
+        
+        
     </Page.Triggers>
 
-    <Grid>
+    <Grid x:Name="Main">
         <ScrollViewer VerticalScrollBarVisibility="Hidden">
-            <Grid>
+            <Grid x:Name="Grid">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="55"/>
                     <RowDefinition Height="55"/>
@@ -190,7 +195,7 @@
                     <Button Margin="10" x:Name="Back3" Style="{StaticResource HeaderButton}" HorizontalAlignment="Center" VerticalAlignment="Center" >
                         <materialDesign:PackIcon Foreground="#4265a4" Kind="ArrowULeftTopBold" />
                     </Button>
-                    <ListBox ItemsSource="{Binding CategoriesList}" SelectedItem="{Binding Categories}" ItemTemplate="{StaticResource ResourceKey=But}" ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                    <ListBox materialDesign:ListBoxItemAssist.ShowSelection="False" ItemsSource="{Binding CategoriesList}"  ItemTemplate="{StaticResource ResourceKey=But}" ScrollViewer.VerticalScrollBarVisibility="Disabled">
                         <ListBox.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <WrapPanel HorizontalAlignment="Left"/>
@@ -198,10 +203,10 @@
                         </ListBox.ItemsPanel>
                     </ListBox>
                 </StackPanel>
-                <ListBox Grid.Row="2" x:Name="ListBox" BorderThickness="0" ItemsSource="{Binding FurnitureList}" SelectedItem="{Binding SelectedFurniture}" ItemTemplate="{StaticResource ResourceKey=ListTemplate}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                <ListBox Grid.Row="2" x:Name="ListBox" BorderThickness="0" ItemsSource="{Binding FurnitureList}" SelectedItem="{Binding SelectedFurniture}" ItemTemplate="{StaticResource ResourceKey=ListTemplate}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" materialDesign:ListBoxItemAssist.ShowSelection="False">
                     <ListBox.ItemsPanel>
                         <ItemsPanelTemplate>
-                            <WrapPanel HorizontalAlignment="Center"/>
+                            <WrapPanel HorizontalAlignment="Left"/>
                         </ItemsPanelTemplate>
                     </ListBox.ItemsPanel>
                 </ListBox>

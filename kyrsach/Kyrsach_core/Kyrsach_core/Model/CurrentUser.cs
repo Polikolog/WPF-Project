@@ -33,6 +33,10 @@ namespace Kyrsach_core.Model
                         instance = user;
                 }
             }
+            else if(user == null)
+            {
+                instance = null;
+            }
         }
 
         public static ObservableCollection<Furniture> CheckFurniture = new ObservableCollection<Furniture>();

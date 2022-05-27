@@ -6,17 +6,18 @@
       xmlns:local="clr-namespace:Kyrsach_core.View.Pages"
       xmlns:Components="clr-namespace:Kyrsach_core.Components"
       xmlns:ViewModel="clr-namespace:Kyrsach_core.ViewModel.PagesModel"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="MainPage" Background="White">
     <Page.Resources>
         <DataTemplate x:Key="ListTemplate">
-            <Border Margin="10" Padding="5" Background="white" BorderBrush="WhiteSmoke" BorderThickness="2">
+            <Border Margin="10" Padding="5" Background="white" BorderBrush="WhiteSmoke" BorderThickness="2" Cursor="Hand">
                 <StackPanel>
                     <Image MaxHeight="200" MaxWidth="200" Source="{Binding Image}"/>
-                    <TextBlock FontFamily="Geometria" Margin="5" Text="{Binding Name}"/>
+                    <TextBlock FontFamily="Geometria" Margin="5" Text="{Binding Name}" FontWeight="Bold"/>
                     <TextBlock FontFamily="Geometria" Margin="5" Text="Цена"/>
-                    <TextBlock FontFamily="Geometria" Margin="5" Text="{Binding Price}"/>
+                    <TextBlock FontFamily="Geometria" Margin="5" Text="{Binding Price}" FontWeight="Bold"/>
                 </StackPanel>
             </Border>
         </DataTemplate>
@@ -120,7 +121,7 @@
                     </Grid.RowDefinitions>
                     <Label FontFamily="Geometria" FontSize="20" HorizontalAlignment="Center" Content="Популярные товары в интернет-магазине"/>
                     <Grid Grid.Row="1">
-                        <ListBox x:Name="ListBox" BorderThickness="0" ItemsSource="{Binding FurnitureList}" SelectedItem="{Binding SelectedFurniture}" ItemTemplate="{StaticResource ResourceKey=ListTemplate}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                        <ListBox materialDesign:ListBoxItemAssist.ShowSelection="False" x:Name="ListBox" BorderThickness="0" ItemsSource="{Binding FurnitureList}" SelectedItem="{Binding SelectedFurniture}" ItemTemplate="{StaticResource ResourceKey=ListTemplate}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                             <ListBox.ItemsPanel>
                                 <ItemsPanelTemplate>
                                     <WrapPanel HorizontalAlignment="Center"/>
