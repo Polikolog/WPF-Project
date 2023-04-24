@@ -1,2 +1,2 @@
 
-###My project on WPF. Theme: Furniture store
+### My project on WPF. Theme: Furniture store
