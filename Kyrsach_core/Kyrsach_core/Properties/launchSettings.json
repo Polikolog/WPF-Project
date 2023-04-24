@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Kyrsach_core": {
+      "commandName": "Project",
+      "workingDirectory": "..\\Kyrsach_core"
+    }
+  }
+}
